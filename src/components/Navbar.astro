@@ -1,5 +1,4 @@
 ---
-import '@styles/global.css';
 import logo from '@assets/icon-512px.png';
 ---
 
@@ -8,24 +7,20 @@ import logo from '@assets/icon-512px.png';
     display: flex;
     justify-content: space-between;
     padding: 0 2rem;
-    height: 72px;
+    height: 62px;
     align-items: center;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
   }
 
   .nav-logo {
     cursor: pointer;
-    height: 100%;
+    height: 42px;
 
     &>img {
       max-height: 100%;
-      width: auto;
+      max-width: auto;
     }
   }
-
-  /* .nav-logo>img {
-    max-height: 100%;
-    width: auto;
-  } */
 
   .nav-items {
     overflow-x: scroll;
@@ -34,7 +29,11 @@ import logo from '@assets/icon-512px.png';
     &>div {
       padding: 0 1rem;
       cursor: pointer;
-      background-color: var(--color3);
+      font-size: 1.25rem;
+    }
+
+    &:last-child {
+      padding-right: 0;
     }
   }
 </style>

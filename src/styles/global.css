@@ -1,5 +1,6 @@
 /* Main theme colors */
 :root {
+  --content-width: 1024px;
   --headerColor: rgba(0, 0, 0, 0.733);
   --bodyColor: rgba(0, 0, 0, 0.867);
 

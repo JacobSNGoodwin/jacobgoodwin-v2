@@ -1,0 +1,18 @@
+---
+import Navbar from "@components/Navbar.astro";
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<style>
+  .content {
+    max-width: var(--content-width);
+    margin: auto;
+  }
+</style>
+
+<BaseLayout>
+  <Navbar />
+  <div class="content">
+    <slot />
+  </div>
+</BaseLayout>

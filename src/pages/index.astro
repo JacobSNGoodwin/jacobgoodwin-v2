@@ -2,6 +2,16 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
+<style>
+	.content {
+		max-width: var(--content-width);
+		margin: auto;
+	}
+</style>
+
 <BaseLayout>
-	<h1>Index</h1>
+	<div class="content">
+		<h1>Welcome</h1>
+		<a href="/blog">Blog</a>
+	</div>
 </BaseLayout>
