@@ -1,0 +1,51 @@
+---
+import '@styles/global.css';
+import logo from '@assets/icon-512px.png';
+---
+
+<style lang="postcss">
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 72px;
+    align-items: center;
+  }
+
+  .nav-logo {
+    cursor: pointer;
+    height: 100%;
+
+    &>img {
+      max-height: 100%;
+      width: auto;
+    }
+  }
+
+  /* .nav-logo>img {
+    max-height: 100%;
+    width: auto;
+  } */
+
+  .nav-items {
+    overflow-x: scroll;
+    display: flex;
+
+    &>div {
+      padding: 0 1rem;
+      cursor: pointer;
+      background-color: var(--color3);
+    }
+  }
+</style>
+
+<div class="nav-container">
+  <div class="nav-logo">
+    <img src={logo} alt="App Logo">
+  </div>
+  <div class="nav-items">
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+  </div>
+</div>
