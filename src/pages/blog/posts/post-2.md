@@ -1,17 +1,12 @@
 ---
 layout: ../../../layouts/BlogPostLayout.astro
-title: Post Numero Uno
-description: This is an example post that we can use for stuff at some point!
+title: Post Dos
 authors: 
-  - Jacob Goodwin
-  - Jenny Jones
+  - Sponge Robert Quadrilateral Pants
+description: SpongeBob seeks his revenge! Be prepared for doom!
 tags:
   - travel
-  - outings
-keywords:
-  - travel
-  - outings
-imageUrl: 'http://image.com'
+  - beliefs
 date: 2022-06-12
 ---
 

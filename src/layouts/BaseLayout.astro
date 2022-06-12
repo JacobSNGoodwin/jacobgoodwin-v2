@@ -3,12 +3,17 @@ import '@styles/global.css';
 import "@fontsource/fira-sans/700.css";
 import "@fontsource/lato/400.css";
 import "@fontsource/lato/700.css";
+import { MetaTags } from 'src/types';
 
 export type Props = {
-  title?: string,
+  metaTags?: MetaTags,
 }
 
-const { title } = Astro.props as Props;
+const {
+  metaTags,
+} = Astro.props as Props;
+
+const { href: url } = Astro.canonicalURL;
 ---
 
 <html lang="en">
@@ -17,7 +22,19 @@ const { title } = Astro.props as Props;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/x-icon" href="/favicon.png">
-  <title>{title || 'JG'}</title>
+  <title>{metaTags.title}</title>
+  <meta name="description" content={metaTags.description}>
+  <meta name="keywords" content={metaTags.keywords.join(',')}>
+  <meta name="author" content={metaTags.author}>
+  <meta property="og:title" content={metaTags.title} />
+  <meta property="og:description" content={metaTags.description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url} />
+  <meta property="og:image" content={metaTags.image} />
+  <meta name="twitter:title" content={metaTags.title}>
+  <meta name="twitter:description" content={metaTags.description}>
+  <meta name="twitter:image" content={metaTags.image}>
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>

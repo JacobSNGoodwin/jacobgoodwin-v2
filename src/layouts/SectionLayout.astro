@@ -1,15 +1,26 @@
 ---
 import Navbar from "@components/Navbar.astro";
-import { NavItem } from "src/types";
+import { baseMetaTags } from "@data/default-tags";
+import { MetaTags, NavItem } from "src/types";
 import BaseLayout from "./BaseLayout.astro";
 
 export type Props = {
   title?: string,
   navItems?: NavItem[],
   logoPath?: string,
+  metaTags?: Partial<MetaTags>,
 }
 
-const { title, navItems, logoPath } = Astro.props as Props;
+const {
+  navItems = [],
+  logoPath = '/',
+  metaTags,
+} = Astro.props as Props;
+
+const tags = {
+  ...baseMetaTags,
+  ...metaTags,
+}
 ---
 
 <style>
@@ -21,8 +32,8 @@ const { title, navItems, logoPath } = Astro.props as Props;
   }
 </style>
 
-<BaseLayout title={title || "JG" }>
-  <Navbar navItems={navItems || []} logoPath={logoPath || '/' } />
+<BaseLayout metaTags={tags}>
+  <Navbar navItems={navItems} logoPath={logoPath} />
   <div class="content">
     <slot />
   </div>

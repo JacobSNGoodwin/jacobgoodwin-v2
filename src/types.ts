@@ -6,6 +6,17 @@ export type NavItem = {
 export type MarkdownContentFields = {
   title: string;
   authors: string[];
-  tags: string[];
+  description: string;
   date: string;
+  imageUrl?: string;
+  tags?: string[];
+  keywords?: string[];
+};
+
+export type MetaTags = {
+  title?: string;
+  author?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
 };

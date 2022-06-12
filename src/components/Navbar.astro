@@ -9,7 +9,6 @@ export type Props = {
 };
 
 const { navItems, logoPath } = Astro.props as Props;
-const { pathname } = Astro.canonicalURL;
 const cursorType = logoPath ? 'pointer' : 'default';
 ---
 
@@ -56,10 +55,6 @@ const cursorType = logoPath ? 'pointer' : 'default';
       font-size: 1.25rem;
       transition-duration: var(--dt);
       transition-property: color, opacity;
-
-      &:hover {
-        opacity: 0.8;
-      }
 
       &:nth-child(4n+1) {
         color: var(--color1)

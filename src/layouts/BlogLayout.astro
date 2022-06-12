@@ -1,4 +1,10 @@
 ---
+export type Props = {
+  metaTags?: MetaTags;
+};
+
+import { baseMetaTags } from "@data/default-tags";
+import { MetaTags } from "src/types";
 import SectionLayout from "./SectionLayout.astro";
 
 const items = [
@@ -20,9 +26,17 @@ const items = [
   },
 ];
 
-const { title } = Astro.props
+const { metaTags } = Astro.props as Props;
+
+const tags: MetaTags = {
+  ...baseMetaTags,
+  title: 'JG - Blog',
+  author: 'Jacob Goodwin',
+  description: 'Jacob Goodwin\'s writings on just about whatever he feels like',
+  ...metaTags,
+}
 ---
 
-<SectionLayout navItems={items} logoPath="/blog" title={title || 'JG Blog' }>
+<SectionLayout navItems={items} logoPath="/blog" metaTags={tags}>
   <slot />
 </SectionLayout>
