@@ -1,6 +1,8 @@
 ---
 layout: ../../../layouts/BlogPostLayout.astro
-title: Utter nonsense!
+title: Post Numero Uno
+authors: 
+  - Jacob Goodwin
 tags:
   - travel
   - outings

@@ -3,8 +3,9 @@ export type NavItem = {
   path: string;
 };
 
-export type PostFields = {
+export type MarkdownContentFields = {
   title: string;
+  authors: string[];
   tags: string[];
   date: string;
 };

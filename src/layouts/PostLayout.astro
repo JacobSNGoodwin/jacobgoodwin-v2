@@ -1,0 +1,13 @@
+---
+import type { MarkdownContentFields } from "src/types";
+export type Props = {
+  content: MarkdownContentFields;
+};
+
+
+const { content } = Astro.props as Props;
+---
+
+<style></style>
+
+<h1>{content.title}</h1>
