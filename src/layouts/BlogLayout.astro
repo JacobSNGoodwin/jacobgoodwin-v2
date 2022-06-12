@@ -2,7 +2,15 @@
 import Navbar from "@components/Navbar.astro";
 import BaseLayout from "./BaseLayout.astro";
 
+export type Props = {
+  title?: string,
+}
+
 const items = [
+  {
+    title: 'About',
+    path: '/blog/about',
+  },
   {
     title: 'Travel',
     path: '/blog/travel',
@@ -16,16 +24,20 @@ const items = [
     path: '/blog/beliefs',
   },
 ];
+
+const { title } = Astro.props as Props;
 ---
 
 <style>
   .content {
+    position: relative;
     max-width: var(--content-width);
+    padding: 0.5rem 1rem;
     margin: auto;
   }
 </style>
 
-<BaseLayout title="JG Blog">
+<BaseLayout title={title || "JG Blog" }>
   <Navbar navItems={items} logoPath="/blog" />
   <div class="content">
     <slot />

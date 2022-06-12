@@ -14,33 +14,44 @@ const cursorType = logoPath ? 'pointer' : 'default';
 ---
 
 <style define:vars={{ cursorType }}>
+  .nav-sticky {
+    top: 0;
+    position: sticky;
+    width: 100%;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
+  }
+
   .nav-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 62px;
-    align-items: center;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+    padding: 1rem 0.5rem;
   }
 
   .nav-logo {
-    height: 42px;
+    display: block;
+    margin: auto;
+    height: 32px;
+    width: 32px;
     cursor: var(--cursorType);
+    margin-bottom: 1rem;
 
-    &>img {
-      max-height: 100%;
-      max-width: auto;
+    &>a {
+      height: 100%;
+
+      &>img {
+        max-height: 100%;
+      }
     }
   }
 
   .nav-items {
-    margin-left: 0.5rem;
-    overflow-x: auto;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
     &>a {
-      padding: 0 1rem;
       font-weight: bold;
+      margin: 0.2rem 0.3rem;
       cursor: pointer;
       font-size: 1.25rem;
       transition-duration: var(--dt);
@@ -67,21 +78,21 @@ const cursorType = logoPath ? 'pointer' : 'default';
       }
 
     }
-
-    &:last-child {
-      padding-right: 0;
-    }
   }
 </style>
 
-<div class="nav-container">
-  <a class="nav-logo" href={logoPath}>
-    <img src={logo} alt="App Logo">
-  </a>
-  <div class="nav-items">
-    {navItems.map(item => (
-    <a href={item.path}>{item.title}</a>
-    )
-    )}
+<div class="nav-sticky">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href={logoPath}>
+        <img src={logo} alt="App Logo">
+      </a>
+    </div>
+    <div class="nav-items">
+      {navItems.map(item => (
+      <a href={item.path}>{item.title}</a>
+      )
+      )}
+    </div>
   </div>
 </div>
