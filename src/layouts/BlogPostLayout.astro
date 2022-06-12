@@ -1,0 +1,10 @@
+---
+import type { PostFields } from "src/types";
+import BlogLayout from "./BlogLayout.astro";
+
+const { content } = Astro.props;
+---
+
+<BlogLayout>
+  <h1>{content.title}</h1>
+</BlogLayout>

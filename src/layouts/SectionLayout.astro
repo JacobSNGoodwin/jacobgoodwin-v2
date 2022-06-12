@@ -1,0 +1,29 @@
+---
+import Navbar from "@components/Navbar.astro";
+import { NavItem } from "src/types";
+import BaseLayout from "./BaseLayout.astro";
+
+export type Props = {
+  title?: string,
+  navItems?: NavItem[],
+  logoPath?: string,
+}
+
+const { title, navItems, logoPath } = Astro.props as Props;
+---
+
+<style>
+  .content {
+    position: relative;
+    max-width: var(--content-width);
+    padding: 0.5rem 1rem;
+    margin: auto;
+  }
+</style>
+
+<BaseLayout title={title || "JG" }>
+  <Navbar navItems={navItems || []} logoPath={logoPath || '/' } />
+  <div class="content">
+    <slot />
+  </div>
+</BaseLayout>

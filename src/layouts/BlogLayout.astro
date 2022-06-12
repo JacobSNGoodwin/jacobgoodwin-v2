@@ -1,10 +1,5 @@
 ---
-import Navbar from "@components/Navbar.astro";
-import BaseLayout from "./BaseLayout.astro";
-
-export type Props = {
-  title?: string,
-}
+import SectionLayout from "./SectionLayout.astro";
 
 const items = [
   {
@@ -25,21 +20,9 @@ const items = [
   },
 ];
 
-const { title } = Astro.props as Props;
+const { title } = Astro.props
 ---
 
-<style>
-  .content {
-    position: relative;
-    max-width: var(--content-width);
-    padding: 0.5rem 1rem;
-    margin: auto;
-  }
-</style>
-
-<BaseLayout title={title || "JG Blog" }>
-  <Navbar navItems={items} logoPath="/blog" />
-  <div class="content">
-    <slot />
-  </div>
-</BaseLayout>
+<SectionLayout navItems={items} logoPath="/blog" title={title || 'JG Blog' }>
+  <slot />
+</SectionLayout>
