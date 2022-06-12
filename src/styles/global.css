@@ -8,9 +8,34 @@
   --color2: #f44800;
   --color3: #00af37;
   --color4: #45009e;
+
+  --dt: 0.2s;
 }
 
 body {
   margin: 0px;
-  font-family: Lato, Arial, Helvetica, sans-serif;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  color: var(--headerColor);
+}
+
+a {
+  font-family: 'Lato', 'Fira Sans', sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--bodyColor);
+
+  &:visited {
+    text-decoration: none;
+  }
 }

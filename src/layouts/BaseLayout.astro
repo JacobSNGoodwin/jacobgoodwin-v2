@@ -1,5 +1,9 @@
 ---
 import '@styles/global.css';
+import "@fontsource/fira-sans/300.css";
+import "@fontsource/lato/700.css";
+import "@fontsource/lato/900.css";
+
 export interface Props {
   title?: string,
 }
@@ -12,8 +16,8 @@ const { title } = Astro.props as Props;
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-  <title>{title || 'JSNG'}</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.png">
+  <title>{title || 'JG'}</title>
 </head>
 
 <body>

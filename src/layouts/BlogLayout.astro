@@ -1,6 +1,21 @@
 ---
 import Navbar from "@components/Navbar.astro";
 import BaseLayout from "./BaseLayout.astro";
+
+const items = [
+  {
+    title: 'Travel',
+    path: '/blog/travel',
+  },
+  {
+    title: 'Outings',
+    path: '/blog/outings',
+  },
+  {
+    title: 'Beliefs',
+    path: '/blog/beliefs',
+  },
+];
 ---
 
 <style>
@@ -10,8 +25,8 @@ import BaseLayout from "./BaseLayout.astro";
   }
 </style>
 
-<BaseLayout>
-  <Navbar />
+<BaseLayout title="JG Blog">
+  <Navbar navItems={items} logoPath="/blog" />
   <div class="content">
     <slot />
   </div>
