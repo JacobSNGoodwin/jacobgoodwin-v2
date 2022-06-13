@@ -1,11 +1,10 @@
 ---
-layout: ../../../layouts/BlogPostLayout.astro
-title: Post Numero Uno
-description: This is an example post that we can use for stuff at some point!
+layout: '@layouts/TestPostLayout.astro'
+title: Sample Post
+description: This is used to test and style markdown files!
 authors: 
   - Jacob Goodwin
   - Jenny Jones
-  - Bryan Rodriguez
 tags:
   - travel
   - outings

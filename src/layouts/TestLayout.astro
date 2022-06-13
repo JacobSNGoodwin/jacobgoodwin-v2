@@ -1,0 +1,21 @@
+---
+export type Props = {
+  metaTags?: MetaTags;
+};
+
+import { baseMetaTags } from "@data/default-tags";
+import { MetaTags } from "src/types";
+import SectionLayout from "./SectionLayout.astro";
+
+
+const { metaTags } = Astro.props as Props;
+
+const tags: MetaTags = {
+  ...baseMetaTags,
+  ...metaTags,
+}
+---
+
+<SectionLayout navItems={[]} logoPath="/test" metaTags={tags}>
+  <slot />
+</SectionLayout>

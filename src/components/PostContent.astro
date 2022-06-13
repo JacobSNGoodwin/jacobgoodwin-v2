@@ -1,0 +1,26 @@
+---
+import { getAuthorsText } from "@utils/text-helpers";
+import type { MarkdownContentFields } from "src/types";
+export type Props = {
+  content: MarkdownContentFields;
+};
+
+const { content } = Astro.props as Props;
+const authorsText = getAuthorsText(content.authors);
+---
+
+<style>
+  .title {
+    text-align: center;
+  }
+
+  .author {
+    text-align: center;
+    font-style: italic;
+  }
+</style>
+
+<div>
+  <h1 class="title">{content.title}</h1>
+  <div class="author">By {authorsText}</div>
+</div>
