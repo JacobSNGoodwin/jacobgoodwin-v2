@@ -3,7 +3,7 @@ export type NavItem = {
   path: string;
 };
 
-export type MarkdownContentFields = {
+export type PostFrontmatter = {
   title: string;
   authors: string[];
   description: string;

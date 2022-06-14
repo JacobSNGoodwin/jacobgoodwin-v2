@@ -1,10 +1,10 @@
 ---
 import TestLayout from "./TestLayout.astro";
 import PostContent from "@components/PostContent.astro";
-import { MarkdownContentFields, MetaTags } from "src/types";
+import { PostFrontmatter, MetaTags } from "src/types";
 
 export type Props = {
-  content: MarkdownContentFields;
+  content: PostFrontmatter;
 };
 
 const { content } = Astro.props as Props;

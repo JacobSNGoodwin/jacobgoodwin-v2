@@ -1,11 +1,13 @@
 ---
 import { getAuthorsText } from "@utils/text-helpers";
-import type { MarkdownContentFields } from "src/types";
+import type { PostFrontmatter } from "src/types";
+
 export type Props = {
-  content: MarkdownContentFields;
+  content: PostFrontmatter;
 };
 
 const { content } = Astro.props as Props;
+
 const authorsText = getAuthorsText(content.authors);
 ---
 
