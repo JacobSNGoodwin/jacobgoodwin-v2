@@ -1,6 +1,6 @@
 type Tag = {
   title: string;
-  path: string;
+  name: string;
   description?: string;
   imageUrl?: string;
 };
@@ -8,14 +8,14 @@ type Tag = {
 export const blogTags: Tag[] = [
   {
     title: 'Travel',
-    path: 'travel',
+    name: 'travel',
   },
   {
     title: 'Outings',
-    path: 'outings',
+    name: 'outings',
   },
   {
     title: 'Beliefs',
-    path: 'beliefs',
+    name: 'beliefs',
   },
 ];

@@ -7,7 +7,7 @@ description: SpongeBob seeks his revenge! Be prepared for doom!
 tags:
   - travel
   - beliefs
-date: 2022-06-12
+date: 2022-06-13
 ---
 
 This is an example post that we can use for stuff at some point!

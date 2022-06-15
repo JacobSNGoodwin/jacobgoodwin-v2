@@ -1,29 +1,31 @@
 ---
 import { MarkdownInstance } from "astro";
 export type Props = {
-  allPosts: MarkdownInstance<PostFrontmatter>[];
+  posts: MarkdownInstance<PostFrontmatter>[];
 }
 
 import { blogTags } from "@data/tags";
 import { PostFrontmatter } from "src/types";
+import { queryPosts } from "@utils/posts";
 
 export const getStaticPaths = async () => {
   console.log('Building paths for blog tags');
   const allPosts = await Astro.glob<PostFrontmatter>('../content/*.md');
 
   return await Promise.all(blogTags.map(tag => {
+    const posts = queryPosts(allPosts, { tag: tag.name });
     return {
-      params: { tag: tag.path },
-      props: { allPosts },
+      params: { tag: tag.name },
+      props: { posts },
     };
   }));
 }
 
 const { tag } = Astro.params;
-const { allPosts } = Astro.props as Props;
+const { posts } = Astro.props as Props;
 ---
 
 <h1>{tag}</h1>
-{allPosts.map(post => (
-<div>{post.frontmatter.title}</div>
+{posts.map(post => (
+<div>{post.frontmatter.title} - {post.frontmatter.date}</div>
 ))}

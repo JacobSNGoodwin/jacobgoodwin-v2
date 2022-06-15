@@ -12,6 +12,7 @@ specifiers:
   autoprefixer: ^10.4.7
   cssnano: ^5.1.11
   lodash: ^4.17.21
+  luxon: ^2.4.0
   postcss-nesting: ^10.1.8
   prettier: ^2.6.2
   react: ^17.0.2 || ^18.0.0
@@ -22,6 +23,7 @@ specifiers:
 dependencies:
   '@types/lodash': 4.14.182
   D: 1.0.0
+  luxon: 2.4.0
 
 devDependencies:
   '@astrojs/react': 0.1.3_ef5jwxihqo6n7gxfmzogljlgcm
@@ -2333,6 +2335,11 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /luxon/2.4.0:
+    resolution: {integrity: sha512-w+NAwWOUL5hO0SgwOHsMBAmZ15SoknmQXhSO0hIbJCAmPKSsGeK8MlmhYh2w6Iib38IxN2M+/ooXWLbeis7GuA==}
+    engines: {node: '>=12'}
+    dev: false
 
   /magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
