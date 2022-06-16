@@ -3,6 +3,13 @@ export type NavItem = {
   path: string;
 };
 
+export type Tag = {
+  title: string;
+  name: string;
+  description?: string;
+  imageUrl?: string;
+};
+
 export type PostFrontmatter = {
   title: string;
   authors: string[];

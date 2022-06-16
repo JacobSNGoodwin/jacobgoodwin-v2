@@ -1,9 +1,4 @@
-type Tag = {
-  title: string;
-  name: string;
-  description?: string;
-  imageUrl?: string;
-};
+import { Tag } from 'src/types';
 
 export const blogTags: Tag[] = [
   {
