@@ -1,6 +1,6 @@
 ---
 import BlogLayout from "./BlogLayout.astro";
-import PostContent from "@components/PostContent.astro";
+import PostTitle from "@components/PostTitle.astro";
 import { PostFrontmatter, MetaTags } from "src/types";
 
 export type Props = {
@@ -16,8 +16,17 @@ const metaTags: Partial<MetaTags> = {
   image: content.imageUrl,
   keywords: content?.keywords ?? [],
 };
+
+// console.log(Astro.props);
 ---
 
+<style is:global>
+  .md-content {}
+</style>
+
 <BlogLayout metaTags={metaTags}>
-  <PostContent content={content} />
+  <PostTitle content={content} />
+  <div class="md-content">
+    <slot />
+  </div>
 </BlogLayout>

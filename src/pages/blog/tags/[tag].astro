@@ -12,7 +12,7 @@ import BlogLayout from "@layouts/BlogLayout.astro";
 
 export const getStaticPaths = async () => {
   console.log('Building paths for blog tags');
-  const allPosts = await Astro.glob<PostFrontmatter>('../content/*.md');
+  const allPosts = await Astro.glob<PostFrontmatter>('../posts/*.md');
 
   return await Promise.all(blogTags.map(tag => {
     const posts = queryPosts(allPosts, { tag: tag.name });
@@ -30,6 +30,8 @@ const { posts, tagData } = Astro.props as Props;
 <BlogLayout metaTags={{ title: `JG - ${tagData.title}`}}>
   <h1>{tag}</h1>
   {posts.map(post => (
-  <div>{post.frontmatter.title} - {post.frontmatter.date}</div>
+  <a href={post.url}>
+    <div>{post.frontmatter.title} - {post.frontmatter.date}</div>
+  </a>
   ))}
 </BlogLayout>
