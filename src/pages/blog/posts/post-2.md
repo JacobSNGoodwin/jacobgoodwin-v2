@@ -6,7 +6,7 @@ authors:
 description: SpongeBob seeks his revenge! Be prepared for doom!
 tags:
   - travel
-  - beliefs
+  - thoughts
 date: 2022-06-13
 ---
 

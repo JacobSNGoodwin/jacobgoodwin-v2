@@ -10,7 +10,7 @@ export const blogTags: Tag[] = [
     name: 'outings',
   },
   {
-    title: 'Beliefs',
-    name: 'beliefs',
+    title: 'Thoughts',
+    name: 'thoughts',
   },
 ];

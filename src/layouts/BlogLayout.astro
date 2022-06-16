@@ -6,24 +6,17 @@ export type Props = {
 import { baseMetaTags } from "@data/baseMetaTags";
 import { MetaTags } from "src/types";
 import SectionLayout from "./SectionLayout.astro";
+import { blogTags } from "@data/tags";
 
 const items = [
   {
     title: 'About',
     path: '/blog/about',
   },
-  {
-    title: 'Travel',
-    path: '/blog/tags/travel',
-  },
-  {
-    title: 'Outings',
-    path: '/blog/tags/outings',
-  },
-  {
-    title: 'Beliefs',
-    path: '/blog/tags/beliefs',
-  },
+  ...blogTags.map(tag => ({
+    title: tag.title,
+    path: `/blog/tags/${tag.name}`
+  })),
 ];
 
 const { metaTags } = Astro.props as Props;
