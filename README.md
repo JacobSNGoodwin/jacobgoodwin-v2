@@ -8,11 +8,13 @@
 - [ ] - get very basic markdown post layout working
 - [ ] - create pagination sections (group by tags)
 - [ ] - scaffold out component demo pages
-- [ ] - markdown styles in `PostLayout` (or maybe `PostComponent`)
+- [x] - markdown styles in `PostLayout` (or maybe `PostComponent`)
+  - will add as I go
 - [ ] - Post Cards
+- [ ] - create ImageVariants component
+- [ ] - create ImageSlider component
 - [ ] - blog can have a footer
 - [ ] - page transitions (see SWUP)
-- [ ] - create ImageVariants component
 - [ ] - Create info/warning type boxes like in Vuepress
 - [ ] - create image slider (react/vue/solid js)
 
