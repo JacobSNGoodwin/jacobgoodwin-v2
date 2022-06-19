@@ -1,0 +1,20 @@
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="1em"
+    height="1em"
+    viewBox="0 0 512 512"
+  >
+    <path
+      fill="currentColor"
+      d="M204 181.372L38.628 16H16v22.628L181.372 204H44v32h192V44h-32v137.372zM326.628 304H464v-32H272v192h32V326.628L473.372 496H496v-22.628L326.628 304z"
+    ></path>
+  </svg>
+</template>
+
+<script lang="ts">
+export default {
+  name: 'CilFullscreenExit',
+};
+</script>
