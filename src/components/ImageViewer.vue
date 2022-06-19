@@ -34,9 +34,6 @@ const { isFullscreen, toggle, exit } = useFullscreen(containerEl);
   max-width: 2400px;
   height: 100vh;
   margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .fs-close {
