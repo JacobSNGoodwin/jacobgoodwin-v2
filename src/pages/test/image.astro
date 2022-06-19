@@ -1,0 +1,24 @@
+---
+import LazyImage from '@components/LazyImage.vue';
+---
+
+<style lang="css">
+  .image-page {
+    max-width: 1200px;
+    margin: auto;
+  }
+</style>
+
+<h1>Intersection Observer Images</h1>
+<div class="image-container">
+  <LazyImage client:load baseUrl="https://storage.googleapis.com/jacobgoodwin/images"
+    imgSrc="Panoramic%20Loop%20-%20Joshua%20Tree-0001-1200w.jpg" data-id="1" />
+  <LazyImage client:load baseUrl="https://storage.googleapis.com/jacobgoodwin/images"
+    imgSrc="Panoramic%20Loop%20-%20Joshua%20Tree-0001-1200w.jpg" data-id="2" />
+  <LazyImage client:load baseUrl="https://storage.googleapis.com/jacobgoodwin/images"
+    imgSrc="Panoramic%20Loop%20-%20Joshua%20Tree-0001-1200w.jpg" data-id="3" />
+  <LazyImage client:load baseUrl="https://storage.googleapis.com/jacobgoodwin/images"
+    imgSrc="Panoramic%20Loop%20-%20Joshua%20Tree-0001-1200w.jpg" data-id="4" />
+  <LazyImage client:load baseUrl="https://storage.googleapis.com/jacobgoodwin/images"
+    imgSrc="Panoramic%20Loop%20-%20Joshua%20Tree-0001-1200w.jpg" data-id="5" />
+</div>
