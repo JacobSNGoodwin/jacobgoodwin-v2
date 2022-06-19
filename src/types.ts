@@ -1,3 +1,5 @@
+// Content
+
 export type NavItem = {
   title: string;
   path: string;
@@ -26,4 +28,23 @@ export type MetaTags = {
   description?: string;
   keywords?: string[];
   image?: string;
+};
+
+// Image Formatting
+export type AllowedImageFormats = 'jpg' | 'webp';
+export type LQIPFields = {
+  base64: string;
+  height: number;
+  width: number;
+};
+
+export type Variants = {
+  [width: string]: {
+    [format in AllowedImageFormats]: string;
+  };
+};
+
+export type ImageData = {
+  variants: Variants;
+  lqip: LQIPFields;
 };

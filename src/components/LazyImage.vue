@@ -5,21 +5,30 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, withDefaults } from 'vue';
 import { useIntersectionObserver } from '@vueuse/core';
-const props = defineProps<{
-  baseUrl: string;
-  imgSrc?: string;
-  lqip?: string;
-  alt?: string;
-  // srcset?: string;
-  // alt?: string;
-  // variants?: Record<string, Record<string, string>>;
-}>();
+import { ImageData, AllowedImageFormats } from 'src/types';
+import { buildSrcSet } from '@utils/images';
+
+const props = withDefaults(
+  defineProps<{
+    baseUrl?: string;
+    imgSrc?: string;
+    imgSrcset?: string;
+    placeholder?: string;
+    alt?: string;
+    imageData?: ImageData;
+    variantFormat?: AllowedImageFormats;
+  }>(),
+  {
+    baseUrl: import.meta.env.PUBLIC_BASE_IMAGE_URL,
+    variantFormat: 'jpg',
+  }
+);
 const target = ref(null);
 const targetIsVisible = ref(false);
 
-useIntersectionObserver(
+const { stop } = useIntersectionObserver(
   target,
   ([{ isIntersecting }]) => {
     targetIsVisible.value = isIntersecting;
@@ -29,15 +38,40 @@ useIntersectionObserver(
   }
 );
 
-const imgUrl = computed(() => `${props.baseUrl}/${props.imgSrc}`);
-watch(targetIsVisible, (isVisible) => {
-  console.log('isVisible', isVisible);
+const computedSrcSet = computed(() => {
+  if (!targetIsVisible.value) {
+    return '';
+  }
+  return props.imageData
+    ? buildSrcSet(props.imageData, props.variantFormat, props.baseUrl)
+    : props.imgSrcset;
 });
+const computedSrc = computed(() => {
+  // TODO - get a default gray box placeholder
+  if (!targetIsVisible.value) {
+    return props?.imageData?.lqip?.base64 ?? props.placeholder;
+  }
+
+  return `${props?.baseUrl ?? ''}/${props?.imgSrc ?? ''}`;
+});
+
+watch(targetIsVisible, (isVisible) => {
+  if (isVisible) {
+    stop();
+  }
+});
+
+console.log(computedSrcSet.value);
 </script>
 
 <template>
   <div ref="target" class="image-container">
-    <img :src="imgUrl" :alt="props.alt" class="image" />
+    <img
+      :src="computedSrc"
+      :srcset="computedSrcSet"
+      :alt="props.alt"
+      class="image"
+    />
   </div>
 </template>
 
@@ -48,7 +82,7 @@ watch(targetIsVisible, (isVisible) => {
 }
 
 .image {
-  max-width: 100%;
+  width: 100%;
   margin: auto;
 }
 </style>
