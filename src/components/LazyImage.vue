@@ -19,10 +19,12 @@ const props = withDefaults(
     alt?: string;
     imageData?: ImageData;
     variantFormat?: AllowedImageFormats;
+    rootMargin?: string;
   }>(),
   {
     baseUrl: import.meta.env.PUBLIC_BASE_IMAGE_URL,
     variantFormat: 'jpg',
+    rootMargin: '1000px 0px',
   }
 );
 const target = ref(null);
@@ -34,7 +36,7 @@ const { stop } = useIntersectionObserver(
     targetIsVisible.value = isIntersecting;
   },
   {
-    rootMargin: '300px 0px',
+    rootMargin: props.rootMargin,
   }
 );
 
