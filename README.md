@@ -11,10 +11,10 @@
 - [x] - markdown styles in `PostLayout` (or maybe `PostComponent`)
   - will add as I go
 - [ ] - Post Cards
-- [ ] - create ImageVariants component
+- [x] - create ImageVariants component (become Lazy Image)
 - [ ] - create ImageSlider component
 - [ ] - blog can have a footer
 - [ ] - page transitions (see SWUP)
-- [ ] - Create info/warning type boxes like in Vuepress
-- [ ] - create image slider (react/vue/solid js)
+- [ ] - Create info/warning type box components like in Vuepress
+- [ ] - PWA Assets / Icons [pwa-asset-generator](https://www.npmjs.com/package/pwa-asset-generator)
 

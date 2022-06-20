@@ -51,7 +51,7 @@ const computedSrcSet = computed(() => {
 const computedSrc = computed(() => {
   // TODO - get a default gray box placeholder
   if (!targetIsVisible.value) {
-    return props?.imageData?.lqip?.base64 ?? props.placeholder;
+    return props.imageData.lqip.base64 ?? props.placeholder;
   }
 
   return `${props?.baseUrl ?? ''}/${props?.imgSrc ?? ''}`;

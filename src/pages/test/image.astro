@@ -3,23 +3,30 @@ import LazyImage from '@components/LazyImage.vue';
 import { buildSrcSet } from '@utils/images';
 
 import images from '@data/images/panoramic-loop.json';
+import BaseLayout from '@layouts/BaseLayout.astro';
 const image1 = images['Panoramic Loop - Joshua Tree-0001'];
 ---
 
+<BaseLayout>
+  <h1 class="title">Intersection Observer Images</h1>
+  <div class="image-container">
+    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0001']} />
+    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0002']} />
+    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0003']} />
+    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0004']} />
+    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0005']} />
+  </div>
+</BaseLayout>
+
 <style lang="css">
+  .title {
+    margin: auto;
+    text-align: center;
+    padding: 1em;
+  }
+
   .image-page {
     max-width: 3000px;
     margin: auto;
   }
 </style>
-
-<h1>Intersection Observer Images</h1>
-<div class="image-container">
-  <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0001']} />
-  <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0002']} />
-  <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0003']} />
-  <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0004']} />
-  <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0005']} />
-  <!-- <LazyImage client:load baseUrl="https://storage.googleapis.com/jacobgoodwin/images"
-    imgSrc="Panoramic%20Loop%20-%20Joshua%20Tree-0001-1200w.jpg" /> -->
-</div>

@@ -5,6 +5,7 @@ import "@fontsource/lato/400.css";
 import "@fontsource/lato/400-italic.css"
 import "@fontsource/lato/700.css";
 import { MetaTags } from 'src/types';
+import { baseMetaTags } from '@data/baseMetaTags';
 
 export type Props = {
   metaTags?: MetaTags,
@@ -15,6 +16,7 @@ const {
 } = Astro.props as Props;
 
 const { href: url } = Astro.canonicalURL;
+const meta = { ...baseMetaTags, ...metaTags };
 ---
 
 <html lang="en">
@@ -23,18 +25,18 @@ const { href: url } = Astro.canonicalURL;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/x-icon" href="/favicon.png">
-  <title>{metaTags.title}</title>
-  <meta name="description" content={metaTags.description}>
-  <meta name="keywords" content={metaTags.keywords.join(',')}>
-  <meta name="author" content={metaTags.author}>
-  <meta property="og:title" content={metaTags.title} />
-  <meta property="og:description" content={metaTags.description} />
+  <title>{meta.title}</title>
+  <meta name="description" content={meta.description}>
+  <meta name="keywords" content={meta.keywords.join(',')}>
+  <meta name="author" content={meta.author}>
+  <meta property="og:title" content={meta.title} />
+  <meta property="og:description" content={meta.description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={url} />
-  <meta property="og:image" content={metaTags.image} />
-  <meta name="twitter:title" content={metaTags.title}>
-  <meta name="twitter:description" content={metaTags.description}>
-  <meta name="twitter:image" content={metaTags.image}>
+  <meta property="og:image" content={meta.image} />
+  <meta name="twitter:title" content={meta.title}>
+  <meta name="twitter:description" content={meta.description}>
+  <meta name="twitter:image" content={meta.image}>
   <meta name="twitter:card" content="summary_large_image">
 </head>
 
