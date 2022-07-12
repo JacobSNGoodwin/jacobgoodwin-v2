@@ -10,7 +10,7 @@
 - [ ] - scaffold out component demo pages
 - [x] - markdown styles in `PostLayout` (or maybe `PostComponent`)
   - will add as I go
-- [ ] - Post Cards
+- [ ] - Post Cards or components
 - [x] - create ImageVariants component (become Lazy Image)
 - [ ] - create ImageSlider component
 - [ ] - blog can have a footer

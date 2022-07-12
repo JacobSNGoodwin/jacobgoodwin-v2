@@ -6,7 +6,7 @@ export default {
 
 <script setup lang="ts">
 import { computed, ref, watch, withDefaults } from 'vue';
-import { useIntersectionObserver } from '@vueuse/core';
+import { useIntersectionObserver, useElementSize } from '@vueuse/core';
 import { ImageData, AllowedImageFormats } from 'src/types';
 import { buildSrcSet } from '@utils/images';
 
@@ -40,6 +40,8 @@ const { stop } = useIntersectionObserver(
   }
 );
 
+const { width: containerWidth } = useElementSize(target);
+
 const computedSrcSet = computed(() => {
   if (!targetIsVisible.value) {
     return '';
@@ -62,8 +64,6 @@ watch(targetIsVisible, (isVisible) => {
     stop();
   }
 });
-
-console.log(computedSrcSet.value);
 </script>
 
 <template>
@@ -72,6 +72,7 @@ console.log(computedSrcSet.value);
       :src="computedSrc"
       :srcset="computedSrcSet"
       :alt="props.alt"
+      :width="containerWidth"
       class="image"
     />
   </div>
@@ -79,12 +80,12 @@ console.log(computedSrcSet.value);
 
 <style lang="css">
 .image-container {
-  max-width: 1200px;
+  width: 100%;
   margin: auto;
 }
 
 .image {
-  width: 100%;
   margin: auto;
+  object-fit: cover;
 }
 </style>

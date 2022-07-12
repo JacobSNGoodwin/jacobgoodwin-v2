@@ -9,7 +9,7 @@ const image1 = images['Panoramic Loop - Joshua Tree-0001'];
 
 <BaseLayout>
   <h1 class="title">Intersection Observer Images</h1>
-  <div class="image-container">
+  <div class="image-page">
     <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0001']} />
     <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0002']} />
     <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0003']} />
@@ -26,7 +26,8 @@ const image1 = images['Panoramic Loop - Joshua Tree-0001'];
   }
 
   .image-page {
-    max-width: 3000px;
+    /* max-width: var(--content-width); */
+    max-width: 599px;
     margin: auto;
   }
 </style>
