@@ -1,20 +1,46 @@
 ---
+import { Image } from '@astrojs/image/components';
 import LazyImage from '@components/LazyImage.vue';
-import { buildSrcSet } from '@utils/images';
+import { buildSrcSet } from '@src/utils/images';
 
 import images from '@data/images/panoramic-loop.json';
 import BaseLayout from '@layouts/BaseLayout.astro';
-const image1 = images['Panoramic Loop - Joshua Tree-0001'];
+
+import exampleImage from '@images/Pinnacles.jpg';
 ---
 
 <BaseLayout>
   <h1 class="title">Intersection Observer Images</h1>
   <div class="image-page">
-    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0001']} />
-    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0002']} />
-    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0003']} />
-    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0004']} />
-    <LazyImage client:load imageData={images['Panoramic Loop - Joshua Tree-0005']} />
+    <LazyImage
+      client:load
+      imageData={images['Panoramic Loop - Joshua Tree-0001']}
+    />
+    <LazyImage
+      client:load
+      imageData={images['Panoramic Loop - Joshua Tree-0002']}
+    />
+    <LazyImage
+      client:load
+      imageData={images['Panoramic Loop - Joshua Tree-0003']}
+    />
+    <LazyImage
+      client:load
+      imageData={images['Panoramic Loop - Joshua Tree-0004']}
+    />
+    <LazyImage
+      client:load
+      imageData={images['Panoramic Loop - Joshua Tree-0005']}
+    />
+  </div>
+
+  <h1>An Astro Image</h1>
+  <div>
+    <Image
+      alt="Rad desert image"
+      src={exampleImage}
+      widths={[600, 1200, 2400]}
+    />
   </div>
 </BaseLayout>
 

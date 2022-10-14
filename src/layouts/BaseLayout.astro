@@ -1,47 +1,43 @@
 ---
 import '@styles/global.css';
-import "@fontsource/fira-sans/700.css";
-import "@fontsource/lato/400.css";
-import "@fontsource/lato/400-italic.css"
-import "@fontsource/lato/700.css";
+import '@fontsource/fira-sans/700.css';
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/400-italic.css';
+import '@fontsource/lato/700.css';
 import { MetaTags } from 'src/types';
 import { baseMetaTags } from '@data/baseMetaTags';
 
 export type Props = {
-  metaTags?: MetaTags,
-}
+  metaTags?: MetaTags;
+};
 
-const {
-  metaTags,
-} = Astro.props as Props;
+const { metaTags } = Astro.props as Props;
 
-const { href: url } = Astro.canonicalURL;
+const { href: url } = Astro.url;
 const meta = { ...baseMetaTags, ...metaTags };
 ---
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="keywords" content={meta.keywords.join(',')} />
+    <meta name="author" content={meta.author} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={meta.image} />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={meta.image} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/x-icon" href="/favicon.png">
-  <title>{meta.title}</title>
-  <meta name="description" content={meta.description}>
-  <meta name="keywords" content={meta.keywords.join(',')}>
-  <meta name="author" content={meta.author}>
-  <meta property="og:title" content={meta.title} />
-  <meta property="og:description" content={meta.description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={url} />
-  <meta property="og:image" content={meta.image} />
-  <meta name="twitter:title" content={meta.title}>
-  <meta name="twitter:description" content={meta.description}>
-  <meta name="twitter:image" content={meta.image}>
-  <meta name="twitter:card" content="summary_large_image">
-</head>
-
-<body>
-  <slot />
-</body>
-
+  <body>
+    <slot />
+  </body>
 </html>

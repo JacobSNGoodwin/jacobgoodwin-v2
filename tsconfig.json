@@ -10,11 +10,13 @@
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     // Add type definitions for our Vite runtime.
-    "types": ["vite/client"],
+    "types": ["vite/client", "@astrojs/image/client"],
     "jsx": "preserve",
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "paths": {
+      "@src/*": ["src/*"],
+      "@images/*": ["src/images/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@assets/*": ["src/assets/*"],

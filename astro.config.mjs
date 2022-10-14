@@ -4,11 +4,15 @@ import vue from '@astrojs/vue';
 import solid from '@astrojs/solid-js';
 
 // https://astro.build/config
-import image from "@astrojs/image";
+import image from '@astrojs/image';
+
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), vue(), solid(), image()],
+  integrations: [react(), vue(), solid(), image({
+    serviceEntryPoint: '@astrojs/image/sharp'
+  })],
   site: 'https://jacobgoodiwn.me',
   // for base of deployed site
   trailingSlash: 'never',

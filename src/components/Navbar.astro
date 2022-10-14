@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components';
 import logo from '@assets/icon-512px.png';
 
 import type { NavItem } from 'src/types';
@@ -19,7 +20,7 @@ const cursorType = logoPath ? 'pointer' : 'default';
     width: 100%;
     background-color: white;
     z-index: 100;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   }
 
   .nav-container {
@@ -34,10 +35,10 @@ const cursorType = logoPath ? 'pointer' : 'default';
     cursor: var(--cursorType);
     margin-bottom: 1rem;
 
-    &>a {
+    & > a {
       height: 100%;
 
-      &>img {
+      & > img {
         max-height: 100%;
       }
     }
@@ -48,7 +49,7 @@ const cursorType = logoPath ? 'pointer' : 'default';
     justify-content: center;
     flex-wrap: wrap;
 
-    &>a {
+    & > a {
       font-weight: bold;
       margin: 0.2rem 0.3rem;
       cursor: pointer;
@@ -56,22 +57,21 @@ const cursorType = logoPath ? 'pointer' : 'default';
       transition-duration: var(--dt);
       transition-property: color, opacity;
 
-      &:nth-child(4n+1) {
-        color: var(--color1)
+      &:nth-child(4n + 1) {
+        color: var(--color1);
       }
 
-      &:nth-child(4n+2) {
-        color: var(--color2)
+      &:nth-child(4n + 2) {
+        color: var(--color2);
       }
 
-      &:nth-child(4n+3) {
-        color: var(--color3)
+      &:nth-child(4n + 3) {
+        color: var(--color3);
       }
 
-      &:nth-child(4n+4) {
-        color: var(--color4)
+      &:nth-child(4n + 4) {
+        color: var(--color4);
       }
-
     }
   }
 </style>
@@ -80,14 +80,11 @@ const cursorType = logoPath ? 'pointer' : 'default';
   <div class="nav-container">
     <div class="nav-logo">
       <a href={logoPath}>
-        <img src={logo} alt="App Logo">
+        <Image src={logo} width={32} alt="App Logo" />
       </a>
     </div>
     <div class="nav-items">
-      {navItems.map(item => (
-      <a href={item.path}>{item.title}</a>
-      )
-      )}
+      {navItems.map((item) => <a href={item.path}>{item.title}</a>)}
     </div>
   </div>
 </div>
