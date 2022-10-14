@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components';
 import LazyImage from '@components/LazyImage.vue';
 import { buildSrcSet } from '@src/utils/images';
 
@@ -36,7 +36,7 @@ import exampleImage from '@images/Pinnacles.jpg';
 
   <h1>An Astro Image</h1>
   <div>
-    <Image
+    <Picture
       alt="Rad desert image"
       src={exampleImage}
       widths={[600, 1200, 2400]}
