@@ -1,6 +1,8 @@
 import { MarkdownInstance } from 'astro';
-import { orderBy, filter, includes } from 'lodash';
+import lodash from 'lodash';
 import { PostFrontmatter } from 'src/types';
+
+const { orderBy, filter, includes } = lodash;
 
 export const queryPosts = (
   posts: MarkdownInstance<PostFrontmatter>[],

@@ -2,7 +2,7 @@
 layout: '@layouts/TestPostLayout.astro'
 title: Sample Post
 description: This is used to test and style markdown files!
-authors: 
+authors:
   - Jacob Goodwin
   - Jenny Jones
 tags:

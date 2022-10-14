@@ -1,42 +1,46 @@
 ---
-import SectionLayout from "@layouts/SectionLayout.astro";
+import SectionLayout from '@layouts/SectionLayout.astro';
+
+console.log('The environment: ', import.meta.env);
 ---
 
 <style>
-	.content {
-		max-width: var(--content-width);
-		margin: auto;
-	}
+  .content {
+    max-width: var(--content-width);
+    margin: auto;
+  }
 
-	.links {
-		&>a {
-			&:nth-child(4n+1) {
-				color: var(--color1)
-			}
+  .links {
+    & > a {
+      &:nth-child(4n + 1) {
+        color: var(--color1);
+      }
 
-			&:nth-child(4n+2) {
-				color: var(--color2)
-			}
+      &:nth-child(4n + 2) {
+        color: var(--color2);
+      }
 
-			&:nth-child(4n+3) {
-				color: var(--color3)
-			}
+      &:nth-child(4n + 3) {
+        color: var(--color3);
+      }
 
-			&:nth-child(4n+4) {
-				color: var(--color4)
-			}
-		}
-
-	}
+      &:nth-child(4n + 4) {
+        color: var(--color4);
+      }
+    }
+  }
 </style>
 
 <SectionLayout>
-	<div class="content">
-		<h1>Mah Site!</h1>
-		<p>Welcome to my personal site. This is just a silly home page. Check out my sites below!</p>
+  <div class="content">
+    <h1>Mah Site!</h1>
+    <p>
+      Welcome to my personal site. This is just a silly home page. Check out my
+      sites below!
+    </p>
 
-		<div class="links">
-			<a href="/blog">Blog</a>
-		</div>
-	</div>
+    <div class="links">
+      <a href="/blog">Blog</a>
+    </div>
+  </div>
 </SectionLayout>

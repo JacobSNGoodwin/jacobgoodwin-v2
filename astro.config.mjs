@@ -7,9 +7,9 @@ import solid from '@astrojs/solid-js';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), vue(), solid()],
-  site: 'https://jacobgoodiwn.me',
+  site: 'https://jacobgoodiwn.me', // for base of deployed site
   trailingSlash: 'never',
   server: {
-    host: true,
+    host: true, // for allowing access on local network
   },
 });
