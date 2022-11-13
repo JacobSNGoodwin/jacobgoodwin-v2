@@ -1,37 +1,44 @@
 ---
-import { MarkdownInstance } from "astro";
+import { MarkdownInstance } from 'astro';
 export type Props = {
   posts: MarkdownInstance<PostFrontmatter>[];
   tagData: Tag;
-}
+};
 
-import { blogTags } from "@data/tags";
-import { PostFrontmatter, Tag } from "src/types";
-import { queryPosts } from "@utils/posts";
-import BlogLayout from "@layouts/BlogLayout.astro";
+import { blogTags } from '@data/tags';
+import { PostFrontmatter, Tag } from 'src/types';
+import { queryPosts } from '@utils/posts';
+import BlogLayout from '@layouts/BlogLayout.astro';
 
 export const getStaticPaths = async () => {
   console.log('Building paths for blog tags');
   const allPosts = await Astro.glob<PostFrontmatter>('../posts/*.md');
 
-  return await Promise.all(blogTags.map(tag => {
-    const posts = queryPosts(allPosts, { tag: tag.name });
-    return {
-      params: { tag: tag.name },
-      props: { posts, tagData: tag },
-    };
-  }));
-}
+  return await Promise.all(
+    blogTags.map((tag) => {
+      // TODO - queryPosts returrn pagination
+      const posts = queryPosts(allPosts, { tag: tag.name });
+      return {
+        params: { tag: tag.name },
+        props: { posts, tagData: tag },
+      };
+    })
+  );
+};
 
 const { tag } = Astro.params;
 const { posts, tagData } = Astro.props as Props;
 ---
 
-<BlogLayout metaTags={{ title: `JG - ${tagData.title}`}}>
+<BlogLayout metaTags={{ title: `JG - ${tagData.title}` }}>
   <h1>{tag}</h1>
-  {posts.map(post => (
-  <a href={post.url}>
-    <div>{post.frontmatter.title} - {post.frontmatter.date}</div>
-  </a>
-  ))}
+  {
+    posts.map((post) => (
+      <a href={post.url}>
+        <div>
+          {post.frontmatter.title} - {post.frontmatter.date}
+        </div>
+      </a>
+    ))
+  }
 </BlogLayout>

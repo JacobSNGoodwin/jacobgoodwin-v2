@@ -1,46 +1,18 @@
 ---
-import { Picture } from '@astrojs/image/components';
-import LazyImage from '@components/LazyImage.vue';
-import { buildSrcSet } from '@src/utils/images';
-
-import images from '@data/images/panoramic-loop.json';
+import BlogImage from '@src/components/BlogImage.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import localImg from 'src/images/Pinnacles.jpg';
 
-import exampleImage from '@images/Pinnacles.jpg';
+const remoteImage = '/blog/desert-close-to-home/header.jpg';
 ---
 
 <BaseLayout>
-  <h1 class="title">Intersection Observer Images</h1>
   <div class="image-page">
-    <LazyImage
-      client:load
-      imageData={images['Panoramic Loop - Joshua Tree-0001']}
-    />
-    <LazyImage
-      client:load
-      imageData={images['Panoramic Loop - Joshua Tree-0002']}
-    />
-    <LazyImage
-      client:load
-      imageData={images['Panoramic Loop - Joshua Tree-0003']}
-    />
-    <LazyImage
-      client:load
-      imageData={images['Panoramic Loop - Joshua Tree-0004']}
-    />
-    <LazyImage
-      client:load
-      imageData={images['Panoramic Loop - Joshua Tree-0005']}
-    />
-  </div>
+    <h1 style="text-align: center">A Local Image</h1>
+    <BlogImage alt="Rad desert image" src={localImg} />
 
-  <h1>An Astro Image</h1>
-  <div>
-    <Picture
-      alt="Rad desert image"
-      src={exampleImage}
-      widths={[600, 1200, 2400]}
-    />
+    <h1 style="text-align: center">A Remote Image</h1>
+    <BlogImage alt="Rad desert image" src={remoteImage} />
   </div>
 </BaseLayout>
 
@@ -52,8 +24,7 @@ import exampleImage from '@images/Pinnacles.jpg';
   }
 
   .image-page {
-    /* max-width: var(--content-width); */
-    max-width: 599px;
+    max-width: var(--content-width);
     margin: auto;
   }
 </style>

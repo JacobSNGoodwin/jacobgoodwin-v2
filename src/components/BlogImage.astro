@@ -1,0 +1,47 @@
+---
+import sharp from 'sharp';
+import { Picture } from '@astrojs/image/components';
+
+export type Props = {
+  src: string | ImageMetadata;
+  alt: string;
+  caption?: string;
+};
+
+const { src, alt } = Astro.props as Props;
+
+let aspectRatio: number;
+let finalSrc: string | ImageMetadata;
+
+if (typeof src !== 'string') {
+  finalSrc = src;
+  aspectRatio = src.width / src.height;
+} else {
+  const url = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${src}`;
+  const res = await fetch(url);
+
+  const arrayBuffer = await res.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+  const sharpImage = sharp(buffer);
+
+  const { width, height } = await sharpImage.metadata();
+
+  aspectRatio = width / height;
+  finalSrc = url;
+}
+---
+
+<Picture
+  class="image-container"
+  alt={alt}
+  src={finalSrc}
+  sizes="(max-width: 1024px) 100vw, 1024px"
+  aspectRatio={aspectRatio}
+  widths={[512, 1024, 2048]}
+/>
+
+<style lang="css">
+  .image-container {
+    max-width: 100%;
+  }
+</style>
