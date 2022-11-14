@@ -1,0 +1,35 @@
+---
+import BlogPostLayout from '@src/layouts/BlogPostLayout.astro';
+import BlogImage from '@src/components/BlogImage.astro';
+---
+
+<BlogPostLayout
+  frontmatter={{
+    authors: ['Jacob Goodwin'],
+    date: '2019-04-01',
+    title: 'Desert Close to Home',
+    description: 'Desert landscapes of the High Desert of Southern California',
+    tags: ['travel', 'outings'],
+  }}
+>
+  <p>
+    I wanted to highlight some recent visits to scenic Mojave Desert near home
+    in Apple Valley, California.
+  </p>
+
+  <h2>Juniper Flats</h2>
+
+  <p>
+    A few photos taken in Juniper Flats, a BLM area just south of Apple and
+    Lucerne Valleys.
+  </p>
+
+  <BlogImage
+    src="/blog/desert-close-to-home/juniper-flats-01.jpg"
+    alt="Blossoming Joshua Tree"
+  />
+  <BlogImage
+    src="/blog/desert-close-to-home/header.jpg"
+    alt="Blossoming Joshua Tree"
+  />
+</BlogPostLayout>

@@ -1,31 +1,32 @@
 ---
-import BlogLayout from "./BlogLayout.astro";
-import PostTitle from "@components/PostTitle.astro";
-import { PostFrontmatter, MetaTags } from "src/types";
+import BlogLayout from './BlogLayout.astro';
+import PostTitle from '@components/PostTitle.astro';
+import { PostFrontmatter, MetaTags } from 'src/types';
 
 export type Props = {
-  content: PostFrontmatter;
+  frontmatter: PostFrontmatter;
 };
 
-const { content } = Astro.props as Props;
+const { frontmatter } = Astro.props as Props;
 
 const metaTags: Partial<MetaTags> = {
-  title: content.title,
-  description: content.description,
-  author: (content?.authors ?? []).join(','),
-  image: content.imageUrl,
-  keywords: content?.keywords ?? [],
+  title: frontmatter.title,
+  description: frontmatter.description,
+  author: (frontmatter?.authors ?? []).join(','),
+  image: frontmatter.imageUrl,
+  keywords: frontmatter?.keywords ?? [],
 };
 
 // console.log(Astro.props);
 ---
 
 <style is:global>
-  .md-content {}
+  .md-content {
+  }
 </style>
 
 <BlogLayout metaTags={metaTags}>
-  <PostTitle content={content} />
+  <PostTitle content={frontmatter} />
   <div class="md-content">
     <slot />
   </div>

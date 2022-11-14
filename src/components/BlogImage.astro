@@ -32,7 +32,7 @@ if (typeof src !== 'string') {
 ---
 
 <Picture
-  class="image-container"
+  class="picture"
   alt={alt}
   src={finalSrc}
   sizes="(max-width: 1024px) 100vw, 1024px"
@@ -41,7 +41,13 @@ if (typeof src !== 'string') {
 />
 
 <style lang="css">
-  .image-container {
-    max-width: 100%;
+  .picture {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    max-width: var(--content-width);
+    display: block;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 </style>
