@@ -13,6 +13,10 @@ import BlogLayout from '@layouts/BlogLayout.astro';
 export const getStaticPaths = async () => {
   console.log('Building paths for blog tags');
   // TODO - refactor for common use
+  // generatePostsList
+  // this receive the folder ot examine and page size
+  // it will compute unique tags: https://docs.astro.build/en/tutorial/5-astro-api/2/#2-create-an-array-of-all-your-existing-tags
+  // it will generate tag pages
   const allPosts = [
     ...(await Astro.glob<PostFrontmatter>('../posts/*.md')),
     ...(await Astro.glob<PostFrontmatter>('../posts/*.mdx')),
