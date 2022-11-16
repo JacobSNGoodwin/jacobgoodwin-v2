@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/TestPostLayout.astro'
+layout: '@layouts/BlogPostLayout.astro'
 title: Sample Post
 description: This is used to test and style markdown files!
 authors:

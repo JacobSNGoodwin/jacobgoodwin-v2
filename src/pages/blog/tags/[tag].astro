@@ -12,7 +12,11 @@ import BlogLayout from '@layouts/BlogLayout.astro';
 
 export const getStaticPaths = async () => {
   console.log('Building paths for blog tags');
-  const allPosts = await Astro.glob<PostFrontmatter>('../posts/*.md');
+  // TODO - refactor for common use
+  const allPosts = [
+    ...(await Astro.glob<PostFrontmatter>('../posts/*.md')),
+    ...(await Astro.glob<PostFrontmatter>('../posts/*.mdx')),
+  ];
 
   return await Promise.all(
     blogTags.map((tag) => {
