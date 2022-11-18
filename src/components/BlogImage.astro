@@ -8,7 +8,7 @@ export type Props = {
   caption?: string;
 };
 
-const { src, alt } = Astro.props as Props;
+const { src, alt, caption } = Astro.props as Props;
 
 let aspectRatio: number;
 let finalSrc: string | ImageMetadata;
@@ -31,23 +31,37 @@ if (typeof src !== 'string') {
 }
 ---
 
-<Picture
-  class="picture"
-  alt={alt}
-  src={finalSrc}
-  sizes="(max-width: 1024px) 100vw, 1024px"
-  aspectRatio={aspectRatio}
-  widths={[512, 1024, 2048]}
-/>
+<figure class="image">
+  <Picture
+    class="picture"
+    alt={caption ?? alt}
+    src={finalSrc}
+    sizes="(max-width: 1024px) 100vw, 1024px"
+    aspectRatio={aspectRatio}
+    widths={[512, 1024, 2048]}
+  />
+  {caption && <figcaption class="caption">{caption}</figcaption>}
+</figure>
 
 <style lang="css">
   .picture {
-    margin-top: 2em;
-    margin-bottom: 2em;
     max-width: var(--content-width);
     display: block;
     width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
+  }
+
+  .image {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .caption {
+    margin: 0.5em auto;
+    font-style: italic;
   }
 </style>

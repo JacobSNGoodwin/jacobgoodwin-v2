@@ -5,41 +5,33 @@ export type Props = {
   tagData: Tag;
 };
 
-import { blogTags } from '@data/tags';
+import { tags } from '@data/tags';
 import { PostFrontmatter, Tag } from 'src/types';
 import { queryPosts } from '@utils/posts';
 import BlogLayout from '@layouts/BlogLayout.astro';
 
 export const getStaticPaths = async () => {
   console.log('Building paths for blog tags');
-  // TODO - refactor for common use
-  // generatePostsList
-  // this receive the folder ot examine and page size
-  // it will compute unique tags: https://docs.astro.build/en/tutorial/5-astro-api/2/#2-create-an-array-of-all-your-existing-tags
-  // it will generate tag pages
+
   const allPosts = [
     ...(await Astro.glob<PostFrontmatter>('../posts/*.md')),
     ...(await Astro.glob<PostFrontmatter>('../posts/*.mdx')),
   ];
 
-  return await Promise.all(
-    blogTags.map((tag) => {
-      // TODO - queryPosts returrn pagination
-      const posts = queryPosts(allPosts, { tag: tag.name });
-      return {
-        params: { tag: tag.name },
-        props: { posts, tagData: tag },
-      };
-    })
-  );
+  return tags['blog'].map((tag) => {
+    const posts = queryPosts(allPosts, { tag: tag.name });
+    return {
+      params: { tag: tag.name },
+      props: { posts, tagData: tag },
+    };
+  });
 };
 
-const { tag } = Astro.params;
 const { posts, tagData } = Astro.props as Props;
 ---
 
 <BlogLayout metaTags={{ title: `JG - ${tagData.title}` }}>
-  <h1>{tag}</h1>
+  <h1>{tagData.title}</h1>
   {
     posts.map((post) => (
       <a href={post.url}>

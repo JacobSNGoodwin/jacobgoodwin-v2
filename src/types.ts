@@ -12,6 +12,8 @@ export type Tag = {
   imageUrl?: string;
 };
 
+export type PostsFolder = 'blog' | 'notes' | 'professional';
+
 export type PostFrontmatter = {
   title: string;
   authors: string[];

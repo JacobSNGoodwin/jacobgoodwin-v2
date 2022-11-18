@@ -3,33 +3,33 @@ export type Props = {
   metaTags?: MetaTags;
 };
 
-import { baseMetaTags } from "@data/baseMetaTags";
-import { MetaTags } from "src/types";
-import SectionLayout from "./SectionLayout.astro";
-import { blogTags } from "@data/tags";
+import { baseMetaTags } from '@data/baseMetaTags';
+import { MetaTags } from 'src/types';
+import SectionLayout from './SectionLayout.astro';
+import { tags } from '@data/tags';
 
 const items = [
   {
     title: 'About',
     path: '/blog/about',
   },
-  ...blogTags.map(tag => ({
+  ...tags['blog'].map((tag) => ({
     title: tag.title,
-    path: `/blog/tags/${tag.name}`
+    path: `/blog/tags/${tag.name}`,
   })),
 ];
 
 const { metaTags } = Astro.props as Props;
 
-const tags: MetaTags = {
+const mergedMetaTags: MetaTags = {
   ...baseMetaTags,
   title: 'JG - Blog',
   author: 'Jacob Goodwin',
-  description: 'Jacob Goodwin\'s writings on just about whatever he feels like',
+  description: "Jacob Goodwin's writings on just about whatever he feels like",
   ...metaTags,
-}
+};
 ---
 
-<SectionLayout navItems={items} logoPath="/blog" metaTags={tags}>
+<SectionLayout navItems={items} logoPath="/blog" metaTags={mergedMetaTags}>
   <slot />
 </SectionLayout>
