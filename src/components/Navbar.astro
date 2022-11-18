@@ -16,7 +16,7 @@ const cursorType = logoPath ? 'pointer' : 'default';
 <style define:vars={{ cursorType }}>
   .nav-sticky {
     top: 0;
-    position: sticky;
+    /* position: sticky; */
     width: 100%;
     background-color: white;
     z-index: 100;
@@ -40,6 +40,7 @@ const cursorType = logoPath ? 'pointer' : 'default';
 
       & > img {
         max-height: 100%;
+        width: auto;
       }
     }
   }
@@ -80,7 +81,7 @@ const cursorType = logoPath ? 'pointer' : 'default';
   <div class="nav-container">
     <div class="nav-logo">
       <a href={logoPath}>
-        <Image src={logo} width={32} height={32} alt="App Logo" />
+        <Image src={logo} width={128} height={128} alt="App Logo" />
       </a>
     </div>
     <div class="nav-items">
