@@ -35,16 +35,17 @@ const imgId = nanoid(6);
 ---
 
 <figure class="image">
-  <img data-placeholderId={imgId} class="picture" src={initSrc} width={width} />
+  <img
+    data-placeholder-id={imgId}
+    class="picture"
+    src={initSrc}
+    width={width}
+  />
   <Picture
-    data-imgId={imgId}
-    style={{
-      display: 'none',
-    }}
+    data-img-id={imgId}
     class="picture"
     alt={caption ?? alt}
     src={finalSrc}
-    quality={100}
     sizes="(max-width: 1024px) 100vw, 1024px"
     aspectRatio={aspectRatio}
     widths={[512, 1024, 2048]}
@@ -52,14 +53,13 @@ const imgId = nanoid(6);
   {caption && <figcaption class="caption">{caption}</figcaption>}
 </figure>
 
-<script is:inline define:vars={{ imgId }}>
-  const imgEl = document.querySelector(`img[data-imgId="${imgId}"]`);
+<script define:vars={{ imgId }}>
+  const imgEl = document.querySelector(`img[data-img-id="${imgId}"]`);
   const placeholderEl = document.querySelector(
-    `img[data-placeholderId="${imgId}"]`
+    `img[data-placeholder-id="${imgId}"]`
   );
 
   imgEl.addEventListener('load', () => {
-    console.log('image loaded', imgEl);
     imgEl.style.display = null;
     placeholderEl.style.display = 'none';
   });
