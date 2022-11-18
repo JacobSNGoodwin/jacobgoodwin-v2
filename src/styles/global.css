@@ -18,6 +18,7 @@
 
 body {
   margin: 0px;
+  padding-left: calc(100vw - 100%); /* prevent shift caused by scrollbar */
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 1.1rem;
