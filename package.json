@@ -13,8 +13,6 @@
     "@astrojs/react": "^1.2.0",
     "@astrojs/solid-js": "^1.2.0",
     "@astrojs/vue": "^1.1.0",
-    "@fontsource/fira-sans": "^4.5.10",
-    "@fontsource/lato": "^4.5.10",
     "@types/lodash": "^4.14.186",
     "@types/node": "^18.11.9",
     "@types/sharp": "^0.31.0",

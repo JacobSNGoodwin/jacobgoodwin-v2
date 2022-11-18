@@ -1,6 +1,6 @@
 ---
-import { getAuthorsText } from "@utils/text-helpers";
-import type { PostFrontmatter } from "src/types";
+import { getAuthorsText } from '@utils/text-helpers';
+import type { PostFrontmatter } from 'src/types';
 
 export type Props = {
   content: PostFrontmatter;
@@ -12,8 +12,14 @@ const authorsText = getAuthorsText(content.authors);
 ---
 
 <style>
+  .title-container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
   .title {
     text-align: center;
+    margin-bottom: 0.25em;
   }
 
   .author {
@@ -22,7 +28,7 @@ const authorsText = getAuthorsText(content.authors);
   }
 </style>
 
-<div>
+<div class="title-container">
   <h1 class="title">{content.title}</h1>
   <div class="author">By {authorsText}</div>
 </div>

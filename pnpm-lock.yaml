@@ -6,8 +6,6 @@ specifiers:
   '@astrojs/react': ^1.2.0
   '@astrojs/solid-js': ^1.2.0
   '@astrojs/vue': ^1.1.0
-  '@fontsource/fira-sans': ^4.5.10
-  '@fontsource/lato': ^4.5.10
   '@types/lodash': ^4.14.186
   '@types/node': ^18.11.9
   '@types/sharp': ^0.31.0
@@ -34,8 +32,6 @@ devDependencies:
   '@astrojs/react': 1.2.0_biqbaboplfbrettd7655fr4n2y
   '@astrojs/solid-js': 1.2.0_o5do7oxr2hbtrv24zykqvegilq
   '@astrojs/vue': 1.1.0_63kncfv6x3id6ho26n4g7olwni
-  '@fontsource/fira-sans': 4.5.10
-  '@fontsource/lato': 4.5.10
   '@types/lodash': 4.14.186
   '@types/node': 18.11.9
   '@types/sharp': 0.31.0
@@ -631,14 +627,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@fontsource/fira-sans/4.5.10:
-    resolution: {integrity: sha512-4Edj+GA0LYSqfXOvdTwVGmCShT8Ycd8bKzdfzM302n+I6Hsg6h3gBkBeNgN19PhkcngDznZyHv3EkyrKqvMTGw==}
-    dev: true
-
-  /@fontsource/lato/4.5.10:
-    resolution: {integrity: sha512-2hYR6r661Cq9B8zugtu6yxuOKqrVhAgfOSaPSq8XoxbC4ebsl0KOTy/vPoP+9U7JuQVLfrmikirW4a9Z0nDUug==}
-    dev: true
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}

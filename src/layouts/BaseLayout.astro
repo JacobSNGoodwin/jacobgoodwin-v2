@@ -1,9 +1,5 @@
 ---
 import '@styles/global.css';
-import '@fontsource/fira-sans/700.css';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/400-italic.css';
-import '@fontsource/lato/700.css';
 import { MetaTags } from 'src/types';
 import { baseMetaTags } from '@data/baseMetaTags';
 
@@ -17,6 +13,7 @@ const { href: url } = Astro.url;
 const meta = { ...baseMetaTags, ...metaTags };
 ---
 
+<!-- TODO - some metatags are not accessing proper field -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
