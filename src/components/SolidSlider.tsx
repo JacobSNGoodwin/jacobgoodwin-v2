@@ -77,14 +77,14 @@ const SolidSlider: Component<SliderProps> = ({ children = [] }) => {
     setActiveSlide(activeSlide() - 1);
   };
 
-  console.log('in solid', children);
+  console.log('the childrens', children);
 
   return (
     <>
       <p>The active slide: {activeSlide()}</p>
       <div ref={swipable} class={styles.container}>
         {children}
-        {/* {children.map((child, i) => {
+        {children.map((child, i) => {
           const isActive = i === activeSlide();
 
           return (
@@ -97,7 +97,7 @@ const SolidSlider: Component<SliderProps> = ({ children = [] }) => {
               {child}
             </div>
           );
-        })} */}
+        })}
       </div>
       <div class={styles.buttons}>
         <button onClick={handleDecActiveSlide}>Back</button>
