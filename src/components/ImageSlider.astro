@@ -1,6 +1,6 @@
 ---
-import { nanoid } from 'nanoid';
 import BlogImage from './BlogImage.astro';
+import SolidSlider from './SolidSlider';
 
 export type Props = {
   title: string;
@@ -15,9 +15,16 @@ const { images = [], title } = Astro.props as Props;
 const test = 5;
 ---
 
+<!-- TODO - create a map of BlogImage and pass these into a solidjs slider component -->
 <div id="image-slider">
   <h3 class="title">{title}</h3>
-  {images.map((image) => <BlogImage {...image} />)}
+  <SolidSlider>
+    <!-- This doesn't seem to work. We probably need to 
+      wrap BlogImage inside of SolidImage. Easier to handle
+      single child element
+    -->
+    {images.map((image) => <BlogImage {...image} />)}
+  </SolidSlider>
 </div>
 
 <style>

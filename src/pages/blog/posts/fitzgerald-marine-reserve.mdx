@@ -10,7 +10,7 @@ tags:
 imageSrc: /blog/desert-close-to-home/header.jpg
 ---
 
-import ImageSlider from '@components/ImageSlider.astro';
+import BaseImage from '@components/BaseImage.astro';
 
 Yesterday I had to the pleasure of going with some friends to the Fitzgerald Marine Reserve on the Pacific Coast of the San Francisco Peninsula.
 
@@ -22,32 +22,7 @@ On the way home we went to dinner and had some awesome pizza at North Beach Pizz
 
 Check out the pictures from this trip below!
 
-<ImageSlider
-  title="Fitzgeral Marine Reserve"
-  images={[
-    {
-      src: '/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-001.jpg',
-    },
-    {
-      src: '/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-002.jpg',
-    },
-    {
-      src: '/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-003.jpg',
-    },
-  ]}
-/>
-
-<ImageSlider
-  title="Fitzgeral Marine Reserve"
-  images={[
-    {
-      src: '/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-004.jpg',
-    },
-    {
-      src: '/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-005.jpg',
-    },
-    {
-      src: '/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-006.jpg',
-    },
-  ]}
+<BaseImage
+  src="/blog/fitzgerald-marine-reserve/FitzgeraldMarinePark-001.jpg"
+  alt="Fitzgerald Marine Reserve 1"
 />

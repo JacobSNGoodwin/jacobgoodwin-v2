@@ -1,0 +1,49 @@
+.buttons {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.container > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.selected {
+  animation: slide-in 0.5s forwards;
+}
+
+.unselected {
+  animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
