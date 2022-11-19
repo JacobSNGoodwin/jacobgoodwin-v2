@@ -34,7 +34,7 @@ const aspectRatio = width / height;
 const imgId = nanoid(6);
 ---
 
-<figure class="image">
+<figure class="blog-image">
   <img
     data-placeholder-id={imgId}
     class="picture"
@@ -44,7 +44,7 @@ const imgId = nanoid(6);
   <Picture
     data-img-id={imgId}
     class="picture"
-    alt={caption ?? alt}
+    alt={caption ?? alt ?? 'Blog Image'}
     src={finalSrc}
     sizes="(max-width: 1024px) 100vw, 1024px"
     aspectRatio={aspectRatio}
@@ -74,7 +74,7 @@ const imgId = nanoid(6);
     transform: translateX(-50%);
   }
 
-  .image {
+  .blog-image {
     margin-top: 2em;
     margin-bottom: 2em;
     display: flex;

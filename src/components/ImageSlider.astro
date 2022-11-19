@@ -1,0 +1,30 @@
+---
+import { nanoid } from 'nanoid';
+import BlogImage from './BlogImage.astro';
+
+export type Props = {
+  title: string;
+  images: Array<{
+    src: string;
+    alt: string;
+    caption?: string;
+  }>;
+};
+
+const { images = [], title } = Astro.props as Props;
+const test = 5;
+---
+
+<div id="image-slider">
+  <h3 class="title">{title}</h3>
+  {images.map((image) => <BlogImage {...image} />)}
+</div>
+
+<style>
+  .title {
+    text-align: center;
+    margin: 2em auto;
+  }
+</style>
+
+<script define:vars={{ test }} src="./imageSlider"></script>
