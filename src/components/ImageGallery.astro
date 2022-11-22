@@ -1,0 +1,84 @@
+---
+import 'photoswipe/style.css';
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
+
+import { nanoid } from 'nanoid';
+import sharp from 'sharp';
+
+export type Props = {
+  title: string;
+  previewSrc: string;
+  images: Array<{
+    src: string;
+    alt: string;
+    caption?: string;
+  }>;
+};
+
+const { images = [], title } = Astro.props as Props;
+
+const imageData = await Promise.all(
+  images.map(async (image) => {
+    const finalSrc = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${image.src}`;
+    const res = await fetch(finalSrc);
+
+    const arrayBuffer = await res.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const sharpImage = sharp(buffer);
+
+    const { width, height, format } = await sharpImage.metadata();
+    return {
+      ...image,
+      src: finalSrc,
+      width,
+      height,
+      format,
+    };
+  })
+);
+
+const sliderId = nanoid(4);
+---
+
+<div>
+  <h1 class="title">{title}</h1>
+  <!-- Display button with gallery or one with preview image if 
+      preview image is provided -->
+  <button data-slider-id={sliderId} class="image-button">
+    Open Stinking Thing
+  </button>
+</div>
+
+<style>
+  .title {
+    text-align: center;
+    margin: 2em auto;
+  }
+
+  .selected {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+
+  .unselected {
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+  }
+</style>
+
+<script type="module" define:vars={{ sliderId, imageData }}>
+  import { initPhotoSwipe } from '/assets/initPhotoSwipe.js';
+
+  let currentSlide = 0;
+
+  const handleSlideChange = (lastIndex) => {
+    currentSlide = lastIndex;
+  };
+
+  document.querySelector(`button[data-slider-id="${sliderId}"]`).onclick =
+    () => {
+      initPhotoSwipe(imageData, currentSlide, handleSlideChange);
+    };
+</script>

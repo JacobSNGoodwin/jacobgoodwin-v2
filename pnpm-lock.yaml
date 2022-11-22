@@ -15,6 +15,8 @@ specifiers:
   lodash: ^4.17.21
   luxon: ^2.5.0
   nanoid: ^4.0.0
+  photoswipe: ^5.3.3
+  photoswipe-dynamic-caption-plugin: ^1.2.7
   postcss-nesting: ^10.2.0
   prettier: ^2.7.1
   react: ^18.2.0
@@ -40,6 +42,8 @@ devDependencies:
   lodash: 4.17.21
   luxon: 2.5.0
   nanoid: 4.0.0
+  photoswipe: 5.3.3
+  photoswipe-dynamic-caption-plugin: 1.2.7
   postcss-nesting: 10.2.0_postcss@8.4.18
   prettier: 2.7.1
   react: 18.2.0
@@ -3486,6 +3490,15 @@ packages:
       estree-walker: 3.0.1
       is-reference: 3.0.0
     dev: false
+
+  /photoswipe-dynamic-caption-plugin/1.2.7:
+    resolution: {integrity: sha512-5XXdXLf2381nwe7KqQvcyStiUBi9TitYXppUQTrzPwYAi4lZsmWNnNKMclM7I4QGlX6fXo42v3bgb6rlK9pY1Q==}
+    dev: true
+
+  /photoswipe/5.3.3:
+    resolution: {integrity: sha512-BUuulwZwkYFKADSe5xf0dd+wf6dws34ZvqP8R3oYHepRauOXoQHvw600sw1HlWd8K0S3LRCS4jxyR5fTuI383Q==}
+    engines: {node: '>= 0.12.0'}
+    dev: true
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
