@@ -69,7 +69,7 @@ const sliderId = nanoid(4);
 </style>
 
 <script type="module" define:vars={{ sliderId, imageData }}>
-  import { initPhotoSwipe } from '/assets/initPhotoSwipe.js';
+  import { initPhotoSwipe, openPhotoSwipe } from '/assets/initPhotoSwipe.js';
 
   let currentSlide = 0;
 
@@ -77,8 +77,10 @@ const sliderId = nanoid(4);
     currentSlide = lastIndex;
   };
 
+  const lightbox = initPhotoSwipe(imageData, handleSlideChange);
+
   document.querySelector(`button[data-slider-id="${sliderId}"]`).onclick =
     () => {
-      initPhotoSwipe(imageData, currentSlide, handleSlideChange);
+      openPhotoSwipe(lightbox, currentSlide);
     };
 </script>

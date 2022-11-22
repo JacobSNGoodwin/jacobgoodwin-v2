@@ -1,19 +1,24 @@
-import PhotoSwipe from '../../node_modules/photoswipe';
+import PhotoSwipeLightbox from '../../node_modules/photoswipe/dist/photoswipe-lightbox.esm.js';
 
-export const initPhotoSwipe = (imageData, initialSlide, handleSlideChange) => {
+export const initPhotoSwipe = (imageData, handleSlideChange) => {
   console.log('in initPhotoSwipe', imageData);
   const options = {
     dataSource: imageData,
-    index: initialSlide,
+    pswpModule: () => import('../../node_modules/photoswipe'),
   };
 
-  console.log('received options', options);
-  const pswp = new PhotoSwipe(options);
+  const lightbox = new PhotoSwipeLightbox(options);
 
-  pswp.on('change', () => {
-    console.log('slidechanged', pswp.currIndex);
-    handleSlideChange(pswp.currIndex);
+  lightbox.on('change', () => {
+    // console.log('slidechanged', lightbox.currIndex);
+    handleSlideChange(lightbox?.pswp?.currIndex);
   });
 
-  pswp.init();
+  lightbox.init();
+
+  return lightbox;
+};
+
+export const openPhotoSwipe = (lightbox, initialSlide) => {
+  lightbox.loadAndOpen(initialSlide);
 };
