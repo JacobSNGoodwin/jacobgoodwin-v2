@@ -1,5 +1,6 @@
 // Photoswip TS Support is crapoola... otherwise awesome, though!
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
 const handleInitializeGallery = (gallery) => {
   const imageData = JSON.parse(gallery.dataset.images);
@@ -10,6 +11,12 @@ const handleInitializeGallery = (gallery) => {
   };
 
   const lightbox = new PhotoSwipeLightbox(options);
+
+  new PhotoSwipeDynamicCaption(lightbox, {
+    type: 'auto',
+    // TODO - add optional caption to data
+    captionContent: (slide) => imageData[slide.index]?.caption,
+  });
 
   lightbox.init();
 

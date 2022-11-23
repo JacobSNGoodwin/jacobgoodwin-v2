@@ -6,9 +6,11 @@ import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 import sharp from 'sharp';
 
 export type Props = {
-  title: string;
-  previewSrc: string;
-  previewAlt: string;
+  preview: {
+    title: string;
+    src: string;
+    alt: string;
+  };
   images: Array<{
     src: string;
     alt: string;
@@ -16,7 +18,7 @@ export type Props = {
   }>;
 };
 
-const { images = [], title, previewSrc, previewAlt } = Astro.props as Props;
+const { images = [], preview } = Astro.props as Props;
 
 const imageData = await Promise.all(
   images.map(async (image) => {
@@ -41,7 +43,7 @@ const imageData = await Promise.all(
 
 <div>
   <button data-images={JSON.stringify(imageData)} class="gallery-button">
-    <BaseImage src={previewSrc} alt={previewAlt} />
+    <BaseImage src={preview.src} alt={preview.alt} />
   </button>
 </div>
 
