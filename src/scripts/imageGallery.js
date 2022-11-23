@@ -14,7 +14,6 @@ const handleInitializeGallery = (gallery) => {
 
   new PhotoSwipeDynamicCaption(lightbox, {
     type: 'auto',
-    // TODO - add optional caption to data
     captionContent: (slide) => imageData[slide.index]?.caption,
   });
 

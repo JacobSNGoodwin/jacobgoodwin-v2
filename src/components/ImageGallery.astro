@@ -9,12 +9,10 @@ export type Props = {
   preview: {
     title: string;
     src: string;
-    alt: string;
   };
   images: Array<{
     src: string;
-    alt: string;
-    caption?: string;
+    caption: string;
   }>;
 };
 
@@ -31,8 +29,9 @@ const imageData = await Promise.all(
 
     const { width, height, format } = await sharpImage.metadata();
     return {
-      ...image,
       src: finalSrc,
+      alt: image.caption,
+      caption: image.caption,
       width,
       height,
       format,
@@ -43,7 +42,7 @@ const imageData = await Promise.all(
 
 <div>
   <button data-images={JSON.stringify(imageData)} class="gallery-button">
-    <BaseImage src={preview.src} alt={preview.alt} />
+    <BaseImage src={preview.src} alt={preview.title} />
   </button>
 </div>
 
