@@ -35,7 +35,12 @@ const defaultWidths = [800, 1200, 1800, 2400].filter((w) => w <= width);
 const imgId = nanoid(6);
 ---
 
-<img data-placeholder-id={imgId} class="picture" src={initSrc} width={width} />
+<img
+  data-placeholder-id={imgId}
+  class="placeholder"
+  src={initSrc}
+  width={width}
+/>
 <!-- Set picture width for if width less than 100% of parent -->
 <Picture
   data-img-id={imgId}
@@ -48,21 +53,14 @@ const imgId = nanoid(6);
   widths={widths ?? defaultWidths}
 />
 
-<script define:vars={{ imgId }}>
-  const imgEl = document.querySelector(`img[data-img-id="${imgId}"]`);
-  const placeholderEl = document.querySelector(
-    `img[data-placeholder-id="${imgId}"]`
-  );
-
-  imgEl.addEventListener('load', () => {
-    imgEl.style.display = null;
-    console.log('image loaded', imgEl, placeholderEl);
-    placeholderEl.style.display = 'none';
-  });
+<script>
+  import imageLoader from '@src/scripts/imageLoader';
+  imageLoader();
 </script>
 
 <style lang="css">
-  .picture {
+  .picture,
+  .placeholder {
     display: block;
     margin: auto;
     max-width: 100%;
