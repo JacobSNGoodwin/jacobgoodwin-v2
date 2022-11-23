@@ -1,5 +1,4 @@
 // Photoswip TS Support is crapoola... otherwise awesome, though!
-
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
 const handleInitializeGallery = (gallery) => {
@@ -17,8 +16,8 @@ const handleInitializeGallery = (gallery) => {
   return lightbox;
 };
 
-const handleOpenGallery = (lightboxes, i) => {
-  lightboxes[i].loadAndOpen(0);
+const handleOpenGallery = (lightbox, startIndex) => {
+  lightbox.loadAndOpen(startIndex);
 };
 
 const initializePhotoGalleries = () => {
@@ -27,12 +26,19 @@ const initializePhotoGalleries = () => {
 
   const lightboxes = [...galleries].map(handleInitializeGallery);
 
-  console.log('initialized lightboxes', lightboxes);
+  const closedIndices = new Array(2).fill(0);
+
+  // track last index
+  for (let i = 0; i < lightboxes.length; i++) {
+    lightboxes[i].on('close', () => {
+      closedIndices[i] = lightboxes[i]?.pswp?.currIndex ?? 0;
+    });
+  }
 
   // add open gallery listeners
   for (let i = 0; i < galleries.length; i++) {
     galleries[i].addEventListener('click', () =>
-      handleOpenGallery(lightboxes, i)
+      handleOpenGallery(lightboxes[i], closedIndices[i])
     );
   }
 };
