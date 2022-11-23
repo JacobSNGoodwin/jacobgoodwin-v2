@@ -3,7 +3,6 @@ import BaseImage from './BaseImage.astro';
 import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
-import { nanoid } from 'nanoid';
 import sharp from 'sharp';
 
 export type Props = {
@@ -38,12 +37,10 @@ const imageData = await Promise.all(
     };
   })
 );
-
-const sliderId = nanoid(4);
 ---
 
 <div>
-  <button data-slider-id={sliderId} class="gallery-button">
+  <button data-images={JSON.stringify(imageData)} class="gallery-button">
     <BaseImage src={previewSrc} alt={previewAlt} />
   </button>
 </div>
@@ -76,19 +73,22 @@ const sliderId = nanoid(4);
   }
 </style>
 
-<script type="module" define:vars={{ sliderId, imageData }}>
-  import { initPhotoSwipe, openPhotoSwipe } from '/scripts/initPhotoSwipe.js';
+<script>
+  import initializePhotoGalleries from '@src/scripts/imageGallery';
 
-  let currentSlide = 0;
+  initializePhotoGalleries();
+  // import { initPhotoSwipe, openPhotoSwipe } from '/scripts/initPhotoSwipe.js';
 
-  const handleSlideChange = (lastIndex) => {
-    currentSlide = lastIndex;
-  };
+  // let currentSlide = 0;
 
-  const lightbox = initPhotoSwipe(imageData, handleSlideChange);
+  // const handleSlideChange = (lastIndex) => {
+  //   currentSlide = lastIndex;
+  // };
 
-  document.querySelector(`button[data-slider-id="${sliderId}"]`).onclick =
-    () => {
-      openPhotoSwipe(lightbox, currentSlide);
-    };
+  // const lightbox = initPhotoSwipe(imageData, handleSlideChange);
+
+  // document.querySelector(`button[data-slider-id="${sliderId}"]`).onclick =
+  //   () => {
+  //     openPhotoSwipe(lightbox, currentSlide);
+  //   };
 </script>

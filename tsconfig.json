@@ -25,6 +25,7 @@
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@data/*": ["src/data/*"],
+      "photoswipe/lightbox":  ["./node_modules/photoswipe/dist/types/photoswipe.d.ts"]
     }
   },
 }

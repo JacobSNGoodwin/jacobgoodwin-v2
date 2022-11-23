@@ -1,5 +1,5 @@
 const replaceImage = (img: HTMLImageElement) => {
-  const imgId = img.getAttribute('data-img-id');
+  const imgId = img.dataset.imgId;
 
   const placeholderEl: HTMLImageElement = document.querySelector(
     `img[data-placeholder-id="${imgId}"]`

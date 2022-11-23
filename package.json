@@ -8,11 +8,10 @@
     "build": "astro build",
     "preview": "astro preview"
   },
-  "devDependencies": {
+  "dependencies": {
     "@astrojs/image": "^0.11.0",
-    "@astrojs/solid-js": "^1.2.0",
-    "@solid-primitives/event-listener": "^2.2.4",
     "@types/lodash": "^4.14.186",
+    "@astrojs/mdx": "^0.11.6",
     "@types/node": "^18.11.9",
     "@types/sharp": "^0.31.0",
     "@vueuse/core": "^8.9.4",
@@ -26,13 +25,6 @@
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
     "postcss-nesting": "^10.2.0",
     "prettier": "^2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sharp": ">=0.31.0",
-    "solid-js": "^1.5.7",
-    "vue": "^3.2.30"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^0.11.6"
+    "sharp": ">=0.31.0"
   }
 }
