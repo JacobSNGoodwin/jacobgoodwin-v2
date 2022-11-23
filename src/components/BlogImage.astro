@@ -1,7 +1,4 @@
 ---
-import sharp from 'sharp';
-import { Picture } from '@astrojs/image/components';
-import { nanoid } from 'nanoid';
 import BaseImage from './BaseImage.astro';
 
 export type Props = {
@@ -13,22 +10,32 @@ export type Props = {
 const { src, alt, caption } = Astro.props as Props;
 ---
 
-<figure class="blog-image">
-  <BaseImage src={src} alt={caption ?? alt} />
-  {caption && <figcaption class="caption">{caption}</figcaption>}
+<figure class="blog-image-container">
+  <div class="blog-image">
+    <BaseImage src={src} alt={caption ?? alt} />
+    {caption && <figcaption class="caption">{caption}</figcaption>}
+  </div>
 </figure>
 
 <style lang="css">
-  .blog-image {
-    margin-top: 2em;
-    margin-bottom: 2em;
+  .blog-image-container {
+    margin: 2em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: min(var(--content-width), 100vw);
+    transform: translateX(calc(50% - min(var(--content-width), 100vw) / 2));
+  }
+
+  .blog-image {
+    width: min(var(--content-width), 100vw);
   }
 
   .caption {
     margin: 0.5em auto;
+    padding: 0 1.2rem;
     font-style: italic;
+    text-align: justify;
+    color: var(--headerColor);
   }
 </style>

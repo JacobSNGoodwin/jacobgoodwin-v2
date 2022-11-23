@@ -7,9 +7,10 @@ export type Props = {
   // src: string | ImageMetadata;
   src: string; // for now support remote images only
   alt: string;
+  widths?: Array<number>;
 };
 
-const { src, alt } = Astro.props as Props;
+const { src, alt, widths } = Astro.props as Props;
 
 const finalSrc = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${src}`;
 const res = await fetch(finalSrc);
@@ -29,18 +30,22 @@ const initSrc = `data:image/${format};base64,${initImg.toString('base64')}`;
 
 const aspectRatio = width / height;
 
+const defaultWidths = [800, 1200, 1800, 2400].filter((w) => w <= width);
+
 const imgId = nanoid(6);
 ---
 
 <img data-placeholder-id={imgId} class="picture" src={initSrc} width={width} />
+<!-- Set picture width for if width less than 100% of parent -->
 <Picture
   data-img-id={imgId}
+  width={width}
   class="picture"
   alt={alt}
   src={finalSrc}
   sizes="(max-width: 1024px) 100vw, 1024px"
   aspectRatio={aspectRatio}
-  widths={[512, 1024, 2048]}
+  widths={widths ?? defaultWidths}
 />
 
 <script define:vars={{ imgId }}>
@@ -51,16 +56,15 @@ const imgId = nanoid(6);
 
   imgEl.addEventListener('load', () => {
     imgEl.style.display = null;
+    console.log('image loaded', imgEl, placeholderEl);
     placeholderEl.style.display = 'none';
   });
 </script>
 
 <style lang="css">
   .picture {
-    max-width: var(--content-width);
     display: block;
-    width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    margin: auto;
+    max-width: 100%;
   }
 </style>
