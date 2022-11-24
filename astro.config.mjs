@@ -8,6 +8,8 @@ import image from '@astrojs/image';
 // https://astro.build/config
 import mdx from '@astrojs/mdx';
 
+import Icons from 'unplugin-icons/vite';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -24,5 +26,12 @@ export default defineConfig({
   trailingSlash: 'never',
   server: {
     host: true, // for allowing access on local network
+  },
+  vite: {
+    plugins: [
+      Icons({
+        compiler: 'astro',
+      }),
+    ],
   },
 });

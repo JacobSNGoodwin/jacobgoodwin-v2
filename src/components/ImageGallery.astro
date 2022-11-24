@@ -1,5 +1,6 @@
 ---
 import BaseImage from './BaseImage.astro';
+import SlideshowIcon from '~icons/tabler/slideshow';
 import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
@@ -42,23 +43,44 @@ const imageData = await Promise.all(
 
 <div>
   <button data-images={JSON.stringify(imageData)} class="gallery-button">
-    <BaseImage src={preview.src} alt={preview.title} />
+    <BaseImage src={preview.src} alt={preview.title} borderRadiusTop="1em" />
+    <SlideshowIcon class="gallery-icon" />
+    <h5 class="title">{preview.title}</h5>
+    <p class="prompt"><em>Click to Open</em></p>
   </button>
 </div>
 
 <style>
   .title {
     text-align: center;
-    margin: 2em auto;
+    margin: 0.5em auto;
   }
 
   .gallery-button {
     all: unset;
     display: block;
     cursor: pointer;
-    padding: 1em;
     margin: 1em auto;
-    max-width: 800px;
+    max-width: 400px;
+    box-shadow: 0 4px 8px #002d5baa;
+    transition: var(--dt);
+    border-radius: 1em;
+
+    &:hover {
+      box-shadow: 0 8px 16px #002d5baa;
+    }
+  }
+
+  .gallery-icon {
+    display: block;
+    margin: 0.25em auto;
+    font-size: 4em;
+    color: var(--color1);
+  }
+
+  .prompt {
+    font-size: 1rem;
+    text-align: center;
   }
 
   .selected {
@@ -78,18 +100,4 @@ const imageData = await Promise.all(
   import initializePhotoGalleries from '@src/scripts/imageGallery';
 
   initializePhotoGalleries();
-  // import { initPhotoSwipe, openPhotoSwipe } from '/scripts/initPhotoSwipe.js';
-
-  // let currentSlide = 0;
-
-  // const handleSlideChange = (lastIndex) => {
-  //   currentSlide = lastIndex;
-  // };
-
-  // const lightbox = initPhotoSwipe(imageData, handleSlideChange);
-
-  // document.querySelector(`button[data-slider-id="${sliderId}"]`).onclick =
-  //   () => {
-  //     openPhotoSwipe(lightbox, currentSlide);
-  //   };
 </script>

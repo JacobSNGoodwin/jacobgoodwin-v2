@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "@astrojs/image": "^0.11.0",
-    "@types/lodash": "^4.14.186",
     "@astrojs/mdx": "^0.11.6",
+    "@iconify-json/tabler": "^1.1.47",
+    "@types/lodash": "^4.14.186",
     "@types/node": "^18.11.9",
     "@types/sharp": "^0.31.0",
     "@vueuse/core": "^8.9.4",
@@ -25,6 +26,7 @@
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
     "postcss-nesting": "^10.2.0",
     "prettier": "^2.7.1",
-    "sharp": ">=0.31.0"
+    "sharp": ">=0.31.0",
+    "unplugin-icons": "^0.14.14"
   }
 }
