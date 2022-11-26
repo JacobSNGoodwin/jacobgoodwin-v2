@@ -6,6 +6,7 @@ const handleInitializeGallery = (gallery) => {
   const imageData = JSON.parse(gallery.dataset.images);
 
   const options = {
+    bgOpacity: 1,
     dataSource: imageData,
     pswpModule: () => import('photoswipe'),
   };

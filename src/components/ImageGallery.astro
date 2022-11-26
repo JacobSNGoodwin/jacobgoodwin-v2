@@ -33,14 +33,11 @@ const imagesToFetch = images ?? buildImages(rangeOptions);
 const imageData = await Promise.all(
   imagesToFetch.map(async (image) => {
     const finalSrc = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${image.src}`;
-    console.log('finalSrc', finalSrc);
     const res = await fetch(finalSrc);
 
     const arrayBuffer = await res.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    console.log(buffer);
     const sharpImage = sharp(buffer);
-    console.log(sharpImage);
 
     const { width, height, format } = await sharpImage.metadata();
     return {
