@@ -5,28 +5,42 @@ import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
 import sharp from 'sharp';
+import { buildImages } from '@src/utils/images';
 
 export type Props = {
   preview: {
     title: string;
     src: string;
   };
-  images: Array<{
+  images?: Array<{
     src: string;
     caption: string;
   }>;
+  rangeOptions?: {
+    base: string;
+    suffix: string;
+    digits: number;
+    start: number;
+    end: number;
+    description: string;
+  };
 };
 
-const { images = [], preview } = Astro.props as Props;
+const { images, rangeOptions, preview } = Astro.props as Props;
+
+const imagesToFetch = images ?? buildImages(rangeOptions);
 
 const imageData = await Promise.all(
-  images.map(async (image) => {
+  imagesToFetch.map(async (image) => {
     const finalSrc = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${image.src}`;
+    console.log('finalSrc', finalSrc);
     const res = await fetch(finalSrc);
 
     const arrayBuffer = await res.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+    console.log(buffer);
     const sharpImage = sharp(buffer);
+    console.log(sharpImage);
 
     const { width, height, format } = await sharpImage.metadata();
     return {

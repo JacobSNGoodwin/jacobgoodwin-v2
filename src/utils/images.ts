@@ -1,18 +1,30 @@
-import { AllowedImageFormats, ImageData } from 'src/types';
+type BuildImageOptions = {
+  base: string;
+  suffix: string;
+  start: number;
+  end: number;
+  digits: number;
+  description: string;
+};
 
-export const buildSrcSet = (
-  { variants }: ImageData,
-  allowedFormat: AllowedImageFormats,
-  baseUrl: string = import.meta.env.PUBLIC_IMAGE_BASE_URL
-): string => {
-  const variantArray = Object.entries(variants).map(([key, value]) => {
-    const imgName = value[allowedFormat];
+type BuildImageResult = Array<{
+  src: string;
+  caption: string;
+}>;
 
-    // for escaping (some images have spaces)
-    const url = new URL(`${baseUrl}/${imgName}`);
+export const buildImages = (
+  options: BuildImageOptions
+): Array<BuildImageResult> => {
+  const result = [];
 
-    return `${url.href} ${key}w`;
-  });
+  for (let i = options.start; i <= options.end; i++) {
+    result.push({
+      src: `${options.base}-${i.toString().padStart(options.digits, '0')}.${
+        options.suffix
+      }`,
+      caption: options.description,
+    });
+  }
 
-  return variantArray.join(',');
+  return result;
 };
