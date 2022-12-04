@@ -39,14 +39,20 @@ const imageData = await Promise.all(
     }${trimmedImageSrc}-2400w.jpg`;
     const res = await fetch(finalSrc);
 
-    console.info('succesfully fetched finalSrc', finalSrc);
-
     try {
       const arrayBuffer = await res.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
       const sharpImage = sharp(buffer);
 
       const { width, height, format } = await sharpImage.metadata();
+
+      console.info(
+        'succesfully fetched finalSrc',
+        finalSrc,
+        width,
+        height,
+        format
+      );
 
       const srcset = [800, 1200, 1800, 2400]
         .filter((w) => w <= width)
