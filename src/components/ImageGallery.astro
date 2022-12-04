@@ -30,24 +30,45 @@ const { images, rangeOptions, preview } = Astro.props as Props;
 
 const imagesToFetch = images ?? buildImages(rangeOptions);
 
+// TODO - This is extremely slow in development for large image galleries. I wonder if there is a workaround? Maybe store image dimensions in metadata?
 const imageData = await Promise.all(
   imagesToFetch.map(async (image) => {
-    const finalSrc = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${image.src}`;
+    const trimmedImageSrc = image.src.split('.')[0];
+    const finalSrc = `${
+      import.meta.env.PUBLIC_IMAGE_BASE_URL
+    }${trimmedImageSrc}-2400w.jpg`;
     const res = await fetch(finalSrc);
 
-    const arrayBuffer = await res.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const sharpImage = sharp(buffer);
+    console.info('succesfully fetched finalSrc', finalSrc);
 
-    const { width, height, format } = await sharpImage.metadata();
-    return {
-      src: finalSrc,
-      alt: image.caption,
-      caption: image.caption,
-      width,
-      height,
-      format,
-    };
+    try {
+      const arrayBuffer = await res.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      const sharpImage = sharp(buffer);
+
+      const { width, height, format } = await sharpImage.metadata();
+
+      const srcset = [800, 1200, 1800, 2400]
+        .filter((w) => w <= width)
+        .map((variantWidth) => {
+          return `${
+            import.meta.env.PUBLIC_IMAGE_BASE_URL
+          }${trimmedImageSrc}-${variantWidth}w.jpg ${variantWidth}w`;
+        })
+        .join(',');
+
+      return {
+        src: finalSrc,
+        srcset,
+        alt: image.caption,
+        caption: image.caption,
+        width,
+        height,
+        format,
+      };
+    } catch (e) {
+      console.log('error with image src', finalSrc, e);
+    }
   })
 );
 ---
