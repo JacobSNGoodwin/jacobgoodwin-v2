@@ -2,27 +2,38 @@
 import sharp from 'sharp';
 import { Picture } from '@astrojs/image/components';
 import { nanoid } from 'nanoid';
+import { getClient } from '@src/utils/cloud-storage';
+import { Console } from 'console';
 
 export type Props = {
-  // src: string | ImageMetadata;
-  src: string; // for now support remote images only
+  path: string;
+  name: string;
   alt: string;
-  widths?: Array<number>;
+  widths: Array<number>;
   borderRadiusTop?: string;
   borderRadiusBottom?: string;
 };
 
-const { src, alt, widths, borderRadiusTop, borderRadiusBottom } =
+const { path, name, alt, widths, borderRadiusTop, borderRadiusBottom } =
   Astro.props as Props;
 
-const finalSrc = `${import.meta.env.PUBLIC_IMAGE_BASE_URL}${src}`;
-const res = await fetch(finalSrc);
+const baseImagePath = `${import.meta.env.STORAGE_URL}/${
+  import.meta.env.CLOUD_STORAGE_BUCKET
+}/${path}/${name}`;
+
+// build placeholder image from 800w image
+const smallImageSrc = `${baseImagePath}-800w.webp`;
+const defaultSrc = `${baseImagePath}-2400w.jpg`;
+
+const res = await fetch(smallImageSrc);
 
 const arrayBuffer = await res.arrayBuffer();
 const buffer = Buffer.from(arrayBuffer);
 const sharpImage = sharp(buffer);
 
 const { width, height, format } = await sharpImage.metadata();
+
+const aspectRatio = width / height;
 
 const initImg = await sharpImage
   .resize({ width: 50, fit: 'inside' })
@@ -31,9 +42,12 @@ const initImg = await sharpImage
 
 const initSrc = `data:image/${format};base64,${initImg.toString('base64')}`;
 
-const aspectRatio = width / height;
-
-const defaultWidths = [800, 1200, 1800, 2400].filter((w) => w <= width);
+const jpegSrcset = widths
+  .map((width) => `${baseImagePath}-${width}w.jpg ${width}w`)
+  .join(',');
+const webpSrcset = widths
+  .map((width) => `${baseImagePath}-${width}w.webp ${width}w`)
+  .join(',');
 
 const imgId = nanoid(6);
 ---
@@ -42,7 +56,7 @@ const imgId = nanoid(6);
   data-placeholder-id={imgId}
   class="placeholder"
   src={initSrc}
-  width={width}
+  width={2400}
   style={{
     'border-top-left-radius': borderRadiusTop ?? 0,
     'border-top-right-radius': borderRadiusTop ?? 0,
@@ -50,10 +64,7 @@ const imgId = nanoid(6);
     'border-bottom-right-radius': borderRadiusBottom ?? 0,
   }}
 />
-<!-- Set picture width for if width less than 100% of parent -->
-<Picture
-  data-img-id={imgId}
-  width={width}
+<picture
   style={{
     'border-top-left-radius': borderRadiusTop ?? 0,
     'border-top-right-radius': borderRadiusTop ?? 0,
@@ -61,12 +72,26 @@ const imgId = nanoid(6);
     'border-bottom-right-radius': borderRadiusBottom ?? 0,
   }}
   class="picture"
-  alt={alt}
-  src={finalSrc}
-  sizes="(max-width: 1024px) 100vw, 1024px"
-  aspectRatio={aspectRatio}
-  widths={widths ?? defaultWidths}
-/>
+>
+  <source
+    type="image/webp"
+    sizes="(max-width: 1024px) 100vw, 1024px"
+    srcset={webpSrcset}
+  />
+  <source
+    type="image/jpeg"
+    sizes="(max-width: 1024px) 100vw, 1024px"
+    srcset={jpegSrcset}
+  />
+  <img
+    style={{
+      display: 'none',
+    }}
+    data-img-id={imgId}
+    alt={alt}
+    src={defaultSrc}
+  />
+</picture>
 
 <script>
   import imageLoader from '@src/scripts/imageLoader';

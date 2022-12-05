@@ -2,17 +2,23 @@
 import BaseImage from './BaseImage.astro';
 
 export type Props = {
-  src: string; // for now support remote images only
+  path: string;
+  name: string;
   alt: string;
   caption?: string;
 };
 
-const { src, alt, caption } = Astro.props as Props;
+const { path, name, alt, caption } = Astro.props as Props;
 ---
 
 <figure class="blog-image-container">
   <div class="blog-image">
-    <BaseImage src={src} alt={caption ?? alt} />
+    <BaseImage
+      path={path}
+      name={name}
+      alt={caption ?? alt}
+      widths={[800, 1200, 1800, 2400]}
+    />
     {caption && <figcaption class="caption">{caption}</figcaption>}
   </div>
 </figure>
@@ -35,7 +41,7 @@ const { src, alt, caption } = Astro.props as Props;
     margin: 0.5em auto;
     padding: 0 1.2rem;
     font-style: italic;
-    text-align: justify;
+    text-align: center;
     color: var(--headerColor);
   }
 </style>

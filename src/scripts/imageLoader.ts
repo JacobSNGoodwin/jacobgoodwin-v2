@@ -6,6 +6,7 @@ const replaceImage = (img: HTMLImageElement) => {
   );
 
   placeholderEl.style.display = 'none';
+  img.style.display = 'block';
 };
 
 const loadImages = () => {
@@ -19,6 +20,8 @@ const loadImages = () => {
   const unloadedImages = [...resultImages].filter(
     (img) => !img.complete || img.naturalHeight === 0
   );
+
+  console.log('unloadedImages', unloadedImages);
 
   for (let i = 0; i < unloadedImages.length; i++) {
     unloadedImages[i].addEventListener('load', (e) => {
