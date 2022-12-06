@@ -18,8 +18,6 @@ export type Props = {
 const { images, preview } = Astro.props as Props;
 
 const imageData = await buildImages(images);
-
-console.log(imageData);
 ---
 
 <div>
