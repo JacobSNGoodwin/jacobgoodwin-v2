@@ -1,9 +1,6 @@
 ---
 import sharp from 'sharp';
-import { Picture } from '@astrojs/image/components';
 import { nanoid } from 'nanoid';
-import { getClient } from '@src/utils/cloud-storage';
-import { Console } from 'console';
 
 export type Props = {
   path: string;
@@ -23,7 +20,8 @@ const baseImagePath = `${import.meta.env.STORAGE_URL}/${
 
 // build placeholder image from 800w image
 const smallImageSrc = `${baseImagePath}-800w.webp`;
-const defaultSrc = `${baseImagePath}-2400w.jpg`;
+const maxWidth = widths[widths.length - 1];
+const defaultSrc = `${baseImagePath}-${maxWidth}w.jpg`;
 
 const res = await fetch(smallImageSrc);
 
@@ -31,9 +29,7 @@ const arrayBuffer = await res.arrayBuffer();
 const buffer = Buffer.from(arrayBuffer);
 const sharpImage = sharp(buffer);
 
-const { width, height, format } = await sharpImage.metadata();
-
-const aspectRatio = width / height;
+const { format } = await sharpImage.metadata();
 
 const initImg = await sharpImage
   .resize({ width: 50, fit: 'inside' })
@@ -64,15 +60,7 @@ const imgId = nanoid(6);
     'border-bottom-right-radius': borderRadiusBottom ?? 0,
   }}
 />
-<picture
-  style={{
-    'border-top-left-radius': borderRadiusTop ?? 0,
-    'border-top-right-radius': borderRadiusTop ?? 0,
-    'border-bottom-left-radius': borderRadiusBottom ?? 0,
-    'border-bottom-right-radius': borderRadiusBottom ?? 0,
-  }}
-  class="picture"
->
+<picture>
   <source
     type="image/webp"
     sizes="(max-width: 1024px) 100vw, 1024px"
@@ -85,8 +73,13 @@ const imgId = nanoid(6);
   />
   <img
     style={{
+      'border-top-left-radius': borderRadiusTop ?? 0,
+      'border-top-right-radius': borderRadiusTop ?? 0,
+      'border-bottom-left-radius': borderRadiusBottom ?? 0,
+      'border-bottom-right-radius': borderRadiusBottom ?? 0,
       display: 'none',
     }}
+    class="picture"
     data-img-id={imgId}
     alt={alt}
     src={defaultSrc}
