@@ -18,6 +18,8 @@ const baseImagePath = `${import.meta.env.STORAGE_URL}/${
   import.meta.env.CLOUD_STORAGE_BUCKET
 }/${path}/${name}`;
 
+console.info('Building image with baseImagePath: ', baseImagePath);
+
 // build placeholder image from 800w image
 const smallImageSrc = `${baseImagePath}-800w.webp`;
 const maxWidth = widths[widths.length - 1];
