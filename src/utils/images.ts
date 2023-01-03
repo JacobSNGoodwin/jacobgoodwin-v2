@@ -1,4 +1,4 @@
-import { Bucket, File, GetFilesResponse, Storage } from '@google-cloud/storage';
+import { Bucket, File, Storage } from '@google-cloud/storage';
 
 type ImageProps = {
   path: string;
@@ -69,11 +69,11 @@ const buildImagesFromArray = async (
   bucket: Bucket,
   options: Array<ImageProps>
 ) => {
-  console.info('building images from array', options);
-
+  console.log('options', options);
   const datasources = await Promise.all(
     options.map(async ({ path, name, caption }) => {
       const prefix = `${path}/${name}`;
+
       const [files] = await bucket.getFiles({ prefix });
 
       const jpegFiles = files.filter((file) => {

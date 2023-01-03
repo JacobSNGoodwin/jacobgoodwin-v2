@@ -11,6 +11,8 @@ const { metaTags } = Astro.props as Props;
 
 const { href: url } = Astro.url;
 const meta = { ...baseMetaTags, ...metaTags };
+
+console.log('BaseLayout meta', meta.image);
 ---
 
 <!-- TODO - some metatags are not accessing proper field -->
@@ -27,10 +29,10 @@ const meta = { ...baseMetaTags, ...metaTags };
     <meta property="og:description" content={meta.description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={url} />
-    <meta property="og:image" content={meta.image} />
+    <meta property="og:image" content={meta.image.src} />
     <meta name="twitter:title" content={meta.title} />
     <meta name="twitter:description" content={meta.description} />
-    <meta name="twitter:image" content={meta.image} />
+    <meta name="twitter:image" content={meta.image.src} />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
 

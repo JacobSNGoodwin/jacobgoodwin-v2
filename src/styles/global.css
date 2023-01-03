@@ -4,7 +4,7 @@
 
 /* Main theme colors */
 :root {
-  --content-width: 1024px;
+  --content-width: 800px;
   --headerColor: rgba(0, 0, 0, 0.733);
   --bodyColor: rgba(0, 0, 0, 0.867);
 
@@ -39,7 +39,7 @@ a {
   font-family: 'Fira Sans', sans-serif;
   font-weight: 700;
   text-decoration: none;
-  color: var(--bodyColor);
+  color: var(--color2);
 
   &:visited {
     text-decoration: none;
