@@ -7,5 +7,5 @@ export const baseMetaTags: MetaTags = {
   description:
     'Website for all things written by Jacob Goodwin. From technical tutorials to personal travel to professional portfolio, this site has just about all of it.',
   keywords: ['Travel', 'Portfolio', 'Resume'],
-  image: imageUrl,
+  image: (imageUrl as unknown as ImageMetadata).src,
 };

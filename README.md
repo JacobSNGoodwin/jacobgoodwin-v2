@@ -8,6 +8,7 @@
 - [x] - get very basic markdown post layout working
 - [x] - markdown styles in `PostLayout` (or maybe `PostComponent`)
   - will add as I go
+- [ ] - Get twitter and open graph tags working for BlogLayout/BlogPostLayout (title/image)
 - [ ] - Create a PostList component which can accept `tags` for creating the list
   - [ ] - create pagination sections (group by tags)
   - [ ] - PostCard components - rendered by PostList

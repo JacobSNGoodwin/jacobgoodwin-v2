@@ -29,7 +29,7 @@ export type MetaTags = {
   author?: string;
   description?: string;
   keywords?: string[];
-  image?: ImageMetadata | string;
+  image?: string;
 };
 
 // Image Formatting
