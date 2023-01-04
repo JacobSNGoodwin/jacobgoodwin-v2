@@ -17,6 +17,8 @@
 - [x] - create ImageVariants component (become Lazy Image)
 - [x] - create ImageSlider component
 - [ ] - Create info/warning type box components like in Vuepress
+- [ ] - import `/notes` articles into MDX
+- [ ] - import `/professional`
 
 ## Nice to Have
 
