@@ -9,6 +9,7 @@ import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 
 import Icons from 'unplugin-icons/vite';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,12 @@ export default defineConfig({
   ],
   markdown: {
     drafts: true,
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        { target: '_blank', rel: ['noopener', 'noreferrer', 'nofollow'] },
+      ],
+    ],
   },
   site: 'https://jacobgoodiwn.me',
   // for base of deployed site
