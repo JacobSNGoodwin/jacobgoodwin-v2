@@ -1,0 +1,9 @@
+---
+export type Props = {
+  href: string;
+};
+
+const { href } = Astro.props as Props;
+---
+
+<a href={href} target="_blank" rel="nofollow noopener noreferrer"><slot /></a>
