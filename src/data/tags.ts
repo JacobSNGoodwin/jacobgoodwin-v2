@@ -1,5 +1,6 @@
 import { PostsFolder, Tag } from 'src/types';
 
+// TODO - Add descriptions
 export const tags: Record<PostsFolder, Tag[]> = {
   blog: [
     {
@@ -19,6 +20,6 @@ export const tags: Record<PostsFolder, Tag[]> = {
   professional: [],
 };
 
-// TODO - filter tags for POST templates
+// TODO - filter tags for Post templates
 const isValidTag = (tag: string, tagType: PostsFolder) =>
   tags[tagType].findIndex((tagsOfType) => (tagsOfType.name = tag)) !== -1;

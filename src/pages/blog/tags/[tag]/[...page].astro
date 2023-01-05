@@ -1,0 +1,53 @@
+---
+import { MarkdownInstance, GetStaticPaths, Page } from 'astro';
+import BlogLayout from '@layouts/BlogLayout.astro';
+export type Props = {
+  page: Page<MarkdownInstance<PostFrontmatter>>;
+  tagData: Tag;
+};
+
+import { tags } from '@data/tags';
+import { PostFrontmatter, Tag } from 'src/types';
+import { queryPosts } from '@utils/posts';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  console.log('Building paths for blog tags');
+
+  // TODO - maybe replace with getCollection (newer Astro featch)
+  const allPosts = [
+    ...(await Astro.glob<PostFrontmatter>('../../posts/*.mdx')),
+  ];
+
+  return tags['blog'].map((tag) => {
+    const tagPosts = queryPosts(allPosts, { tag: tag.name });
+
+    return paginate(tagPosts, {
+      params: { tag: tag.name },
+      props: { tagData: tag },
+      pageSize: parseInt(import.meta.env.POST_PAGE_SIZE),
+    });
+  });
+};
+
+const { page, tagData } = Astro.props;
+---
+
+<BlogLayout metaTags={{ title: `JG - ${tagData.title}` }}>
+  <h1 class="tag-title">{tagData.title}</h1>
+
+  {
+    page.data.map((post) => (
+      <a href={post.url}>
+        <div>
+          {post.frontmatter.title} - {post.frontmatter.date}
+        </div>
+      </a>
+    ))
+  }
+</BlogLayout>
+
+<style lang="css">
+  .tag-title {
+    text-align: center;
+  }
+</style>

@@ -22,7 +22,11 @@
 
 ## Nice to Have
 
-- [ ] - get active route highlighted with underline
-- [ ] - blog can have a footer
 - [ ] - page transitions (see SWUP)
+- [ ] - get active route highlighted with underline
+- [ ] - tags have description field
+- [ ] - blog can have a footer
+
+## Not that important
+
 - [ ] - PWA Assets / Icons [pwa-asset-generator](https://www.npmjs.com/package/pwa-asset-generator)
