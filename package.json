@@ -9,8 +9,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/image": "^0.11.6",
-    "@astrojs/mdx": "^0.11.6",
+    "@astrojs/image": "^0.12.1",
+    "@astrojs/mdx": "^0.14.0",
     "@iconify-json/tabler": "^1.1.54",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
@@ -19,7 +19,7 @@
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",
     "lodash": "^4.17.21",
-    "luxon": "^2.5.0",
+    "luxon": "^3.2.1",
     "nanoid": "^4.0.0",
     "photoswipe": "^5.3.4",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
@@ -27,9 +27,9 @@
     "prettier": "^2.8.1",
     "rehype-external-links": "^2.0.1",
     "sharp": "^0.31.3",
-    "unplugin-icons": "^0.14.15"
+    "unplugin-icons": "^0.15.0"
   },
   "devDependencies": {
-    "@google-cloud/storage": "^6.8.0"
+    "@google-cloud/storage": "^6.9.0"
   }
 }

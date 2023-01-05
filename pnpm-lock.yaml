@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/image': ^0.11.6
-  '@astrojs/mdx': ^0.11.6
-  '@google-cloud/storage': ^6.8.0
+  '@astrojs/image': ^0.12.1
+  '@astrojs/mdx': ^0.14.0
+  '@google-cloud/storage': ^6.9.0
   '@iconify-json/tabler': ^1.1.54
   '@types/lodash': ^4.14.191
   '@types/node': ^18.11.18
@@ -12,7 +12,7 @@ specifiers:
   autoprefixer: ^10.4.13
   cssnano: ^5.1.14
   lodash: ^4.17.21
-  luxon: ^2.5.0
+  luxon: ^3.2.1
   nanoid: ^4.0.0
   photoswipe: ^5.3.4
   photoswipe-dynamic-caption-plugin: ^1.2.7
@@ -20,11 +20,11 @@ specifiers:
   prettier: ^2.8.1
   rehype-external-links: ^2.0.1
   sharp: ^0.31.3
-  unplugin-icons: ^0.14.15
+  unplugin-icons: ^0.15.0
 
 dependencies:
-  '@astrojs/image': 0.11.6_sharp@0.31.3
-  '@astrojs/mdx': 0.11.6_rollup@3.9.1
+  '@astrojs/image': 0.12.1_sharp@0.31.3
+  '@astrojs/mdx': 0.14.0_rollup@3.9.1
   '@iconify-json/tabler': 1.1.54
   '@types/lodash': 4.14.191
   '@types/node': 18.11.18
@@ -33,7 +33,7 @@ dependencies:
   autoprefixer: 10.4.13_postcss@8.4.20
   cssnano: 5.1.14_postcss@8.4.20
   lodash: 4.17.21
-  luxon: 2.5.0
+  luxon: 3.2.1
   nanoid: 4.0.0
   photoswipe: 5.3.4
   photoswipe-dynamic-caption-plugin: 1.2.7
@@ -41,10 +41,10 @@ dependencies:
   prettier: 2.8.1
   rehype-external-links: 2.0.1
   sharp: 0.31.3
-  unplugin-icons: 0.14.15
+  unplugin-icons: 0.15.0
 
 devDependencies:
-  '@google-cloud/storage': 6.8.0
+  '@google-cloud/storage': 6.9.0
 
 packages:
 
@@ -75,8 +75,8 @@ packages:
     resolution: {integrity: sha512-WbA05QH5xkdaJ3XtzDuYOjtqsip2InW5rk156sSdaHs5qN2NroUHbzWZthHJwmNAAjQSGXVIj+O6jQj81zzX/Q==}
     dev: false
 
-  /@astrojs/image/0.11.6_sharp@0.31.3:
-    resolution: {integrity: sha512-/awb4CWvOdoBv896XZcXw+oYEYLezWiaX5Oyk2g4PQ6rEHtZVROj56CFdUbS9ldmIqp3ni7rXNf1XK3dlP5d1A==}
+  /@astrojs/image/0.12.1_sharp@0.31.3:
+    resolution: {integrity: sha512-7pBUPCw7/FPwfEntx+mGjhdwpaWXNHwRVcTK71rpf+c2yb8iIesRS9r26U7lGozTzXUROh1y1ftA82ziuqYF6Q==}
     peerDependencies:
       sharp: '>=0.31.0'
     peerDependenciesMeta:
@@ -143,10 +143,11 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.11.6_rollup@3.9.1:
-    resolution: {integrity: sha512-MEi8CZuz4vXn74/jCb0CMOAKEqd6nsLrShYfE+ddb1//14CwuaVGbXN7V6/zGj8ZvBhFk/darBbNpJBmzfbI6A==}
+  /@astrojs/mdx/0.14.0_rollup@3.9.1:
+    resolution: {integrity: sha512-lmNh/7CeQmdZ0OCbnDnoDxQTKWleFdlT5YkjsutGIOhabY0xgCcWwb1Rbs/9m4vvTdCkp9zsZdRzUKEPFPbcsA==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
+      '@astrojs/markdown-remark': 1.2.0
       '@astrojs/prism': 1.0.2
       '@mdx-js/mdx': 2.2.1
       '@mdx-js/rollup': 2.2.1_rollup@3.9.1
@@ -505,8 +506,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /@google-cloud/storage/6.8.0:
-    resolution: {integrity: sha512-eRGsHrhVA7NORehYW9jLUWHRzYqFxbYiG3LQL50ZhjMekDwzhPKUQ7wbjAji9OFcO3Mk8jeNHeWdpAc/QZANCg==}
+  /@google-cloud/storage/6.9.0:
+    resolution: {integrity: sha512-0mn9DUe3dtyTWLsWLplQP3gzPolJ5kD4PwHuzeD3ye0SAQ+oFfDbT8d+vNZxqyvddL2c6uNP72TKETN2PQxDKg==}
     engines: {node: '>=12'}
     dependencies:
       '@google-cloud/paginator': 3.0.7
@@ -2681,8 +2682,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /luxon/2.5.0:
-    resolution: {integrity: sha512-IDkEPB80Rb6gCAU+FEib0t4FeJ4uVOuX1CQ9GsvU3O+JAGIgu0J7sf1OarXKaKDygTZIoJyU6YdZzTFRu+YR0A==}
+  /luxon/3.2.1:
+    resolution: {integrity: sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==}
     engines: {node: '>=12'}
     dev: false
 
@@ -4770,8 +4771,8 @@ packages:
       unist-util-visit-parents: 5.1.1
     dev: false
 
-  /unplugin-icons/0.14.15:
-    resolution: {integrity: sha512-J6YBA+fUzVM2IZPXCK3Pnk36jYVwQ6lkjRgOnZaXNIxpMDsmwDqrE1AGJ0zUbfuEoOa90OBGc0OPfN1r+qlSIQ==}
+  /unplugin-icons/0.15.0:
+    resolution: {integrity: sha512-/BGtBL8y/2wjey4GLyb0w90mhc9d7XKlewWGMxBPROHS7mR84AV1Y0zDapYK0Q/cc/+u4WUcloreev5cABDa5w==}
     peerDependencies:
       '@svgr/core': '>=5.5.0'
       '@vue/compiler-sfc': ^3.0.2
