@@ -1,25 +1,33 @@
 ---
+import { divide } from 'lodash';
 import BaseImage from './BaseImage.astro';
 
 export type Props = {
-  path: string;
-  name: string;
+  src?: string;
+  path?: string;
+  name?: string;
   alt: string;
   caption?: string;
   widths?: Array<number>;
 };
 
-const { path, name, alt, caption, widths } = Astro.props as Props;
+const { path, name, alt, caption, widths, src } = Astro.props as Props;
 ---
 
 <figure class="blog-image-container">
   <div class="blog-image">
-    <BaseImage
-      path={path}
-      name={name}
-      alt={caption ?? alt}
-      widths={widths ?? [800, 1200, 1800, 2400]}
-    />
+    {
+      !!src ? (
+        <img alt={caption ?? alt} src={src} />
+      ) : (
+        <BaseImage
+          path={path}
+          name={name}
+          alt={caption ?? alt}
+          widths={widths ?? [800, 1200, 1800, 2400]}
+        />
+      )
+    }
     {caption && <figcaption class="caption">{caption}</figcaption>}
   </div>
 </figure>
