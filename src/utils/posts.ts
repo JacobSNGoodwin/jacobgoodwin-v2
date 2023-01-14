@@ -6,12 +6,17 @@ const { orderBy, filter, includes } = lodash;
 
 export const queryPosts = (
   posts: MarkdownInstance<PostFrontmatter>[],
-  filters: {
+  filters?: {
     tag?: string;
   }
 ) => {
   const filteredPosts = filter(posts, (post) => {
-    return includes(post.frontmatter.tags, filters.tag || null);
+    return includes(post.frontmatter.tags, filters?.tag);
   });
-  return orderBy(filteredPosts, ['frontmatter.date'], ['desc']);
+
+  return orderBy(
+    !!filters?.tag ? filteredPosts : posts,
+    ['frontmatter.date'],
+    ['desc']
+  );
 };

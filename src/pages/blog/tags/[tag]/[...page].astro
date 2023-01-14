@@ -13,7 +13,6 @@ import { queryPosts } from '@utils/posts';
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   console.log('Building paths for blog tags');
 
-  // TODO - maybe replace with getCollection (newer Astro featch)
   const allPosts = [
     ...(await Astro.glob<PostFrontmatter>('../../posts/*.mdx')),
   ];

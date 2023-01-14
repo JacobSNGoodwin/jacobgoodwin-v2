@@ -30,5 +30,5 @@ const authorsText = getAuthorsText(content.authors);
 
 <div class="title-container">
   <h1 class="title">{content.title}</h1>
-  <div class="author">By {authorsText}</div>
+  {authorsText && <div class="author">By {authorsText}</div>}
 </div>

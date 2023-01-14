@@ -1,4 +1,7 @@
-export const getAuthorsText = (authors: string[]): string => {
+export const getAuthorsText = (authors: string[]): string | null => {
+  if (!authors) {
+    return null;
+  }
   const l = authors.length;
   if (!l) {
     return '';
