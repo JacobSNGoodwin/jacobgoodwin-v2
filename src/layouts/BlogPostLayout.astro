@@ -20,11 +20,6 @@ const metaTags: Partial<MetaTags> = {
 // console.log(Astro.props);
 ---
 
-<style is:global>
-  .md-content {
-  }
-</style>
-
 <BlogLayout metaTags={metaTags}>
   <PostTitle content={frontmatter} />
   <div class="md-content">
