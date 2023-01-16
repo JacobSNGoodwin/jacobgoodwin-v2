@@ -20,8 +20,11 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 const { page } = Astro.props;
 ---
 
-<!-- TODO - Post Card --><!-- TODO - Add LessonPostLayout -->
-<SectionLayout metaTags={{ title: 'JG - Lessons' }} logoPath="/lessons">
+<!-- TODO - Post Card -->
+<SectionLayout
+  metaTags={{ title: 'JG - Lessons', description: 'Mostly Church Lessons' }}
+  logoPath="/lessons"
+>
   <h1 class="tag-title">Recent Lessons</h1>
   {
     page.data.map((post) => (
