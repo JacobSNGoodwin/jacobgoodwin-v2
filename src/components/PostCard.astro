@@ -1,4 +1,16 @@
 ---
+import { PostFrontmatter } from '@src/types';
+import { MarkdownInstance } from 'astro';
+
+export type Props = {
+  post: MarkdownInstance<PostFrontmatter>;
+};
+
+const { post } = Astro.props;
 ---
 
-<!-- TODO - create reusable post card -->
+<a href={post.url}>
+  <div>
+    {post.frontmatter.title} - {post.frontmatter.date}
+  </div>
+</a>

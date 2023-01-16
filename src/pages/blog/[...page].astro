@@ -3,6 +3,7 @@ import { GetStaticPaths } from 'astro';
 import BlogLayout from '@layouts/BlogLayout.astro';
 import { PostFrontmatter } from '@src/types';
 import { queryPosts } from '@src/utils/posts';
+import PostCard from '@src/components/PostCard.astro';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   console.log('Building paths for blog tags');
@@ -21,15 +22,7 @@ const { page } = Astro.props;
 <!-- TODO - Post Card -->
 <BlogLayout metaTags={{ title: 'JG - Welcome' }}>
   <h1 class="tag-title">Bienvenidos al Blogcito</h1>
-  {
-    page.data.map((post) => (
-      <a href={post.url}>
-        <div>
-          {post.frontmatter.title} - {post.frontmatter.date}
-        </div>
-      </a>
-    ))
-  }
+  {page.data.map((post) => <PostCard post={post} />)}
 </BlogLayout>
 
 <style lang="css">

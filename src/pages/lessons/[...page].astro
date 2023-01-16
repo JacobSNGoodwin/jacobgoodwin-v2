@@ -1,8 +1,13 @@
 ---
-import { GetStaticPaths } from 'astro';
+import { GetStaticPaths, MarkdownInstance, Page } from 'astro';
 import SectionLayout from '@layouts/SectionLayout.astro';
 import { PostFrontmatter } from '@src/types';
 import { queryPosts } from '@src/utils/posts';
+import PostCard from '@src/components/PostCard.astro';
+
+export type Props = {
+  page: Page<MarkdownInstance<PostFrontmatter>>;
+};
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   console.log('Building paths for blog tags');
@@ -26,15 +31,7 @@ const { page } = Astro.props;
   logoPath="/lessons"
 >
   <h1 class="tag-title">Recent Lessons</h1>
-  {
-    page.data.map((post) => (
-      <a href={post.url}>
-        <div>
-          {post.frontmatter.title} - {post.frontmatter.date}
-        </div>
-      </a>
-    ))
-  }
+  {page.data.map((post) => <PostCard post={post} />)}
 </SectionLayout>
 
 <style lang="css">
