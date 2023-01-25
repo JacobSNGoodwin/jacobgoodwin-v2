@@ -16,7 +16,7 @@ specifiers:
   nanoid: ^4.0.0
   photoswipe: ^5.3.4
   photoswipe-dynamic-caption-plugin: ^1.2.7
-  postcss-nesting: ^10.2.0
+  postcss-nesting: ^11.0.0
   prettier: ^2.8.1
   rehype-external-links: ^2.0.1
   sharp: ^0.31.3
@@ -37,7 +37,7 @@ dependencies:
   nanoid: 4.0.0
   photoswipe: 5.3.4
   photoswipe-dynamic-caption-plugin: 1.2.7
-  postcss-nesting: 10.2.0_postcss@8.4.20
+  postcss-nesting: 11.0.0_postcss@8.4.20
   prettier: 2.8.1
   rehype-external-links: 2.0.1
   sharp: 0.31.3
@@ -3746,11 +3746,11 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: false
 
-  /postcss-nesting/10.2.0_postcss@8.4.20:
-    resolution: {integrity: sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA==}
-    engines: {node: ^12 || ^14 || >=16}
+  /postcss-nesting/11.0.0_postcss@8.4.20:
+    resolution: {integrity: sha512-Y+jmDpQuSSoM/Qq+rqDc4D3E8Cn84qUmJLFS/M5u0YgM+5adLi9qFApbz5XzjzXjGAzItTUCP7RikLGy06ebiA==}
+    engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      postcss: ^8.2
+      postcss: ^8.4
     dependencies:
       '@csstools/selector-specificity': 2.0.2_2xshye3abirqjlplmebvmaxyna
       postcss: 8.4.20

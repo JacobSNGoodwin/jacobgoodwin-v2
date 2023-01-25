@@ -12,13 +12,13 @@ const baseColor = colorMap[type];
 const color = `${baseColor}AA`;
 ---
 
-<div class="container">
+<div class="info-container">
   {title && <h3 class="title">{title}</h3>}
   <slot />
 </div>
 
 <style define:vars={{ color }}>
-  .container {
+  .info-container {
     background-color: #dddddd70;
     padding: 1em 1em;
     border-radius: 0.25em;
@@ -28,8 +28,13 @@ const color = `${baseColor}AA`;
     box-shadow: 2px 2px 2px #a7a7a7b0;
   }
 
+  .info-container > :global(p) {
+    font-size: 1.05rem;
+  }
+
   .title {
     margin-top: 0;
     margin-bottom: 0.2em;
+    font-size: 1.2rem;
   }
 </style>
