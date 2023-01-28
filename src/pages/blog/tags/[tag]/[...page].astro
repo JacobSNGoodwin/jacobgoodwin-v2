@@ -9,6 +9,7 @@ export type Props = {
 import { tags } from '@data/tags';
 import { PostFrontmatter, Tag } from 'src/types';
 import { queryPosts } from '@utils/posts';
+import PaginatedPostList from '@src/components/PaginatedPostList.astro';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   console.log('Building paths for blog tags');
@@ -32,17 +33,7 @@ const { page, tagData } = Astro.props;
 ---
 
 <BlogLayout metaTags={{ title: `JG - ${tagData.title}` }}>
-  <h1 class="tag-title">{tagData.title}</h1>
-
-  {
-    page.data.map((post) => (
-      <a href={post.url}>
-        <div>
-          {post.frontmatter.title} - {post.frontmatter.date}
-        </div>
-      </a>
-    ))
-  }
+  <PaginatedPostList title={tagData.title} page={page} />
 </BlogLayout>
 
 <style lang="css">

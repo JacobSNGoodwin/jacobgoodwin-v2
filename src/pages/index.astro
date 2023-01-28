@@ -10,6 +10,7 @@ import SectionLayout from '@layouts/SectionLayout.astro';
 
   .links {
     & > a {
+      display: block;
       &:nth-child(4n + 1) {
         color: var(--color1);
       }
@@ -39,6 +40,7 @@ import SectionLayout from '@layouts/SectionLayout.astro';
 
     <div class="links">
       <a href="/blog">Blog</a>
+      <a href="/lessons">Lessons</a>
     </div>
   </div>
 </SectionLayout>

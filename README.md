@@ -12,11 +12,16 @@
   - we are already using an `imageUrl` from but we might want to pass an `imageSrc`. Suggested width by FB is 1200.
   - nailing down this image source will also be useful if we want to display a Post Image in a post list (below)
 - [x] - create pagination sections (group by tags)
-- [ ] - PostCard components - rendered by PostList
+- [x] - PostCard components - rendered by PostList
 - [x] - create ImageVariants component (become Lazy Image)
 - [x] - create ImageSlider component
 - [x] - Create info/warning type box components like in Vuepress
-- [ ] - import `/notes` articles into MDX
+- [x] - import `/notes` articles into MDX
+- [ ] - verify metadata by section. Do we have open graph data for posts?
+  - [ ] - individual posts (get image right)
+  - [ ] - All blog posts
+  - [ ] - blog tag
+  - [ ] - lessons
 - [ ] - import `/professional`
 
 ## Nice to Have

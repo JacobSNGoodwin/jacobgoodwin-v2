@@ -1,9 +1,13 @@
 ---
-import { GetStaticPaths } from 'astro';
+import { GetStaticPaths, MarkdownInstance, Page } from 'astro';
 import BlogLayout from '@layouts/BlogLayout.astro';
 import { PostFrontmatter } from '@src/types';
 import { queryPosts } from '@src/utils/posts';
-import PostCard from '@src/components/PostCard.astro';
+import PaginatedPostList from '@src/components/PaginatedPostList.astro';
+
+export type Props = {
+  page: Page<MarkdownInstance<PostFrontmatter>>;
+};
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   console.log('Building paths for blog tags');
@@ -19,10 +23,8 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 const { page } = Astro.props;
 ---
 
-<!-- TODO - Post Card -->
 <BlogLayout metaTags={{ title: 'JG - Welcome' }}>
-  <h1 class="tag-title">Bienvenidos al Blogcito</h1>
-  {page.data.map((post) => <PostCard post={post} />)}
+  <PaginatedPostList title="All Posts" page={page} />
 </BlogLayout>
 
 <style lang="css">

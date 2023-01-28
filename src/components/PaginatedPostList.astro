@@ -1,0 +1,23 @@
+---
+import { PostFrontmatter } from '@src/types';
+import { MarkdownInstance, Page } from 'astro';
+import PostCard from './PostCard.astro';
+
+export type Props = {
+  page: Page<MarkdownInstance<PostFrontmatter>>;
+  title?: string;
+};
+
+const { page, title } = Astro.props;
+---
+
+<div>
+  {title && <h1 class="sections-title">{title}</h1>}
+  {page.data.map((post) => <PostCard post={post} />)}
+</div>
+
+<style lang="css">
+  .sections-title {
+    text-align: center;
+  }
+</style>
