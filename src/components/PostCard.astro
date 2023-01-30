@@ -1,16 +1,39 @@
 ---
 import { PostFrontmatter } from '@src/types';
 import { MarkdownInstance } from 'astro';
+import format from 'date-fns/format';
 
 export type Props = {
   post: MarkdownInstance<PostFrontmatter>;
 };
 
 const { post } = Astro.props;
+
+const postDate = new Date(post?.frontmatter?.date);
+const formattedDate = format(postDate, 'LLLL do, yyyy');
 ---
 
-<a href={post.url}>
-  <div>
-    {post.frontmatter.title} - {post.frontmatter.date}
+<a href={post.url} class="post-card">
+  <div class="post-card-title">
+    {post.frontmatter.title}
+  </div>
+  <div class="post-card-date">
+    {formattedDate}
   </div>
 </a>
+
+<style>
+  .post-card {
+    display: block;
+    margin: 1.5em auto;
+    color: var(--headerColor);
+  }
+
+  .post-card-title {
+    text-align: center;
+  }
+
+  .post-card-date {
+    text-align: center;
+  }
+</style>

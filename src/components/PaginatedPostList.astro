@@ -2,6 +2,9 @@
 import { PostFrontmatter } from '@src/types';
 import { MarkdownInstance, Page } from 'astro';
 import PostCard from './PostCard.astro';
+import ChevronRight from '~icons/tabler/circle-chevron-right';
+import ChevronLeft from '~icons/tabler/circle-chevron-left';
+import { spawn } from 'child_process';
 
 export type Props = {
   page: Page<MarkdownInstance<PostFrontmatter>>;
@@ -13,11 +16,62 @@ const { page, title } = Astro.props;
 
 <div>
   {title && <h1 class="sections-title">{title}</h1>}
-  {page.data.map((post) => <PostCard post={post} />)}
+  <div>
+    {page.data.map((post) => <PostCard post={post} />)}
+  </div>
+  <div class="pagination">
+    {
+      page?.url.prev ? (
+        <a href={page?.url?.prev}>
+          <ChevronLeft />
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      page.lastPage > 1 && (
+        <p>
+          {page.currentPage} of {page.lastPage}
+        </p>
+      )
+    }
+    {
+      page?.url.next ? (
+        <a href={page.url.next}>
+          <ChevronRight />
+        </a>
+      ) : (
+        <span />
+      )
+    }
+  </div>
 </div>
 
 <style lang="css">
   .sections-title {
     text-align: center;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    & > p {
+      font-family: 'Fira Sans', sans-serif;
+      color: var(--color1);
+    }
+
+    & > a {
+      font-size: 2em;
+      color: var(--color1);
+
+      & :hover {
+        color: var(--color4);
+        transition: color 300ms;
+      }
+    }
   }
 </style>

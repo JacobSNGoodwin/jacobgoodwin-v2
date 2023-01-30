@@ -11,8 +11,8 @@ specifiers:
   astro: ^1.9.0
   autoprefixer: ^10.4.13
   cssnano: ^5.1.14
+  date-fns: ^2.29.3
   lodash: ^4.17.21
-  luxon: ^3.2.1
   nanoid: ^4.0.0
   photoswipe: ^5.3.4
   photoswipe-dynamic-caption-plugin: ^1.2.7
@@ -32,8 +32,8 @@ dependencies:
   astro: 1.9.0_@types+node@18.11.18
   autoprefixer: 10.4.13_postcss@8.4.20
   cssnano: 5.1.14_postcss@8.4.20
+  date-fns: 2.29.3
   lodash: 4.17.21
-  luxon: 3.2.1
   nanoid: 4.0.0
   photoswipe: 5.3.4
   photoswipe-dynamic-caption-plugin: 1.2.7
@@ -1432,6 +1432,11 @@ packages:
     engines: {node: '>= 12'}
     dev: false
 
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
+
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -2681,11 +2686,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-
-  /luxon/3.2.1:
-    resolution: {integrity: sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==}
-    engines: {node: '>=12'}
-    dev: false
 
   /magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
