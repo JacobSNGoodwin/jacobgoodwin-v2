@@ -2,6 +2,7 @@
 import { PostFrontmatter } from '@src/types';
 import { MarkdownInstance } from 'astro';
 import format from 'date-fns/format';
+import { divide } from 'lodash';
 
 export type Props = {
   post: MarkdownInstance<PostFrontmatter>;
@@ -20,6 +21,11 @@ const formattedDate = format(postDate, 'LLLL do, yyyy');
   <div class="post-card-date">
     {formattedDate}
   </div>
+  {
+    post?.frontmatter?.description && (
+      <p class="post-card-description">{post.frontmatter.description}</p>
+    )
+  }
 </a>
 
 <style>
@@ -27,6 +33,10 @@ const formattedDate = format(postDate, 'LLLL do, yyyy');
     display: block;
     margin: 1.5em auto;
     color: var(--headerColor);
+    &:hover {
+      opacity: 1;
+    }
+    max-width: 500px;
   }
 
   .post-card-title {
@@ -35,5 +45,13 @@ const formattedDate = format(postDate, 'LLLL do, yyyy');
 
   .post-card-date {
     text-align: center;
+  }
+
+  .post-card-description {
+    font-color: var(--bodyColor);
+    font-size: 0.8em;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
   }
 </style>
