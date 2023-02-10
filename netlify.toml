@@ -1,6 +1,6 @@
 [[redirects]]
   from = "https://blog.jacobgoodwin.me"
-  to = "https://jacobgoodwin.me/blog"
+  to = "https://jacobgoodwin.me/blog/index.html"
   status = 200
   forced = true
 
@@ -13,7 +13,7 @@
 
 [[redirects]]
   from = "https://lessons.jacobgoodwin.me"
-  to = "https://jacobgoodwin.me/lessons"
+  to = "https://jacobgoodwin.me/lessons/index.html"
   status = 200
   forced = true
 
