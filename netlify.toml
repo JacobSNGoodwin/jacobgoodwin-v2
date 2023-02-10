@@ -2,9 +2,11 @@
   from = "https://blog.jacobgoodwin.me/*"
   to = "https://jacobgoodwin.me/blog/:splat"
   status = 200
+  forced = true
 
 
 [[redirects]]
   from = "https://lessons.jacobgoodwin.me/*"
   to = "https://jacobgoodwin.me/lessons/:splat"
   status = 200
+  forced = true
