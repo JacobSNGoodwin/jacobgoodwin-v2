@@ -1,4 +1,5 @@
 import { Bucket, File, Storage } from '@google-cloud/storage';
+import { getClient } from './cloud-storage';
 
 type ImageProps = {
   path: string;
@@ -6,8 +7,6 @@ type ImageProps = {
   caption?: string;
 };
 export type BuildImageOptions = Array<ImageProps> | ImageProps;
-
-let storageClient;
 
 const createDataSources = (files: File[], caption) => {
   const filesWithMetadata = files.reduce<
@@ -111,15 +110,7 @@ const buildImagesFromPrefix = async (bucket: Bucket, options: ImageProps) => {
 };
 
 export const buildImages = async (options: BuildImageOptions) => {
-  if (!storageClient) {
-    storageClient = new Storage({
-      projectId: import.meta.env.CLOUD_STORAGE_PROJECT,
-      credentials: {
-        client_email: import.meta.env.CLOUD_STORAGE_EMAIL,
-        private_key: import.meta.env.CLOUD_STORAGE_KEY,
-      },
-    });
-  }
+  const storageClient = getClient();
 
   const bucket = storageClient.bucket(import.meta.env.CLOUD_STORAGE_BUCKET);
 

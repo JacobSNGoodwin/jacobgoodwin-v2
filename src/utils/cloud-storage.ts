@@ -8,12 +8,6 @@ export const getClient = () => {
 
     client = new Storage({
       projectId: import.meta.env.CLOUD_STORAGE_PROJECT,
-      credentials: {
-        client_email: import.meta.env.CLOUD_STORAGE_EMAIL,
-        private_key: import.meta.env.CLOUD_STORAGE_KEY.split(
-          String.raw`\n`
-        ).join('\n'),
-      },
     });
   }
 
