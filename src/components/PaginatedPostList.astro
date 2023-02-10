@@ -4,7 +4,6 @@ import { MarkdownInstance, Page } from 'astro';
 import PostCard from './PostCard.astro';
 import ChevronRight from '~icons/tabler/circle-chevron-right';
 import ChevronLeft from '~icons/tabler/circle-chevron-left';
-import { spawn } from 'child_process';
 
 export type Props = {
   page: Page<MarkdownInstance<PostFrontmatter>>;
@@ -20,15 +19,9 @@ const { page, title } = Astro.props;
     {page.data.map((post) => <PostCard post={post} />)}
   </div>
   <div class="pagination">
-    {
-      page?.url.prev ? (
-        <a href={page?.url?.prev}>
-          <ChevronLeft />
-        </a>
-      ) : (
-        <span />
-      )
-    }
+    <a href={page?.url?.prev} class:list={[{ hidden: !page?.url?.prev }]}>
+      <ChevronLeft />
+    </a>
     {
       page.lastPage > 1 && (
         <p>
@@ -36,15 +29,9 @@ const { page, title } = Astro.props;
         </p>
       )
     }
-    {
-      page?.url.next ? (
-        <a href={page.url.next}>
-          <ChevronRight />
-        </a>
-      ) : (
-        <span />
-      )
-    }
+    <a href={page.url.next} class:list={[{ hidden: !page?.url?.next }]}>
+      <ChevronRight />
+    </a>
   </div>
 </div>
 
@@ -53,15 +40,21 @@ const { page, title } = Astro.props;
     text-align: center;
   }
 
+  .hidden {
+    visibility: hidden;
+  }
+
   .pagination {
     display: flex;
     justify-content: space-between;
+    align-content: center;
     margin-top: 2em;
     margin-bottom: 2em;
 
     & > p {
       font-family: 'Fira Sans', sans-serif;
       color: var(--color1);
+      margin: 0 1em;
     }
 
     & > a {
