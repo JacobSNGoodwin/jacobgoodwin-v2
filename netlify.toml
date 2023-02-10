@@ -4,6 +4,12 @@
   status = 200
   forced = true
 
+[[redirects]]
+  from = "https://blog.jacobgoodwin.me"
+  to = "https://jacobgoodwin.me/blog"
+  status = 200
+  forced = true
+
 
 [[redirects]]
   from = "https://lessons.jacobgoodwin.me/*"
