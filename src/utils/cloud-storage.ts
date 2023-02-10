@@ -9,14 +9,12 @@ export const getClient = () => {
         ? {
             credentials: {
               client_email: import.meta.env.CLOUD_STORAGE_EMAIL,
-              client_secret: import.meta.env.CLOUD_STORAGE_KEY.split(
-                '\\n'
-              ).join('\n'),
+              private_key: import.meta.env.CLOUD_STORAGE_KEY.split('\\n').join(
+                '\n'
+              ),
             },
           }
         : {};
-
-    console.log('creating cloud storage client for environment: ', credsConfig);
 
     client = new Storage({
       projectId: import.meta.env.CLOUD_STORAGE_PROJECT,
