@@ -12,7 +12,7 @@
   forced = true
 
 [[redirects]]
-  from = "https://lessons.jacobgoodwin.me"
+  from = "https://lessons.jacobgoodwin.me/index.html"
   to = "https://jacobgoodwin.me/lessons/index.html"
   status = 200
   forced = true
