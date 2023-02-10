@@ -8,8 +8,3 @@
   from = "https://lessons.jacobgoodwin.me/*"
   to = "https://jacobgoodwin.me/lessons/:splat"
   status = 200
-
-[[redirects]]
-  from = "https://jacobgoodwin.me"
-  to = "https://blog.jacobgoodwin.me"
-  status = 200
