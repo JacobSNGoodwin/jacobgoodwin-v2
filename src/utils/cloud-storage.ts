@@ -10,7 +10,7 @@ export const getClient = () => {
       projectId: import.meta.env.CLOUD_STORAGE_PROJECT,
       credentials: {
         client_email: import.meta.env.CLOUD_STORAGE_EMAIL,
-        private_key: import.meta.env.CLOUD_STORAGE_KEY,
+        private_key: import.meta.env.CLOUD_STORAGE_KEY.split('\\n').join('\n'),
       },
     });
   }
