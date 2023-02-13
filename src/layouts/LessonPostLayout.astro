@@ -12,8 +12,8 @@ const { frontmatter } = Astro.props as Props;
 
 const metaTags: Partial<MetaTags> = {
   title: frontmatter.title,
-  description: frontmatter.description,
-  author: (frontmatter?.authors ?? []).join(','),
+  description: frontmatter?.description ?? frontmatter?.title,
+  author: frontmatter?.authors?.join(',') ?? 'Jacob Goodwin',
   image: frontmatter.imageUrl,
   keywords: frontmatter?.keywords ?? [],
 };
