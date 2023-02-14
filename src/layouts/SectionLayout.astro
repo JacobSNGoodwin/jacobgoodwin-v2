@@ -1,26 +1,22 @@
 ---
-import Navbar from "@components/Navbar.astro";
-import { baseMetaTags } from "@data/baseMetaTags";
-import { MetaTags, NavItem } from "src/types";
-import BaseLayout from "./BaseLayout.astro";
+import Navbar from '@components/Navbar.astro';
+import { baseMetaTags } from '@data/baseMetaTags';
+import { MetaTags, NavItem } from 'src/types';
+import BaseLayout from './BaseLayout.astro';
 
 export type Props = {
-  title?: string,
-  navItems?: NavItem[],
-  logoPath?: string,
-  metaTags?: Partial<MetaTags>,
-}
+  title?: string;
+  navItems?: NavItem[];
+  logoPath?: string;
+  metaTags?: Partial<MetaTags>;
+};
 
-const {
-  navItems = [],
-  logoPath = '/',
-  metaTags,
-} = Astro.props as Props;
+const { navItems = [], logoPath = '/', metaTags } = Astro.props as Props;
 
 const tags = {
   ...baseMetaTags,
   ...metaTags,
-}
+};
 ---
 
 <style>
@@ -29,6 +25,7 @@ const tags = {
     max-width: var(--content-width);
     padding: 0.5rem 1rem;
     margin: auto;
+    margin-bottom: 2em;
   }
 </style>
 

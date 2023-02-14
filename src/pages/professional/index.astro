@@ -1,0 +1,84 @@
+---
+import { Image } from '@astrojs/image/components';
+import ExternalLink from '@components/ExternalLink.astro';
+import ExternalLinkIcon from '~icons/tabler/external-link';
+import data from '@data/professional/home';
+import profileImage from '@assets/images/Profile.jpg';
+import youtubeImage from '@assets/images/Youtube.png';
+import linkedinImage from '@assets/images/linkedIn.png';
+import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
+
+const { intro, current, about } = data;
+---
+
+<ProfessionalLayout metaTags={{ title: 'Welcome' }}>
+  <h1 class="title">Welcome</h1>
+  {intro.map((introParagraph) => <p>{introParagraph}</p>)}
+
+  <Image
+    class="profile-image"
+    src={profileImage}
+    width={256}
+    height={256}
+    alt="Soy Yo, Jacob Goodwin"
+  />
+
+  <div class="badges">
+    <ExternalLink href="https://youtube.com/channel/UCcE2YngHoargpdjIzkCNY2Q">
+      <Image src={youtubeImage} height={96} alt="My YouTube Channel" />
+    </ExternalLink>
+    <ExternalLink href="https://www.linkedin.com/in/jacobgoodwin1/">
+      <Image src={linkedinImage} height={96} alt="LinkedIn Logo" />
+    </ExternalLink>
+  </div>
+
+  <h2>Currently Working On</h2>
+  {
+    current.map((c) => (
+      <ExternalLink href={c.url} class="current-project">
+        <span>{c.description}</span>
+        <span>
+          <ExternalLinkIcon class="project-link" />
+        </span>
+      </ExternalLink>
+    ))
+  }
+  <h2>My Story</h2>
+  {about.map((aboutParagraph) => <p>{aboutParagraph}</p>)}
+</ProfessionalLayout>
+
+<style>
+  .title {
+    text-align: center;
+  }
+
+  .badges {
+    display: flex;
+    justify-content: center;
+    margin: 2em auto;
+
+    & > * {
+      padding: 1em;
+    }
+  }
+
+  .profile-image {
+    margin: auto;
+    display: block;
+    border-radius: 128px;
+  }
+
+  .current-project {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 1em auto;
+    color: var(--color1);
+  }
+
+  .project-link {
+    vertical-align: baseline;
+    padding-left: 12px;
+    font-size: 24px;
+  }
+</style>

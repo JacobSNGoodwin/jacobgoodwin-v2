@@ -1,0 +1,33 @@
+---
+export type Props = {
+  metaTags?: MetaTags;
+};
+
+import { baseMetaTags } from '@data/baseMetaTags';
+import { MetaTags } from 'src/types';
+import SectionLayout from './SectionLayout.astro';
+import navItems from '@data/professional/navLinks';
+
+const items = navItems.map((item) => ({
+  title: item.label,
+  path: `/professional/${item.path}`,
+}));
+
+const { metaTags } = Astro.props as Props;
+
+const mergedMetaTags: MetaTags = {
+  ...baseMetaTags,
+  title: 'JG Professional',
+  author: 'Jacob Goodwin',
+  description: 'A Look at My Professional Projects and Accomplishments',
+  ...metaTags,
+};
+---
+
+<SectionLayout
+  navItems={items}
+  logoPath="/professional"
+  metaTags={mergedMetaTags}
+>
+  <slot />
+</SectionLayout>

@@ -1,18 +1,18 @@
 export default {
-  intro:
-    "I'm Jacob Goodwin, a Web Developer experienced in writing single page applications and backend services with languages and tools including Vue, React, Go, Nodejs, Akka, gRPC, and GraphQL. I am also an AWS Certified Developer Associate. Check out my portfolio for a list of projects and technologies I work with!",
+  intro: [
+    "I'm Jacob Goodwin, a Web Developer experienced in writing single page applications and backend services in various languages. Professionaly, I build full-stack React applications using NodeJS backends with the serverless framework and deployed on AWS.",
+    'I have also dabbled in Go and Rust. I have a Youtube Chanell where I have taught on some of these subjects. Check it out!',
+  ],
   current: [
     {
-      description: 'Full Stack Memorization App Tutorial - Video',
+      description:
+        'Real-time, Ranked-Choice Voting Application with Nest JS and React in Typescript - Video',
+      url: 'https://www.youtube.com/playlist?list=PLnrGn4P6C4P5J2rSSyiAyxZegws4SS8ey',
+    },
+    {
+      description:
+        'Full Stack Memorization App Tutorial with Go, Vue and Traefik - Video',
       url: 'https://www.youtube.com/playlist?list=PLnrGn4P6C4P6yasdEJnEUhueTjCGXGuFe',
-    },
-    {
-      description: 'Full Stack Memorization App Tutorial - Written',
-      url: 'https://dev.to/jacobsngoodwin/series/9052',
-    },
-    {
-      description: 'Vue-DFS-Store',
-      url: 'https://github.com/JacobSNGoodwin/vue-dfs-store',
     },
   ],
   about: [

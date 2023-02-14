@@ -1,18 +1,18 @@
 export default [
   {
-    path: '/skills/',
-    label: 'Skills',
-  },
-  {
-    path: '/projects/',
+    path: 'projects',
     label: 'Projects',
   },
   {
-    path: '/resume/',
-    label: 'Resume',
+    path: 'resume',
+    label: 'Résumé',
   },
   {
-    path: '/contact/',
+    path: 'skills',
+    label: 'Skills',
+  },
+  {
+    path: 'contact',
     label: 'Contact',
   },
 ];
