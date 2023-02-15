@@ -1,16 +1,23 @@
-export default [
+type Project = {
+  title: string;
+  mediaName?: string;
+  description: string;
+  url?: string;
+  github: string;
+  icons: Array<string>;
+};
+
+const projects: Array<Project> = [
   {
     title: 'Nuxt Ghost Starter',
-    mediaName: null,
     description:
       'A starter project for building a server-side rendered or statically generated site from Ghost blog data',
-    url: 'https://blog.jacobgoodwin.me',
     github: 'https://github.com/JacobSNGoodwin/nuxt-ghost-starter',
     icons: ['nuxt', 'vue', 'ghost', 'bulma'],
   },
   {
     title: 'Wordmem',
-    mediaName: null,
+
     description:
       'Completed full-stack memorization application that is the basis for my current Youtube and dev.to tutorial. The application features multiple services and events-driven communication between them with Google Cloud PubSub. The app runs behind a Traefik reverse proxy with all services running in Docker Containers.',
     url: 'https://dev.to/jacobsngoodwin/series/9052',
@@ -39,10 +46,8 @@ export default [
   },
   {
     title: 'IESD Spark',
-    mediaName: null,
     description:
       'Student and teacher portal for Inland Empire Software Developers organization',
-    url: null,
     github: 'https://github.com/inland-empire-software-development/spark',
     icons: ['react', 'nextjs', 'typescript', 'typeorm', 'postgres'],
   },
@@ -57,10 +62,8 @@ export default [
   },
   {
     title: 'Store Employee and Inventory Manager',
-    mediaName: null,
     description:
       'A work-in-progress full-stack application for managing employees and product inventory. The application is built with modern React and Apollo Client on the front end. The back end is a GraphQL server built with Go and leveraging Postgres for data and Redis as a session cache.',
-    url: null,
     github: 'https://github.com/JacobSNGoodwin/react-go-graphql',
     icons: [
       'go',
@@ -74,19 +77,15 @@ export default [
   },
   {
     title: 'Echo-Mongo',
-    mediaName: null,
     description:
       'A REST API built with the Echo Framework for Golang. It implements MongoDB and Google Cloud Storage',
-    url: null,
     github: 'https://github.com/JacobSNGoodwin/echo_mongo',
     icons: ['go', 'echo', 'gc', 'mongo'],
   },
   {
     title: 'Upload Stream with Akka and Google Cloud',
-    mediaName: null,
     description:
       'An Akka Actor System Representing an IOT system. The repository contains a publishing client which publishes messages to PubSub telling the actor system to record or upload a file to Google Cloud for a particular IOT device. Then the subscription application receives the message from PubSub, and prompts that device to either record its data or to upload its data to Google Cloud Storage.',
-    url: null,
     github: 'https://github.com/JacobSNGoodwin/uploadStreamDemo',
     icons: ['scala', 'akka', 'gc'],
   },
@@ -109,10 +108,11 @@ export default [
   },
   {
     title: 'JSNG - Ghost Blog Theme',
-    mediaName: null,
     description:
       'Handlebars-templated theme written for the Ghost blogging platform',
     github: 'https://github.com/JacobSNGoodwin/jsng',
     icons: ['ghost', 'handlebars', 'sass', 'parcel'],
   },
 ];
+
+export default projects;

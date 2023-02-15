@@ -1,0 +1,31 @@
+---
+export type Props = {};
+---
+
+<div class="card">
+  <slot />
+</div>
+
+<style>
+  .card {
+    margin-bottom: 1.5em;
+    padding: 0.75em;
+
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    box-shadow: 0px 2px 3px 2px rgba(131, 131, 131, 0.28);
+
+    &:nth-of-type(4n + 1) {
+      border-bottom-color: var(--color1);
+    }
+    &:nth-of-type(4n + 2) {
+      border-bottom-color: var(--color2);
+    }
+    &:nth-of-type(4n + 3) {
+      border-bottom-color: var(--color3);
+    }
+    &:nth-of-type(4n + 4) {
+      border-bottom-color: var(--color4);
+    }
+  }
+</style>

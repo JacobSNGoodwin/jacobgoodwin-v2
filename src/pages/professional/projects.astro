@@ -1,13 +1,33 @@
 ---
+import Card from '@src/components/Card.astro';
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
+import projects from '@data/professional/projects.js';
 ---
 
 <ProfessionalLayout metaTags={{ title: 'Projects' }}>
   <h1 class="title">Projects</h1>
+  {
+    projects.map((project) => (
+      <Card>
+        <h3>{project.title}</h3>
+        <p class="project-description">{project.description}</p>
+        <div class="links"></div>
+      </Card>
+    ))
+  }
 </ProfessionalLayout>
 
 <style>
   .title {
     text-align: center;
+  }
+
+  .project-description {
+    font-size: 0.9em;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
   }
 </style>
