@@ -17,7 +17,6 @@ const projects: Array<Project> = [
   },
   {
     title: 'Wordmem',
-
     description:
       'Completed full-stack memorization application that is the basis for my current Youtube and dev.to tutorial. The application features multiple services and events-driven communication between them with Google Cloud PubSub. The app runs behind a Traefik reverse proxy with all services running in Docker Containers.',
     url: 'https://dev.to/jacobsngoodwin/series/9052',

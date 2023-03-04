@@ -2,6 +2,12 @@
 import Card from '@src/components/Card.astro';
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
 import projects from '@data/professional/projects.js';
+import iconMap from '@data/professional/iconData';
+import ExternalLink from '@src/components/ExternalLink.astro';
+
+import GithubIcon from '~icons/fa6-brands/github';
+import ExternalLinkIcon from '~icons/tabler/external-link';
+import PhotoVideoIcon from '~icons/fa-solid/photo-video';
 ---
 
 <ProfessionalLayout metaTags={{ title: 'Projects' }}>
@@ -11,7 +17,33 @@ import projects from '@data/professional/projects.js';
       <Card>
         <h3>{project.title}</h3>
         <p class="project-description">{project.description}</p>
-        <div class="links"></div>
+        <div class="tech-icons">
+          {project?.url && (
+            <ExternalLink href={project.url}>
+              <ExternalLinkIcon class="project-icon external-url" />
+            </ExternalLink>
+          )}
+          {project?.github && (
+            <ExternalLink href={project.github}>
+              <GithubIcon class="project-icon github" />
+            </ExternalLink>
+          )}
+          {project.mediaName && (
+            <ExternalLink href="/images/SmithPlot.png">
+              <PhotoVideoIcon class="project-icon" />
+            </ExternalLink>
+          )}
+        </div>
+        <div class="made-with">
+          <h3>Made With</h3>
+          <div class="tech-icons">
+            {project.icons.map((iconName) => (
+              <ExternalLink href={iconMap[iconName].url}>
+                <img src={iconMap[iconName].icon} height="40" />
+              </ExternalLink>
+            ))}
+          </div>
+        </div>
       </Card>
     ))
   }
@@ -26,8 +58,34 @@ import projects from '@data/professional/projects.js';
     font-size: 0.9em;
   }
 
-  .links {
+  .made-with {
+    text-align: center;
+    margin: 1em auto 0 auto;
+
+    & > h3 {
+      margin: 0.25em auto;
+    }
+  }
+
+  .project-icon {
+    font-size: 40px;
+  }
+
+  .github {
+    color: #6e5494;
+  }
+
+  .external-url {
+    color: var(--color1);
+  }
+
+  .tech-icons {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+
+    & > * {
+      margin: 0.5em 0.5em;
+    }
   }
 </style>

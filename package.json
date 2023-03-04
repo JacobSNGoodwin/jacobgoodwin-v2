@@ -12,8 +12,10 @@
   "dependencies": {
     "@astrojs/image": "^0.12.1",
     "@astrojs/mdx": "^0.14.0",
-    "@iconify-json/tabler": "^1.1.54",
     "@google-cloud/storage": "^6.9.0",
+    "@iconify-json/fa-solid": "^1.1.4",
+    "@iconify-json/fa6-brands": "^1.1.10",
+    "@iconify-json/tabler": "^1.1.54",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
     "@types/sharp": "^0.31.1",
