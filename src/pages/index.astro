@@ -3,44 +3,33 @@ import SectionLayout from '@layouts/SectionLayout.astro';
 ---
 
 <style>
-  .content {
-    max-width: var(--content-width);
-    margin: auto;
+  .links {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & > h2 {
+      margin: 0.25em auto;
+    }
   }
 
-  .links {
-    & > a {
-      display: block;
-      &:nth-child(4n + 1) {
-        color: var(--color1);
-      }
+  .blog {
+    color: var(--color1);
+  }
 
-      &:nth-child(4n + 2) {
-        color: var(--color2);
-      }
-
-      &:nth-child(4n + 3) {
-        color: var(--color3);
-      }
-
-      &:nth-child(4n + 4) {
-        color: var(--color4);
-      }
-    }
+  .professional {
+    color: var(--color2);
   }
 </style>
 
 <SectionLayout>
-  <div class="content">
-    <h1>Mah Site!</h1>
-    <p>
-      Welcome to my personal site. This is just a silly home page. Check out my
-      sites below!
-    </p>
-
-    <div class="links">
-      <a href="/blog">Blog</a>
-      <a href="/lessons">Lessons</a>
-    </div>
+  <div class="links">
+    <h2>
+      <a class="blog" href="/blog">Blog</a>
+    </h2>
+    <h2>
+      <a class="professional" href="/professional">Professional</a>
+    </h2>
   </div>
 </SectionLayout>
