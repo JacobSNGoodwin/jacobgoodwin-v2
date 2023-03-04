@@ -19,6 +19,7 @@ import HandlebarsIcon from '../../assets/icons/handlebarsjs-icon.svg';
 import JavascriptIcon from '../../assets/icons/javascript.svg';
 import JestIcon from '../../assets/icons/jestjsio.svg';
 import MongoIcon from '../../assets/icons/mongodb.svg';
+import NestJSIcon from '../../assets/icons/nestjs-ar21.svg';
 import NextJSIcon from '../../assets/icons/nextjs.svg';
 import NpmIcon from '../../assets/icons/npmjs-ar21.svg';
 import NodeIcon from '../../assets/icons/nodejs-icon.svg';
@@ -31,6 +32,7 @@ import ReactIcon from '../../assets/icons/reactjs-icon.svg';
 import RedisIcon from '../../assets/icons/redis.svg';
 import SassIcon from '../../assets/icons/sass-lang-icon.svg';
 import ScalaIcon from '../../assets/icons/scala-lang-icon.svg';
+import SocketIOIcon from '../../assets/icons/socketio-ar21.svg';
 import TraefikIcon from '../../assets/icons/traefik.svg';
 import TypeORMIcon from '../../assets/icons/typeorm.svg';
 import TypeScriptIcon from '../../assets/icons/typescriptlang-icon.svg';
@@ -74,6 +76,7 @@ const icons: Record<string, IconData> = {
   },
   mongo: { icon: MongoIcon, url: 'https://www.mongodb.com/' },
   nextjs: { icon: NextJSIcon, url: 'https://nextjs.org/' },
+  nestjs: { icon: NestJSIcon, url: 'https://nestjs.com/' },
   node: { icon: NodeIcon, url: 'https://nodejs.org/en/' },
   npm: { icon: NpmIcon, url: 'https://www.npmjs.com/' },
   nuxt: { icon: NuxtIcon, url: 'https://nuxtjs.org/' },
@@ -85,6 +88,7 @@ const icons: Record<string, IconData> = {
   redis: { icon: RedisIcon, url: 'https://redis.io/' },
   sass: { icon: SassIcon, url: 'https://sass-lang.com/' },
   scala: { icon: ScalaIcon, url: 'https://www.scala-lang.org/' },
+  socketio: { icon: SocketIOIcon, url: 'https://socket.io/' },
   traefik: { icon: TraefikIcon, url: 'https://traefik.io/' },
   typeorm: { icon: TypeORMIcon, url: 'https://typeorm.io/#/' },
   typescript: {

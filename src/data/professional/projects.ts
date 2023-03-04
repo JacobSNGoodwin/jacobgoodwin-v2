@@ -9,11 +9,12 @@ type Project = {
 
 const projects: Array<Project> = [
   {
-    title: 'Nuxt Ghost Starter',
+    title: 'Ranker Tutorial',
     description:
-      'A starter project for building a server-side rendered or statically generated site from Ghost blog data',
-    github: 'https://github.com/JacobSNGoodwin/nuxt-ghost-starter',
-    icons: ['nuxt', 'vue', 'ghost', 'bulma'],
+      'A Youtube tutorial where I build a "realtime," ranked-choice voting application with NestJS, Typescript, and Socket-IO for websocket communication.',
+    url: 'https://youtube.com/playlist?list=PLnrGn4P6C4P5J2rSSyiAyxZegws4SS8ey',
+    github: 'https://github.com/JacobSNGoodwin/ranker-course',
+    icons: ['nestjs', 'react', 'typescript', 'socketio', 'redis'],
   },
   {
     title: 'Wordmem',
@@ -35,6 +36,13 @@ const projects: Array<Project> = [
       'gin',
       'bulma',
     ],
+  },
+  {
+    title: 'Nuxt Ghost Starter',
+    description:
+      'A starter project for building a server-side rendered or statically generated site from Ghost blog data',
+    github: 'https://github.com/JacobSNGoodwin/nuxt-ghost-starter',
+    icons: ['nuxt', 'vue', 'ghost', 'bulma'],
   },
   {
     title: 'Vue-DFS-Store',
