@@ -1,5 +1,12 @@
-export default [
-  {
+type Skill = {
+  label: String;
+  items: Array<{ skill: string; icon?: string }>;
+};
+
+type SkillType = 'languages' | 'tools' | 'antennas';
+
+const skills: Record<SkillType, Skill> = {
+  languages: {
     label: 'Programming Languages',
     items: [
       {
@@ -7,12 +14,20 @@ export default [
         icon: 'javascript',
       },
       {
+        skill: 'Typescript',
+        icon: 'typescript',
+      },
+      {
         skill: 'Go',
         icon: 'go',
       },
       {
-        skill: 'Typescript',
-        icon: 'typescript',
+        skill: 'Rust',
+        icon: 'rust',
+      },
+      {
+        skill: 'Dart',
+        icon: 'dart',
       },
       {
         skill: 'Scala',
@@ -26,34 +41,26 @@ export default [
         skill: 'Python',
         icon: 'python',
       },
-      {
-        skill: 'Dart',
-        icon: 'dart',
-      },
     ],
   },
-  {
+  tools: {
     label: 'Tools and Frameworks',
     items: [
-      {
-        skill: 'Vue',
-        icon: 'vue',
-      },
-      {
-        skill: 'Nuxt',
-        icon: 'nuxt',
-      },
       {
         skill: 'React',
         icon: 'react',
       },
       {
-        skill: 'Flutter',
-        icon: 'flutter',
+        skill: 'Serverless',
+        icon: 'serverless',
       },
       {
-        skill: null,
+        skill: 'NextJS',
         icon: 'nextjs',
+      },
+      {
+        skill: 'Redis',
+        icon: 'redis',
       },
       {
         skill: 'AWS',
@@ -62,6 +69,18 @@ export default [
       {
         skill: 'Google Cloud',
         icon: 'gc',
+      },
+      {
+        skill: 'Flutter',
+        icon: 'flutter',
+      },
+      {
+        skill: 'Vue',
+        icon: 'vue',
+      },
+      {
+        skill: 'Nuxt',
+        icon: 'nuxt',
       },
       {
         skill: 'ExpressJS',
@@ -74,10 +93,6 @@ export default [
       {
         skill: 'Postgresql',
         icon: 'postgres',
-      },
-      {
-        skill: 'Redis',
-        icon: 'redis',
       },
       {
         skill: 'Parcel',
@@ -101,49 +116,41 @@ export default [
       },
     ],
   },
-  {
+  antennas: {
     label: 'Antenna Engineering',
     items: [
       {
         skill: 'Antenna Design',
-        icon: null,
       },
       {
         skill: 'Technical Account Management',
-        icon: null,
       },
       {
         skill: 'Antenna Simulation',
-        icon: null,
       },
       {
         skill: 'Antenna Measurement',
-        icon: null,
       },
       {
         skill: 'CST',
-        icon: null,
       },
       {
         skill: 'Technical Training',
-        icon: null,
       },
       {
         skill: 'Pre-sales Engineering Support',
-        icon: null,
       },
       {
         skill: 'MATLAB',
-        icon: null,
       },
       {
         skill: 'ADS',
-        icon: null,
       },
       {
         skill: 'LT Spice',
-        icon: null,
       },
     ],
   },
-];
+};
+
+export default skills;

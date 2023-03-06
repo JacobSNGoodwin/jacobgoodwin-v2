@@ -30,8 +30,10 @@ import PrismaIcon from '../../assets/icons/prisma.svg';
 import PythonIcon from '../../assets/icons/python-icon.svg';
 import ReactIcon from '../../assets/icons/reactjs-icon.svg';
 import RedisIcon from '../../assets/icons/redis.svg';
+import RustIcon from '../../assets/icons/rust-ar21.svg';
 import SassIcon from '../../assets/icons/sass-lang-icon.svg';
 import ScalaIcon from '../../assets/icons/scala-lang-icon.svg';
+import ServerlessIcon from '../../assets/icons/serverless-ar21.svg';
 import SocketIOIcon from '../../assets/icons/socketio-ar21.svg';
 import TraefikIcon from '../../assets/icons/traefik.svg';
 import TypeORMIcon from '../../assets/icons/typeorm.svg';
@@ -86,8 +88,10 @@ const icons: Record<string, IconData> = {
   python: { icon: PythonIcon, url: 'https://www.python.org/' },
   react: { icon: ReactIcon, url: 'https://reactjs.org/' },
   redis: { icon: RedisIcon, url: 'https://redis.io/' },
+  rust: { icon: RustIcon, url: 'https://www.rust-lang.org/' },
   sass: { icon: SassIcon, url: 'https://sass-lang.com/' },
   scala: { icon: ScalaIcon, url: 'https://www.scala-lang.org/' },
+  serverless: { icon: ServerlessIcon, url: 'https://www.serverless.com/' },
   socketio: { icon: SocketIOIcon, url: 'https://socket.io/' },
   traefik: { icon: TraefikIcon, url: 'https://traefik.io/' },
   typeorm: { icon: TypeORMIcon, url: 'https://typeorm.io/#/' },

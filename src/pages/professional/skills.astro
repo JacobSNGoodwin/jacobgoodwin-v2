@@ -1,13 +1,91 @@
 ---
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
+import skills from '@src/data/professional/skills';
+import Card from '@src/components/Card.astro';
+import ExternalLink from '@src/components/ExternalLink.astro';
+import iconMap from '@src/data/professional/iconData';
+import { divide } from 'lodash';
 ---
 
 <ProfessionalLayout metaTags={{ title: 'Professional Skills' }}>
   <h1 class="title">Skills</h1>
+  <Card>
+    <h2 class="skill-title">{skills.languages.label}</h2>
+    <div class="icon-labels">
+      {
+        skills.languages.items.map((language) => (
+          <div class="icon-label">
+            <ExternalLink class="icon" href={iconMap[language.icon].url}>
+              <img
+                title={language.skill}
+                src={iconMap[language.icon].icon}
+                height="48"
+              />
+            </ExternalLink>
+          </div>
+        ))
+      }
+    </div>
+  </Card>
+  <Card>
+    <h2 class="skill-title">{skills.tools.label}</h2>
+    <div class="icon-labels">
+      {
+        skills.tools.items.map((tool) => (
+          <div class="icon-label">
+            <ExternalLink class="icon" href={iconMap[tool.icon].url}>
+              <img
+                title={tool.skill}
+                src={iconMap[tool.icon].icon}
+                height="48"
+              />
+            </ExternalLink>
+          </div>
+        ))
+      }
+    </div>
+  </Card>
+  <Card>
+    <h2 class="skill-title">{skills.antennas.label}</h2>
+    <div class="icon-labels">
+      {
+        skills.antennas.items.map((antennaSkill) => (
+          <div class="icon-label">
+            <span>{antennaSkill.skill}</span>
+          </div>
+        ))
+      }
+    </div>
+  </Card>
 </ProfessionalLayout>
 
 <style>
   .title {
     text-align: center;
+  }
+
+  .skill-title {
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+  }
+
+  .icon-labels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .icon-label {
+    display: flex;
+    margin: 0.5em 0.5em;
+    align-items: center;
+  }
+
+  .icon {
+    padding: 0.5em;
+  }
+
+  .label {
+    margin-left: 0.5em;
   }
 </style>
