@@ -1,13 +1,69 @@
 ---
+import ExternalLink from '@src/components/ExternalLink.astro';
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
+
+import MailIcon from '~icons/tabler/mail';
+import GithubIcon from '~icons/fa6-brands/github';
+import LinkedInIcon from '~icons/fa6-brands/linkedin';
 ---
 
 <ProfessionalLayout metaTags={{ title: 'Contact Info' }}>
-  <h1 class="title">Contact Information</h1>
+  <h1 class="title">Contact Me</h1>
+  <div class="contact-items">
+    <ExternalLink class="contact-item" href="mailto:jacob.goodwin@gmail.com">
+      <MailIcon class="contact-icon mail-icon" />
+      <div class="contact-text">jacob.goodwin@gmail.com</div>
+    </ExternalLink>
+    <ExternalLink class="contact-item" href="https://github.com/jacobsngoodwin">
+      <GithubIcon class="contact-icon github-icon" />
+      <div class="contact-text">JacobSNGoodwin</div>
+    </ExternalLink>
+    <ExternalLink
+      class="contact-item"
+      href="https://www.linkedin.com/in/jacobgoodwin1/"
+    >
+      <LinkedInIcon class="contact-icon linkedin-icon" />
+      <div class="contact-text">/in/jacobgoodwin1</div>
+    </ExternalLink>
+  </div>
 </ProfessionalLayout>
 
 <style>
   .title {
     text-align: center;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-item {
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-icon {
+    font-size: 1em;
+    padding: 0.5em;
+  }
+
+  .contact-text {
+    color: var(--bodyColor);
+    font-size: 1em;
+  }
+
+  .mail-icon {
+    color: var(--color1);
+  }
+
+  .github-icon {
+    color: #6e5494;
+  }
+
+  .linkedin-icon {
+    color: #0a66c2;
   }
 </style>
