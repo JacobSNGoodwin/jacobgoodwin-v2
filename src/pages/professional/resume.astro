@@ -1,13 +1,110 @@
 ---
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
+import resume from '@data/professional/resume';
+import { divide } from 'lodash';
 ---
 
 <ProfessionalLayout metaTags={{ title: 'Résumé' }}>
-  <h1 class="title">Résumé</h1>
+  <h1 class="resume-section-title">Experience</h1>
+  {
+    resume.experience.map((experienceItem) => (
+      <div class="item">
+        <h2 class="experience-title">{experienceItem.title}</h2>
+        <h3 class="experience-company">{experienceItem.company}</h3>
+        <div class="experience-dates">
+          <span>{`${experienceItem.dates} - ${experienceItem.location}`}</span>
+        </div>
+        <ul class="bullets">
+          {experienceItem.bullets.map((bulletItem) => (
+            <li>{bulletItem}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+  <h1 class="resume-section-title">Education</h1>
+  {
+    resume.education.map((educationItem) => (
+      <div class="item">
+        <h2 class="school-title">{educationItem.school}</h2>
+        <h3 class="school-info">
+          {`${educationItem.degree} - ${educationItem.dates}`}
+        </h3>
+        <p class="school-other">{educationItem.other}</p>
+        {educationItem?.thesis && (
+          <h3 class="thesis">Thesis</h3>
+          <h4 class="thesis-title">{educationItem.thesis.title}</h4>
+          <p class="thesis-summary">{educationItem.thesis.summary}</p>
+        )}
+      </div>
+    ))
+  }
 </ProfessionalLayout>
 
 <style>
-  .title {
+  .resume-section-title {
     text-align: center;
+    color: var(--color1);
+  }
+
+  .item {
+    margin: 3em auto;
+  }
+
+  .experience-title,
+  .school-title {
+    margin: 0.1em auto;
+  }
+
+  .experience-company {
+    margin: 0.1em auto;
+    font-style: italic;
+    color: var(--color1);
+  }
+
+  .school-info {
+    margin: 0.1em auto;
+    color: var(--color1);
+  }
+
+  .school-other {
+    margin-top: 0.1em;
+    font-style: italic;
+  }
+
+  .experience-dates {
+    margin-top: 0.1em;
+  }
+
+  .thesis {
+    margin: 0.1em;
+  }
+
+  .thesis-title {
+    margin: 0.1em;
+    color: var(--color1);
+  }
+
+  .thesis-summary {
+    margin: 0.2em auto;
+    font-style: italic;
+  }
+
+  .bullets {
+    list-style: none;
+    padding-left: 0;
+
+    & > li {
+      margin-bottom: 0.25em;
+    }
+  }
+
+  .bullets li::before {
+    content: '\2022';
+    color: var(--color2);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
   }
 </style>
