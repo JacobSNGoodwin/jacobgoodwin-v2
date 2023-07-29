@@ -28,10 +28,10 @@ const resume: Resume = {
       title: 'Software Engineer',
       company: 'Passport',
       location: 'Remote with HQ in Charlotte, NC',
-      dates: 'January 2021 - Present',
+      dates: 'March 2021 - Present',
       bullets: [
         'Building modern parking permit and curbside reservation applications for government clients and their customers',
-        'Serverless microservice development on AWS with the Serverless Framework and NodeJS',
+        'Serverless microservice development on AWS with the Serverless Framework and NodeJS. We manage several dozen services using DynamoDB, Lambda, ECS, SNS, SQS, Elastic Search, and much more!',
         'Web application development for customers and governments built with React',
       ],
     },

@@ -1,7 +1,7 @@
 export default {
   intro: [
     "I'm Jacob Goodwin, a Web Developer experienced in writing single page applications and backend services in various languages. Professionaly, I build full-stack React applications using NodeJS backends with the serverless framework and deployed on AWS.",
-    'I have also dabbled in Go and Rust. I have a Youtube Chanell where I have taught on some of these subjects. Check it out!',
+    "I'm currently trying to get better with Rust and exploring all the latest in edge runtimes.",
   ],
   current: [
     {
@@ -17,6 +17,7 @@ export default {
   ],
   about: [
     'A few years ago, I started enjoying online programming courses as a post-work hobby. I have since learned numerous technologies and turned my hobby into a career!',
+    'At my current position I have worked on enhancing our Permits product and designing our Spot-Block product. I am also frequently a point of contact for our team on niche issues, data transformations, and working with other teams on difficult architectural problems.',
     'I previously worked as an electronics engineer, most recently for an electromagnetics simulation software company where I used my antenna design and simulation expertise to support and consult several top Silicon Valley companies.',
   ],
 };
