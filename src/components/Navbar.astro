@@ -1,12 +1,12 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 import logo from '@assets/icon-512px.png';
 
 import type { NavItem } from 'src/types';
 
 export type Props = {
   logoPath?: string;
-  navItems: NavItem[];
+  navItems: Array<NavItem>;
 };
 
 const { navItems, logoPath } = Astro.props as Props;

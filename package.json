@@ -17,7 +17,6 @@
     "@iconify-json/tabler": "^1.1.54",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
-    "@types/sharp": "^0.31.1",
     "astro": "^3.2.2",
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",

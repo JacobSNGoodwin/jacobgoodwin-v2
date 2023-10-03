@@ -11,7 +11,7 @@
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     // Add type definitions for our Vite runtime.
-    "types": ["vite/client", "@types/node", "@types/sharp", "unplugin-icons/types/astro"],
+    "types": ["vite/client", "@types/node", "unplugin-icons/types/astro", "astro/client"],
     "jsx": "preserve",
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,

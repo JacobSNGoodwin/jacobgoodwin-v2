@@ -1,11 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-import image from '@astrojs/image';
-
-// https://astro.build/config
-
-// https://astro.build/config
 import mdx from '@astrojs/mdx';
 
 import Icons from 'unplugin-icons/vite';
