@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Card from '@src/components/Card.astro';
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
 import projects from '@data/professional/projects.js';
@@ -39,7 +40,7 @@ import PhotoVideoIcon from '~icons/fa-solid/photo-video';
           <div class="tech-icons">
             {project.icons.map((iconName) => (
               <ExternalLink href={iconMap[iconName].url}>
-                <img src={iconMap[iconName].icon} height="40" />
+                <Image src={iconMap[iconName].icon} height="40" alt={`Icon for ${iconMap[iconName].url}`}/>
               </ExternalLink>
             ))}
           </div>
@@ -84,7 +85,7 @@ import PhotoVideoIcon from '~icons/fa-solid/photo-video';
     justify-content: center;
     flex-wrap: wrap;
 
-    & > * {
+    & > a {
       margin: 0.5em 0.5em;
     }
   }

@@ -1,10 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import ProfessionalLayout from '@src/layouts/ProfessionalLayout.astro';
 import skills from '@src/data/professional/skills';
 import Card from '@src/components/Card.astro';
 import ExternalLink from '@src/components/ExternalLink.astro';
 import iconMap from '@src/data/professional/iconData';
-import { divide } from 'lodash';
 ---
 
 <ProfessionalLayout metaTags={{ title: 'Professional Skills' }}>
@@ -16,10 +16,10 @@ import { divide } from 'lodash';
         skills.languages.items.map((language) => (
           <div class="icon-label">
             <ExternalLink class="icon" href={iconMap[language.icon].url}>
-              <img
-                title={language.skill}
+              <Image
                 src={iconMap[language.icon].icon}
                 height="48"
+                alt={`Icon for ${language.skill}`}
               />
             </ExternalLink>
           </div>
@@ -34,10 +34,10 @@ import { divide } from 'lodash';
         skills.tools.items.map((tool) => (
           <div class="icon-label">
             <ExternalLink class="icon" href={iconMap[tool.icon].url}>
-              <img
-                title={tool.skill}
+              <Image
                 src={iconMap[tool.icon].icon}
                 height="48"
+                alt={`Icon for ${tool.skill}`}
               />
             </ExternalLink>
           </div>

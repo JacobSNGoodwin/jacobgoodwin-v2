@@ -1,3 +1,5 @@
+import type { ImageMetadata } from 'astro';
+
 import AkkaIcon from '../../assets/icons/akka-icon.svg';
 import AWSIcon from '../../assets/icons/aws.svg';
 import BrandIcon from '../../assets/icons/brand.svg';
@@ -42,7 +44,7 @@ import VueIcon from '../../assets/icons/vue.svg';
 import VuetifyIcon from '../../assets/icons/vuetify.svg';
 
 type IconData = {
-  icon: string;
+  icon: ImageMetadata;
   url: string;
 };
 

@@ -1,15 +1,14 @@
 ---
-export type Props = {
-  href: string;
-  class?: string;
-};
+import type { HTMLAttributes } from 'astro/types';
 
-const { href, class: className } = Astro.props as Props;
+type Props = HTMLAttributes<'a'>;
+
+const { href, ...attrs } = Astro.props;
 ---
 
 <a
   href={href}
-  class={className}
+  {...attrs}
   target="_blank"
   rel="nofollow noopener noreferrer"
 >
