@@ -1,11 +1,11 @@
-import { MarkdownInstance } from 'astro';
+import type { MDXInstance } from 'astro';
 import lodash from 'lodash';
-import { PostFrontmatter } from 'src/types';
+import type { PostFrontmatter } from 'src/types';
 
 const { orderBy, filter, includes } = lodash;
 
 export const queryPosts = (
-  posts: MarkdownInstance<PostFrontmatter>[],
+  posts: MDXInstance<PostFrontmatter>[],
   filters?: {
     tag?: string;
   }

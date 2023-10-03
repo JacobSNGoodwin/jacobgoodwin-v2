@@ -1,12 +1,12 @@
 ---
-import { PostFrontmatter } from '@src/types';
-import { MarkdownInstance, Page } from 'astro';
+import type { PostFrontmatter } from '@src/types';
+import type { MDXInstance, Page } from 'astro';
 import PostCard from './PostCard.astro';
 import ChevronRight from '~icons/tabler/circle-chevron-right';
 import ChevronLeft from '~icons/tabler/circle-chevron-left';
 
 export type Props = {
-  page: Page<MarkdownInstance<PostFrontmatter>>;
+  page: Page<MDXInstance<PostFrontmatter>>;
   title?: string;
 };
 

@@ -1,4 +1,4 @@
-import { PostsFolder, Tag } from 'src/types';
+import type { PostsFolder, Tag } from 'src/types';
 
 // TODO - Add descriptions
 export const tags: Record<PostsFolder, Tag[]> = {

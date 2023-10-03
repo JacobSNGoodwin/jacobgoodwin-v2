@@ -1,10 +1,10 @@
 ---
-import { PostFrontmatter } from '@src/types';
-import { MarkdownInstance } from 'astro';
+import type { PostFrontmatter } from '@src/types';
+import type { MDXInstance } from 'astro';
 import { format } from 'date-fns';
 
 export type Props = {
-  post: MarkdownInstance<PostFrontmatter>;
+  post: MDXInstance<PostFrontmatter>;
 };
 
 const { post } = Astro.props;
