@@ -22,19 +22,12 @@ console.info('Building image with baseImagePath: ', baseImagePath);
 
 const maxWidth = widths[widths.length - 1];
 
-// const initSrc = `data:image/${format};base64,${initImg.toString('base64')}`;
-// init source is small blurred image
 const initSrc = `${baseImagePath}?tr=w-50,bl-10`;
 const defaultSrc = `${baseImagePath}?tr=w-${maxWidth}`;
 
 const srcSet = widths.map((width) => `${baseImagePath}?tr=w-${width}`).join(',');
 
-// const jpegSrcset = widths
-//   .map((width) => `${baseImagePath}-${width}w.jpg ${width}w`)
-//   .join(',');
-// const webpSrcset = widths
-//   .map((width) => `${baseImagePath}-${width}w.webp ${width}w`)
-//   .join(',');
+
 
 const imgId = nanoid(6);
 ---
@@ -74,7 +67,9 @@ const imgId = nanoid(6);
 
 <script>
   import imageLoader from '@src/scripts/imageLoader';
-  imageLoader();
+  document.addEventListener('astro:after-swap', () => {
+    imageLoader();
+  });
 </script>
 
 <style lang="css">
