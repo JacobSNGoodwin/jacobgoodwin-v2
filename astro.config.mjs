@@ -22,6 +22,15 @@ export default defineConfig({
       ],
     ],
   },
+  image: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.imagekit.io',
+        pathname: 'jacobgoodwin/**',
+      },
+    ],
+  },
   site: 'https://jacobgoodiwn.me',
   // for base of deployed site
   trailingSlash: 'never',

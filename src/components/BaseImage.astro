@@ -1,5 +1,6 @@
 ---
-import sharp from 'sharp';
+import type { AllowedImageFormats } from '@src/types';
+
 import { nanoid } from 'nanoid';
 
 export type Props = {
@@ -9,43 +10,31 @@ export type Props = {
   widths: Array<number>;
   borderRadiusTop?: string;
   borderRadiusBottom?: string;
+  fileExtension?: AllowedImageFormats;
 };
 
-const { path, name, alt, widths, borderRadiusTop, borderRadiusBottom } =
+const { path, name, alt, widths, borderRadiusTop, borderRadiusBottom, fileExtension = 'jpg' } =
   Astro.props as Props;
 
-const baseImagePath = `${import.meta.env.STORAGE_URL}/${
-  import.meta.env.CLOUD_STORAGE_BUCKET
-}/${path}/${name}`;
+const baseImagePath = `${import.meta.env.IMAGEKIT_URL}/${path}/${name}.${fileExtension}`;
 
 console.info('Building image with baseImagePath: ', baseImagePath);
 
-// build placeholder image from 800w image
-const smallImageSrc = `${baseImagePath}-800w.webp`;
 const maxWidth = widths[widths.length - 1];
-const defaultSrc = `${baseImagePath}-${maxWidth}w.jpg`;
 
-const res = await fetch(smallImageSrc);
+// const initSrc = `data:image/${format};base64,${initImg.toString('base64')}`;
+// init source is small blurred image
+const initSrc = `${baseImagePath}?tr=w-50,bl-10`;
+const defaultSrc = `${baseImagePath}?tr=w-${maxWidth}`;
 
-const arrayBuffer = await res.arrayBuffer();
-const buffer = Buffer.from(arrayBuffer);
-const sharpImage = sharp(buffer);
+const srcSet = widths.map((width) => `${baseImagePath}?tr=w-${width}`).join(',');
 
-const { format } = await sharpImage.metadata();
-
-const initImg = await sharpImage
-  .resize({ width: 50, fit: 'inside' })
-  .blur()
-  .toBuffer();
-
-const initSrc = `data:image/${format};base64,${initImg.toString('base64')}`;
-
-const jpegSrcset = widths
-  .map((width) => `${baseImagePath}-${width}w.jpg ${width}w`)
-  .join(',');
-const webpSrcset = widths
-  .map((width) => `${baseImagePath}-${width}w.webp ${width}w`)
-  .join(',');
+// const jpegSrcset = widths
+//   .map((width) => `${baseImagePath}-${width}w.jpg ${width}w`)
+//   .join(',');
+// const webpSrcset = widths
+//   .map((width) => `${baseImagePath}-${width}w.webp ${width}w`)
+//   .join(',');
 
 const imgId = nanoid(6);
 ---
@@ -64,14 +53,9 @@ const imgId = nanoid(6);
 />
 <picture>
   <source
-    type="image/webp"
-    sizes="(max-width: 1024px) 100vw, 1024px"
-    srcset={webpSrcset}
-  />
-  <source
     type="image/jpeg"
     sizes="(max-width: 1024px) 100vw, 1024px"
-    srcset={jpegSrcset}
+    srcset={srcSet}
   />
   <img
     style={{
