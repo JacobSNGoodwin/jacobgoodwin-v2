@@ -1,7 +1,8 @@
 ---
 import '@styles/global.css';
-import { MetaTags } from 'src/types';
+import type { MetaTags } from 'src/types';
 import { baseMetaTags } from '@data/baseMetaTags';
+import { ViewTransitions } from 'astro:transitions';
 
 export type Props = {
   metaTags?: MetaTags;
@@ -16,6 +17,7 @@ const meta = { ...baseMetaTags, ...metaTags };
 <!-- TODO - some metatags are not accessing proper field -->
 <html lang="en">
   <head>
+    <ViewTransitions />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
