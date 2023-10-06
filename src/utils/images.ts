@@ -43,8 +43,12 @@ const createDataSources = ({
     height: file.height,
     alt: caption,
     srcset: widths
-      .map((width) =>
-        client.url({ src: file.url, transformation: [{ width }] })
+      .map(
+        (width) =>
+          `${client.url({
+            src: file.url,
+            transformation: [{ width }],
+          })} ${width}w`
       )
       .join(','),
   }));
