@@ -33,7 +33,7 @@ export type MetaTags = {
 };
 
 // Image Formatting
-export type AllowedImageFormats = 'jpg' | 'webp';
+export type AllowedImageFormats = 'jpg' | 'jpeg' | 'webp';
 export type LQIPFields = {
   base64: string;
   height: number;

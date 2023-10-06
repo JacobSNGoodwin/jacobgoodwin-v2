@@ -1,6 +1,7 @@
 ---
 import type { AllowedImageFormats } from '@src/types';
 import { getClient } from '@src/utils/imagekit-client';
+import { imageConfig } from 'astro:assets';
 
 import { nanoid } from 'nanoid';
 
@@ -14,42 +15,59 @@ export type Props = {
   fileExtension?: AllowedImageFormats;
 };
 
-const { path, name, alt, widths, borderRadiusTop, borderRadiusBottom, fileExtension = 'jpg' } =
-  Astro.props as Props;
-
-const imagePath = `${import.meta.env.IMAGEKIT_URL}/${path}/${name}.${fileExtension}`;
+const {
+  path,
+  name,
+  alt,
+  widths,
+  borderRadiusTop,
+  borderRadiusBottom,
+  fileExtension = 'jpg',
+} = Astro.props as Props;
 
 const client = getClient();
 
-console.info('Building image with imagePath: ', imagePath);
-
 const maxWidth = widths[widths.length - 1];
 
+const images = await client.listFiles({
+  path,
+  searchQuery: `name : ${name}`,
+});
+
+const file = images[0];
+
 const initSrc = client.url({
-  src: imagePath,
-  transformation: [{
-    width: 50,
-    blur: 10,
-  }]
+  src: file.url,
+  transformation: [
+    {
+      width: 50,
+      blur: 10,
+    },
+  ],
 });
 
 const defaultSrc = client.url({
-  src: imagePath,
-  transformation: [{
-    width: maxWidth,
-  }]
+  src: file.url,
+  transformation: [
+    {
+      width: maxWidth,
+    },
+  ],
 });
 
-
-const srcSet = widths.map((width) => {
-  const currentWidthUrl =  client.url({
-  src: imagePath,
-  transformation: [{
-    width,
-  }]
-});
-  return `${currentWidthUrl} ${width}w`
-}).join(',');
+const srcSet = widths
+  .map((width) => {
+    const currentWidthUrl = client.url({
+      src: file.url,
+      transformation: [
+        {
+          width,
+        },
+      ],
+    });
+    return `${currentWidthUrl} ${width}w`;
+  })
+  .join(',');
 
 const imgId = nanoid(6);
 ---
@@ -96,9 +114,13 @@ const imgId = nanoid(6);
   });
 
   // For hard reloads
-  document.addEventListener('astro:page-load', () => {
-    imageLoader();
-  }, { once: true });
+  document.addEventListener(
+    'astro:page-load',
+    () => {
+      imageLoader();
+    },
+    { once: true }
+  );
 </script>
 
 <style lang="css">
