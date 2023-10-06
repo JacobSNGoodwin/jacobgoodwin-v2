@@ -44,6 +44,9 @@ dependencies:
   nanoid:
     specifier: ^4.0.0
     version: 4.0.0
+  p-map:
+    specifier: ^6.0.0
+    version: 6.0.0
   photoswipe:
     specifier: ^5.3.4
     version: 5.3.4
@@ -3303,6 +3306,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-limit: 3.1.0
+    dev: false
+
+  /p-map@6.0.0:
+    resolution: {integrity: sha512-T8BatKGY+k5rU+Q/GTYgrEf2r4xRMevAN5mtXc2aPc4rS1j3s+vWTaO2Wag94neXuCAUAs8cxBL9EeB5EA6diw==}
+    engines: {node: '>=16'}
     dev: false
 
   /p-try@2.2.0:

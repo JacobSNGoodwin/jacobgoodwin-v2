@@ -5,7 +5,7 @@ import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
 import type { BuildImagesData } from '@src/utils/images';
-import {  buildImages } from '@src/utils/images';
+import { buildImages } from '@src/utils/images';
 
 export type Props = {
   preview: {
@@ -72,7 +72,9 @@ const imageData = await buildImages(images);
   .selected {
     visibility: visible;
     opacity: 1;
-    transition: visibility 0s, opacity 0.5s linear;
+    transition:
+      visibility 0s,
+      opacity 0.5s linear;
   }
 
   .unselected {
@@ -87,11 +89,19 @@ const imageData = await buildImages(images);
 
   // for SPA ViewTransitions
   document.addEventListener('astro:after-swap', () => {
+    console.debug('after-swap');
     initializePhotoGalleries();
   });
 
   // For hard reloads
-  document.addEventListener('astro:page-load', () => {
-    initializePhotoGalleries();
-  }, { once: true });
+  document.addEventListener(
+    'astro:page-load',
+    () => {
+      console.debug('page-load');
+      initializePhotoGalleries();
+    },
+    { once: true }
+  );
+
+  // initializePhotoGalleries();
 </script>

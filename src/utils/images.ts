@@ -1,7 +1,10 @@
+import { match } from 'assert';
 import { getClient } from './imagekit-client';
 import type ImageKit from 'imagekit';
-import type { FileObject } from 'imagekit/dist/libs/interfaces'; // GARRRR, breach deeply!
 import orderBy from 'lodash/orderBy';
+import pMap from 'p-map';
+
+const DEFAULT_WIDTHS = [2400, 1800, 1200, 800];
 
 type ImagePrefixData = {
   prefix: string;
@@ -27,41 +30,13 @@ type DataSources = Array<{
   alt: string;
 }>;
 
-const createDataSources = ({
-  client,
-  files,
-  caption,
-  widths,
-}: {
-  client: ImageKit;
-  files: FileObject[];
-  caption: string;
-  widths: number[];
-}): DataSources => {
-  const orderedFiles = orderBy(files, ['name']);
-  return orderedFiles.map((file) => ({
-    src: file.url,
-    width: file.width,
-    height: file.height,
-    alt: caption,
-    srcset: widths
-      .map(
-        (width) =>
-          `${client.url({
-            src: file.url,
-            transformation: [{ width }],
-          })} ${width}w`
-      )
-      .join(','),
-  }));
-};
-
 const buildImagesFromPrefix = async (
   client: ImageKit,
   options: BuildImagesData
-) => {
+): Promise<DataSources> => {
   // definitely gotta be a better way to do this.
   const imagePrefixOptions = options.data as ImagePrefixData;
+  const widths = options?.widths ?? DEFAULT_WIDTHS;
   const files = await client.listFiles({
     fileType: 'image',
     path: options.path,
@@ -76,19 +51,66 @@ const buildImagesFromPrefix = async (
     return ['jpg', 'jpeg'].includes(extension);
   });
 
-  return createDataSources({
-    client,
-    files: jpegFiles,
-    caption: imagePrefixOptions.caption,
-    widths: options?.widths ?? [2400, 1800, 1200, 800],
-  });
+  const orderedFiles = orderBy(jpegFiles, ['name']);
+  return orderedFiles.map((file) => ({
+    src: file.url,
+    width: file.width,
+    height: file.height,
+    alt: imagePrefixOptions.caption,
+    srcset: widths
+      .map(
+        (width) =>
+          `${client.url({
+            src: file.url,
+            transformation: [{ width }],
+          })} ${width}w`
+      )
+      .join(','),
+  }));
+};
+
+const buildImagesFromArray = async (
+  client: ImageKit,
+  options: BuildImagesData
+): Promise<DataSources> => {
+  // definitely gotta be a better way to do this.
+  const imagesListData = options.data as ImageListData;
+  const widths = options?.widths ?? DEFAULT_WIDTHS;
+
+  return pMap(
+    imagesListData,
+    async (imageData) => {
+      const images = await client.listFiles({
+        path: options.path,
+        searchQuery: `name : ${imageData.name}`,
+      });
+
+      const file = images[0];
+
+      return {
+        src: file.url,
+        width: file.width,
+        height: file.height,
+        alt: imageData.caption,
+        srcset: widths
+          .map(
+            (width) =>
+              `${client.url({
+                src: file.url,
+                transformation: [{ width }],
+              })} ${width}w`
+          )
+          .join(','),
+      };
+    },
+    { concurrency: 5 }
+  );
 };
 
 export const buildImages = async (options: BuildImagesData) => {
   const client = getClient();
 
-  // const results = Array.isArray(options)
-  //   ? await buildImagesFromArray(bucket, options)
-  //   : await buildImagesFromPrefix(client, options);
-  return await buildImagesFromPrefix(client, options);
+  return Array.isArray(options.data)
+    ? buildImagesFromArray(client, options)
+    : buildImagesFromPrefix(client, options);
 };

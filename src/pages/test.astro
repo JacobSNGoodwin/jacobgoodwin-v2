@@ -1,0 +1,42 @@
+---
+import ImageGallery from '@src/components/ImageGallery.astro';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <div class="container">
+    <h1>Test page!</h1>
+    <ImageGallery
+      preview={{
+        title: 'Caminos Impresionantes del Noroeste',
+        path: 'blog/caminos-impresionantes',
+        name: 'caminos-impresionantes-00125',
+      }}
+      images={{
+        path: 'blog/caminos-impresionantes',
+        data: [
+          {
+            name: 'caminos-impresionantes-00125',
+            caption: 'Caption 1',
+          },
+          {
+            name: 'caminos-impresionantes-00124',
+            caption: 'Caption 2',
+          },
+          {
+            name: 'caminos-impresionantes-00123',
+            caption: 'Caption 3',
+          },
+        ],
+      }}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    margin: auto;
+    max-width: 1200px;
+    text-align: center;
+  }
+</style>
