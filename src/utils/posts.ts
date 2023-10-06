@@ -1,8 +1,8 @@
 import type { MDXInstance } from 'astro';
-import lodash from 'lodash';
+import orderBy from 'lodash/orderBy';
+import filter from 'lodash/filter';
+import includes from 'lodash/includes';
 import type { PostFrontmatter } from 'src/types';
-
-const { orderBy, filter, includes } = lodash;
 
 export const queryPosts = (
   posts: MDXInstance<PostFrontmatter>[],

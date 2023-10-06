@@ -1,7 +1,7 @@
 import { getClient } from './imagekit-client';
 import type ImageKit from 'imagekit';
 import type { FileObject } from 'imagekit/dist/libs/interfaces'; // GARRRR, breach deeply!
-import { orderBy } from 'lodash';
+import orderBy from 'lodash/orderBy';
 
 type ImagePrefixData = {
   prefix: string;
