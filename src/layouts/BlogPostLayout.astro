@@ -1,6 +1,7 @@
 ---
 import BlogLayout from './BlogLayout.astro';
 import PostTitle from '@components/PostTitle.astro';
+import { getClient } from '@src/utils/imagekit-client';
 import type { PostFrontmatter, MetaTags } from 'src/types';
 
 export type Props = {
@@ -9,15 +10,21 @@ export type Props = {
 
 const { frontmatter } = Astro.props as Props;
 
+const imageUrl = getClient().url(
+  { path: frontmatter.imagePath, 
+    transformation: [{ width: 1200 }], 
+  },
+);
+
 const metaTags: Partial<MetaTags> = {
   title: frontmatter.title,
   description: frontmatter.description,
   author: (frontmatter?.authors ?? []).join(','),
-  image: frontmatter.imageUrl,
+  image: imageUrl,
   keywords: frontmatter?.keywords ?? [],
 };
 
-// console.log(Astro.props);
+console.log('Blog post layout metadate', { metaTags });
 ---
 
 <BlogLayout metaTags={metaTags}>

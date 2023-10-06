@@ -19,7 +19,7 @@ export type PostFrontmatter = {
   authors: string[];
   description: string;
   date: string;
-  imageUrl?: string;
+  imagePath?: string;
   tags?: string[];
   keywords?: string[];
 };
