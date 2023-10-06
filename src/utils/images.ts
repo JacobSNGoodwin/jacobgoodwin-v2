@@ -1,6 +1,7 @@
 import { getClient } from './imagekit-client';
 import type ImageKit from 'imagekit';
 import type { FileObject } from 'imagekit/dist/libs/interfaces'; // GARRRR, breach deeply!
+import { orderBy } from 'lodash';
 
 type ImagePrefixData = {
   prefix: string;
@@ -36,8 +37,9 @@ const createDataSources = ({
   files: FileObject[];
   caption: string;
   widths: number[];
-}): DataSources =>
-  files.map((file) => ({
+}): DataSources => {
+  const orderedFiles = orderBy(files, ['name']);
+  return orderedFiles.map((file) => ({
     src: file.url,
     width: file.width,
     height: file.height,
@@ -52,6 +54,7 @@ const createDataSources = ({
       )
       .join(','),
   }));
+};
 
 const buildImagesFromPrefix = async (
   client: ImageKit,
@@ -87,9 +90,5 @@ export const buildImages = async (options: BuildImagesData) => {
   // const results = Array.isArray(options)
   //   ? await buildImagesFromArray(bucket, options)
   //   : await buildImagesFromPrefix(client, options);
-  const results = await buildImagesFromPrefix(client, options);
-
-  console.debug('results', results);
-
-  return results;
+  return await buildImagesFromPrefix(client, options);
 };

@@ -10,11 +10,10 @@ export type Props = {
 
 const { frontmatter } = Astro.props as Props;
 
-const imageUrl = getClient().url(
-  { path: frontmatter.imagePath, 
-    transformation: [{ width: 1200 }], 
-  },
-);
+const imageUrl = getClient().url({
+  path: frontmatter.imagePath,
+  transformation: [{ width: 1200 }],
+});
 
 const metaTags: Partial<MetaTags> = {
   title: frontmatter.title,
@@ -23,8 +22,6 @@ const metaTags: Partial<MetaTags> = {
   image: imageUrl,
   keywords: frontmatter?.keywords ?? [],
 };
-
-console.log('Blog post layout metadate', { metaTags });
 ---
 
 <BlogLayout metaTags={metaTags}>
