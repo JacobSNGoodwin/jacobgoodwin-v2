@@ -1,4 +1,4 @@
-import { getClient as getImageKitClient } from './imagekit-client';
+import { getClient } from './imagekit-client';
 import type ImageKit from 'imagekit';
 import type { FileObject } from 'imagekit/dist/libs/interfaces'; // GARRRR, breach deeply!
 
@@ -82,7 +82,7 @@ const buildImagesFromPrefix = async (
 };
 
 export const buildImages = async (options: BuildImagesData) => {
-  const client = getImageKitClient();
+  const client = getClient();
 
   // const results = Array.isArray(options)
   //   ? await buildImagesFromArray(bucket, options)
