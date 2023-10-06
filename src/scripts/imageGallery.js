@@ -32,7 +32,6 @@ const initializePhotoGalleries = () => {
   const galleries = document.querySelectorAll('button[data-images]');
 
   const lightboxes = [...galleries].map(handleInitializeGallery);
-
   const closedIndices = new Array(2).fill(0);
 
   // track last index

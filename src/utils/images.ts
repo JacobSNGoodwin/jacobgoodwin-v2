@@ -1,101 +1,64 @@
-import { Bucket, File, Storage } from '@google-cloud/storage';
-import { getClient } from './cloud-storage';
+import { getClient as getImageKitClient } from './imagekit-client';
+import type ImageKit from 'imagekit';
+import type { FileObject } from 'imagekit/dist/libs/interfaces'; // GARRRR, breach deeply!
 
-type ImageProps = {
-  path: string;
+type ImagePrefixData = {
+  prefix: string;
+  caption: string; // all have same caption
+};
+
+type ImageListData = Array<{
   name: string;
-  caption?: string;
-};
-export type BuildImageOptions = Array<ImageProps> | ImageProps;
+  caption: string;
+}>;
 
-const createDataSources = (files: File[], caption) => {
-  const filesWithMetadata = files.reduce<
-    Record<
-      string,
-      Array<{
-        publicUrl: string;
-        alt?: string;
-        width: number;
-        height: number;
-      }>
-    >
-  >((imageVariants, file) => {
-    const name = file.name;
-    const baseNameSeparatorIndex = name.lastIndexOf('-');
-    const baseFileName = name.slice(0, baseNameSeparatorIndex);
-
-    const width = parseInt(file.metadata.metadata.width);
-    const height = parseInt(file.metadata.metadata.height);
-
-    const variantData = {
-      publicUrl: file.publicUrl(),
-      alt: caption,
-      width,
-      height,
-    };
-
-    if (!imageVariants[baseFileName]) {
-      imageVariants[baseFileName] = [variantData];
-    } else {
-      imageVariants[baseFileName].push(variantData);
-    }
-
-    return imageVariants;
-  }, {});
-
-  const dataSources = Object.values(filesWithMetadata).map((images) => {
-    const srcset = images
-      .map(({ publicUrl, width }) => `${publicUrl} ${width}w`)
-      .join(',');
-
-    const largestImage = images.sort((a, b) => a.width - b.width)[
-      images.length - 1
-    ];
-
-    return {
-      srcset,
-      src: largestImage.publicUrl,
-      width: largestImage.width,
-      height: largestImage.height,
-      alt: largestImage.alt,
-    };
-  });
-
-  return dataSources;
+export type BuildImagesData = {
+  path: string;
+  widths?: number[];
+  data: ImagePrefixData | ImageListData;
 };
 
-const buildImagesFromArray = async (
-  bucket: Bucket,
-  options: Array<ImageProps>
+type DataSources = Array<{
+  srcset: string;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}>;
+
+const createDataSources = ({
+  client,
+  files,
+  caption,
+  widths,
+}: {
+  client: ImageKit;
+  files: FileObject[];
+  caption: string;
+  widths: number[];
+}): DataSources =>
+  files.map((file) => ({
+    src: file.url,
+    width: file.width,
+    height: file.height,
+    alt: caption,
+    srcset: widths
+      .map((width) =>
+        client.url({ src: file.url, transformation: [{ width }] })
+      )
+      .join(','),
+  }));
+
+const buildImagesFromPrefix = async (
+  client: ImageKit,
+  options: BuildImagesData
 ) => {
-  console.log('options', options);
-  const datasources = await Promise.all(
-    options.map(async ({ path, name, caption }) => {
-      const prefix = `${path}/${name}`;
-
-      const [files] = await bucket.getFiles({ prefix });
-
-      const jpegFiles = files.filter((file) => {
-        const extension = file.name.split('.')[1];
-
-        return ['jpg', 'jpeg'].includes(extension);
-      });
-
-      const datasources = createDataSources(jpegFiles, caption);
-
-      return datasources[0];
-    })
-  );
-
-  return datasources;
-};
-
-const buildImagesFromPrefix = async (bucket: Bucket, options: ImageProps) => {
-  const prefix = `${options.path}/${options.name}`;
-  console.info('building images from prefix', prefix);
-
-  const [files] = await bucket.getFiles({
-    prefix,
+  // definitely gotta be a better way to do this.
+  const imagePrefixOptions = options.data as ImagePrefixData;
+  const files = await client.listFiles({
+    fileType: 'image',
+    path: options.path,
+    searchQuery: `name : ${imagePrefixOptions.prefix}`,
   });
 
   // Might be better to use meta data, but that requires fetching
@@ -106,17 +69,23 @@ const buildImagesFromPrefix = async (bucket: Bucket, options: ImageProps) => {
     return ['jpg', 'jpeg'].includes(extension);
   });
 
-  return createDataSources(jpegFiles, options.caption);
+  return createDataSources({
+    client,
+    files: jpegFiles,
+    caption: imagePrefixOptions.caption,
+    widths: options?.widths ?? [2400, 1800, 1200, 800],
+  });
 };
 
-export const buildImages = async (options: BuildImageOptions) => {
-  const storageClient = getClient();
+export const buildImages = async (options: BuildImagesData) => {
+  const client = getImageKitClient();
 
-  const bucket = storageClient.bucket(import.meta.env.CLOUD_STORAGE_BUCKET);
+  // const results = Array.isArray(options)
+  //   ? await buildImagesFromArray(bucket, options)
+  //   : await buildImagesFromPrefix(client, options);
+  const results = await buildImagesFromPrefix(client, options);
 
-  const results = Array.isArray(options)
-    ? await buildImagesFromArray(bucket, options)
-    : await buildImagesFromPrefix(bucket, options);
+  console.debug('results', results);
 
   return results;
 };

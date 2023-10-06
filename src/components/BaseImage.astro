@@ -67,9 +67,16 @@ const imgId = nanoid(6);
 
 <script>
   import imageLoader from '@src/scripts/imageLoader';
+
+  // for SPA ViewTransitions
   document.addEventListener('astro:after-swap', () => {
     imageLoader();
   });
+
+  // For hard reloads
+  document.addEventListener('astro:page-load', () => {
+    imageLoader();
+  }, { once: true });
 </script>
 
 <style lang="css">

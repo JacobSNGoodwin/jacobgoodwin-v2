@@ -4,7 +4,7 @@ import SlideshowIcon from '~icons/tabler/slideshow';
 import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
-import type {BuildImageOptions } from '@src/utils/images';
+import type { BuildImagesData } from '@src/utils/images';
 import {  buildImages } from '@src/utils/images';
 
 export type Props = {
@@ -13,7 +13,7 @@ export type Props = {
     path: string;
     name: string;
   };
-  images: BuildImageOptions;
+  images: BuildImagesData;
 };
 
 const { images, preview } = Astro.props as Props;
@@ -85,5 +85,13 @@ const imageData = await buildImages(images);
 <script>
   import initializePhotoGalleries from '@src/scripts/imageGallery';
 
-  initializePhotoGalleries();
+  // for SPA ViewTransitions
+  document.addEventListener('astro:after-swap', () => {
+    initializePhotoGalleries();
+  });
+
+  // For hard reloads
+  document.addEventListener('astro:page-load', () => {
+    initializePhotoGalleries();
+  }, { once: true });
 </script>
