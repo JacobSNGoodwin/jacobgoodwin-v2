@@ -33,7 +33,7 @@ export default defineConfig({
   },
   site: 'https://jacobgoodiwn.me',
   // for base of deployed site
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   server: {
     host: true, // for allowing access on local network
   },
