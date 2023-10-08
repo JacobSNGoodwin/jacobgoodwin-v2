@@ -1,7 +1,7 @@
 ---
 import BlogLayout from './BlogLayout.astro';
 import PostTitle from '@components/PostTitle.astro';
-import { PostFrontmatter, MetaTags } from 'src/types';
+import type { PostFrontmatter, MetaTags } from 'src/types';
 import SectionLayout from './SectionLayout.astro';
 
 export type Props = {
@@ -14,7 +14,7 @@ const metaTags: Partial<MetaTags> = {
   title: frontmatter.title,
   description: frontmatter?.description ?? frontmatter?.title,
   author: frontmatter?.authors?.join(',') ?? 'Jacob Goodwin',
-  image: frontmatter.imageUrl,
+  image: frontmatter.imagePath,
   keywords: frontmatter?.keywords ?? [],
 };
 
