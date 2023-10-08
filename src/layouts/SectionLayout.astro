@@ -3,6 +3,7 @@ import Navbar from '@components/Navbar.astro';
 import { baseMetaTags } from '@data/baseMetaTags';
 import type { MetaTags, NavItem } from 'src/types';
 import BaseLayout from './BaseLayout.astro';
+import { fade } from 'astro:transitions';
 
 export type Props = {
   title?: string;
@@ -31,7 +32,7 @@ const tags = {
 
 <BaseLayout metaTags={tags}>
   <Navbar navItems={navItems} logoPath={logoPath} />
-  <div class="content">
+  <div class="content" transition:animate={fade({ duration: '0.4s' })}>
     <slot />
   </div>
 </BaseLayout>
