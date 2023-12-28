@@ -33,6 +33,7 @@ const resume: Resume = {
         'Building modern parking permit and curbside reservation applications for government clients and their customers',
         'Serverless microservice development on AWS with the Serverless Framework and NodeJS. We manage several dozen services using DynamoDB, Lambda, ECS, SNS, SQS, Elastic Search, and much more!',
         'Web application development for customers and governments built with React',
+        'Contributed significantly to implementing new AWS services (Open Search, ECS) and internal libraries, and representing my team in architectural decisions'
       ],
     },
     {
